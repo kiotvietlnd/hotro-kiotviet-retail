@@ -1,1 +1,441 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tổng Quan và Hướng Dẫn Sử Dụng Tính Năng Website Bán Hàng (KVWEB) trên KiotViet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f9fafb; color: #111827; scroll-behavior: smooth; }
+        .toc-link.active { color: #2563eb; border-left-color: #2563eb; font-weight: 600; }
+        .main-nav-link.active, .sub-nav-link.active { background-color: #dbeafe; /* Tailwind blue-100 */ color: #1d4ed8; /* Tailwind blue-700 */ font-weight: 600; }
+        .main-nav-link.active i, .sub-nav-link.active i { color: #1d4ed8; /* Tailwind blue-700 */ }
+        #sidebar .submenu { transition: max-height 0.3s ease-in-out; max-height: 0; overflow: hidden; }
+        #sidebar .submenu.open { max-height: 1500px; }
+        .arrow-icon { transition: transform 0.3s ease-in-out; }
+        .arrow-icon.open { transform: rotate(90deg); }
+        /* Style for standard prose lists */
+        .prose ul, .prose ol { padding-left: 1.25rem; }
+        .prose ul > li, .prose ol > li { margin-top: 0.5rem; margin-bottom: 0.5rem; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div id="app-wrapper">
+        <header class="bg-white sticky top-0 z-40 border-b border-gray-200">
+            <nav class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16">
+                    <div class="flex items-center">
+                        <button id="mobile-menu-button" class="lg:hidden mr-4 p-2 rounded-md text-gray-500 hover:text-gray-700 hover:bg-gray-100">
+                            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+                        </button>
+                        <img src="https://logo.kiotviet.vn/KiotViet-Logo-Horizontal.svg" alt="KiotViet Logo" class="h-8">
+                    </div>
+                    <div class="flex items-center flex-1 justify-end space-x-4">
+                         <div class="relative hidden sm:block w-full max-w-lg">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                    <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <input class="block w-full bg-white border border-gray-300 rounded-full py-2 pl-10 pr-3 text-sm placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500" placeholder="Chúng tôi có thể giúp bạn như thế nào?" type="search" name="q">
+                        </div>
+                         <a href="#" class="hidden sm:block text-sm font-medium text-blue-600 bg-white border border-gray-300 hover:bg-gray-50 px-4 py-2 rounded-full whitespace-nowrap">Đăng nhập</a>
+                         <a href="#" class="hidden sm:block text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-full whitespace-nowrap">Đăng ký</a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="grid grid-cols-12 gap-8">
+                <aside id="sidebar" class="fixed top-0 left-0 h-full w-72 bg-white border-r border-gray-200 z-50 transform -translate-x-full transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0 lg:block lg:col-span-3 lg:h-auto lg:w-auto lg:bg-transparent lg:border-none lg:z-auto">
+                    <div class="p-4 border-b border-gray-200 lg:hidden flex justify-between items-center">
+                        <h2 class="font-bold text-lg">Menu</h2>
+                        <button id="close-sidebar-button" class="p-2 rounded-md text-gray-500 hover:text-gray-700 hover:bg-gray-100"><svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg></button>
+                    </div>
+                    <nav class="sticky top-24 space-y-1 p-4 lg:p-0 lg:pr-4 overflow-y-auto h-[calc(100vh-64px)] lg:h-auto">
+                        <div>
+                            <button class="main-nav-toggle w-full flex items-center justify-between px-3 py-2 text-left">
+                                <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Làm quen KiotViet Retail</h3>
+                                <svg class="arrow-icon h-4 w-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                            </button>
+                            <div class="submenu pl-3">
+                                <a href="#" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-book-open w-5 text-center mr-3 text-gray-500"></i>Về 6 bước làm quen KiotViet Retail</a>
+                                <a href="#" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-plus-circle w-5 text-center mr-3 text-gray-500"></i>Bước 1: Thêm hàng hóa</a>
+                                <a href="#" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-dolly w-5 text-center mr-3 text-gray-500"></i>Bước 2: Nhập hàng</a>
+                                <a href="#" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-cash-register w-5 text-center mr-3 text-gray-500"></i>Bước 3: Bán hàng</a>
+                                <a href="#" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-undo w-5 text-center mr-3 text-gray-500"></i>Bước 4: Trả hàng</a>
+                                <a href="#" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-file-invoice-dollar w-5 text-center mr-3 text-gray-500"></i>Bước 5: Công nợ</a>
+                                <a href="#" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-chart-pie w-5 text-center mr-3 text-gray-500"></i>Bước 6: Báo cáo</a>
+                            </div>
+                        </div>
+                        <div>
+                            <button class="main-nav-toggle w-full flex items-center justify-between px-3 py-2 text-left mt-4">
+                                <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Tối ưu Vận hành</h3>
+                                <svg class="arrow-icon h-4 w-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                            </button>
+                             <div class="submenu pl-3">
+                                <a href="#" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-book-open w-5 text-center mr-3 text-gray-500"></i>Về các giải pháp tối ưu vận hành</a>
+                                <a href="#" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-search w-5 text-center mr-3 text-gray-500"></i>Tìm sản phẩm</a>
+                                <a href="#" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-cash-register w-5 text-center mr-3 text-gray-500"></i>Bán hàng</a>
+                                <a href="#" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-undo w-5 text-center mr-3 text-gray-500"></i>Trả hàng</a>
+                                <a href="#" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-cart-plus w-5 text-center mr-3 text-gray-500"></i>Đặt hàng</a>
+                                <a href="#" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-credit-card w-5 text-center mr-3 text-gray-500"></i>Thanh toán</a>
+                                <a href="#" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-truck w-5 text-center mr-3 text-gray-500"></i>Giao vận</a>
+                                <a href="#" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-receipt w-5 text-center mr-3 text-gray-500"></i>Hóa đơn điện tử</a>
+                                <div>
+                                    <button class="main-nav-toggle w-full flex items-center justify-between text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md px-3 py-2 text-left group">
+                                        <span class="flex items-center"><i class="fa-solid fa-industry w-5 text-center mr-3 text-gray-500 group-hover:text-gray-700"></i>Chuyên ngành</span>
+                                        <svg class="arrow-icon h-4 w-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                                    </button>
+                                    <div class="submenu pl-6">
+                                        <a href="#" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md">Các ngành quản lý Lô-HSD</a>
+                                        <a href="#" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md">Các ngành quản lý Serial-IMEI</a>
+                                        <a href="#" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md">Ngành Nhà thuốc</a>
+                                        <a href="#" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md">Ngành Vật liệu xây dựng</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <button class="main-nav-toggle w-full flex items-center justify-between px-3 py-2 text-left mt-4">
+                                <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Tối ưu Quản lý</h3>
+                                <svg class="arrow-icon h-4 w-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                            </button>
+                             <div class="submenu pl-3">
+                                <a href="#" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-book-open w-5 text-center mr-3 text-gray-500"></i>Về các giải pháp tối ưu quản lý</a>
+                                <div>
+                                    <button class="main-nav-toggle w-full flex items-center justify-between text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md px-3 py-2 text-left group">
+                                        <span class="flex items-center"><i class="fa-solid fa-boxes-stacked w-5 text-center mr-3 text-gray-500 group-hover:text-gray-700"></i>Hàng hóa</span>
+                                        <svg class="arrow-icon h-4 w-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                                    </button>
+                                    <div class="submenu pl-6">
+                                        <a href="#" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md">Các thuật ngữ về hàng hóa</a>
+                                        <a href="#" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md">Hàng hóa thường</a>
+                                        <a href="#" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md">Hàng dịch vụ</a>
+                                        <a href="#" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md">Hàng combo - đóng gói</a>
+                                        <a href="#" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md">Hàng sản xuất</a>
+                                        <a href="#" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md">Hàng Lô - HSD</a>
+                                        <a href="#" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md">Hàng Serial - IMEI</a>
+                                        <a href="#" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md">Kiểm kho</a>
+                                        <a href="#" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md">Xuất hủy</a>
+                                        <a href="#" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md">Chuyển hàng</a>
+                                    </div>
+                                </div>
+                                <div>
+                                    <button class="main-nav-toggle w-full flex items-center justify-between text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md px-3 py-2 text-left group">
+                                        <span class="flex items-center"><i class="fa-solid fa-truck-loading w-5 text-center mr-3 text-gray-500 group-hover:text-gray-700"></i>Giao dịch với NCC</span>
+                                        <svg class="arrow-icon h-4 w-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                                    </button>
+                                    <div class="submenu pl-6">
+                                        <a href="#" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-clipboard-list w-5 text-center mr-3 text-gray-500"></i>Quản lý đơn hàng</a>
+                                        <a href="#" class="sub-nav-link group flex items-center px-3 py-2 text-sm font-medium rounded-md"><i class="fa-solid fa-dolly w-5 text-center mr-3"></i>Nhập hàng</a>
+                                        <a href="#" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-file-invoice w-5 text-center mr-3 text-gray-500"></i>Đặt hàng nhập</a>
+                                        <a href="#" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-arrow-left-long w-5 text-center mr-3 text-gray-500"></i>Trả hàng nhập</a>
+                                    </div>
+                                </div>
+                                <a href="#" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-user-tie w-5 text-center mr-3 text-gray-500"></i>Nhà cung cấp</a>
+                                <a href="#" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-users w-5 text-center mr-3 text-gray-500"></i>Khách hàng</a>
+                                <a href="#" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-user-gear w-5 text-center mr-3 text-gray-500"></i>Nhân viên</a>
+                                <a href="#" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-book w-5 text-center mr-3 text-gray-500"></i>Sổ quỹ</a>
+                                <a href="#" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-chart-pie w-5 text-center mr-3 text-gray-500"></i>Báo cáo</a>
+                                <a href="#" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-cog w-5 text-center mr-3 text-gray-500"></i>Thiết lập</a>
+                            </div>
+                        </div>
+                        <div>
+                            <button class="main-nav-toggle w-full flex items-center justify-between px-3 py-2 text-left mt-4">
+                                <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Thúc đẩy Doanh thu</h3>
+                                <svg class="arrow-icon h-4 w-4 text-gray-500 open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                            </button>
+                             <div class="submenu pl-3 open">
+                                <a href="#" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-book-open w-5 text-center mr-3 text-gray-500"></i>Về các giải pháp thúc đẩy doanh thu</a>
+                                <a href="#" class="main-nav-link active group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-store-alt w-5 text-center mr-3 text-gray-500"></i>KiotViet Web</a>
+                                <a href="#" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-shopping-basket w-5 text-center mr-3 text-gray-500"></i>Sàn TMĐT</a>
+                                <a href="#" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-share-alt w-5 text-center mr-3 text-gray-500"></i>Mạng xã hội</a>
+                                <a href="#" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-chart-line w-5 text-center mr-3 text-gray-500"></i>Phân tích</a>
+                                <a href="#" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-tags w-5 text-center mr-3 text-gray-500"></i>Khuyến mại</a>
+                                <a href="#" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-ticket-alt w-5 text-center mr-3 text-gray-500"></i>Vouchers</a>
+                                <a href="#" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-star w-5 text-center mr-3 text-gray-500"></i>Coupons</a>
+                                <a href="#" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-gift w-5 text-center mr-3 text-gray-500"></i>Tích điểm</a>
+                                <a href="#" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-comment-dots w-5 text-center mr-3 text-gray-500"></i>Zalo ZNS</a>
+                            </div>
+                        </div>
+                    </nav>
+                </aside>
+                <main class="col-span-12 lg:col-span-6 bg-white border border-gray-200 rounded-lg p-8">
+                    <div class="text-sm text-gray-500 mb-4">
+                        <a href="#" class="hover:underline">Thúc đẩy Doanh thu</a> &gt; <span class="text-gray-700">KiotViet Web</span>
+                    </div>
+                    <h1 class="text-3xl font-extrabold tracking-tight text-gray-900">
+                        Tổng Quan và Hướng Dẫn Sử Dụng Tính Năng Website Bán Hàng (KVWEB) trên KiotViet
+                    </h1>
+                    <article class="prose max-w-none mt-8 text-gray-700">
+                        <section id="gioi-thieu-chung" class="scroll-mt-24">
+                            <h3 class="text-xl font-bold text-gray-900 mt-10 mb-4">I. Giới thiệu chung</h3>
+                            <p>Website bán hàng (KVWEB) là một tính năng tích hợp của KiotViet, cho phép chủ cửa hàng nhanh chóng sở hữu một website thương mại điện tử chuyên nghiệp để mở rộng hoạt động kinh doanh trên nền tảng trực tuyến mà không tốn chi phí phát triển bên ngoài.</p>
+                            <p class="mt-4"><strong>Mục đích và giá trị của tính năng:</strong> KVWEB giúp bạn thiết lập một kênh bán hàng online hoàn chỉnh, đồng bộ trực tiếp với dữ liệu sản phẩm, tồn kho và đơn hàng trên phần mềm quản lý KiotViet, tối ưu hóa quy trình bán hàng đa kênh. Khi có đơn hàng mới từ website, hệ thống sẽ tự động tạo một phiếu đặt hàng trên KiotViet, giúp bạn quản lý tập trung và hiệu quả.</p>
+                            <p class="mt-4"><strong>Lợi ích chính:</strong></p>
+                            <div class="flex items-start mt-4">
+                                <span class="flex-shrink-0 w-6 text-center"><i class="fa-solid fa-check-circle text-blue-500 mt-1"></i></span>
+                                <p><strong>Mở rộng kênh bán hàng:</strong> Dễ dàng tiếp cận hàng triệu khách hàng tiềm năng trên internet.</p>
+                            </div>
+                            <div class="flex items-start mt-4">
+                                <span class="flex-shrink-0 w-6 text-center"><i class="fa-solid fa-check-circle text-blue-500 mt-1"></i></span>
+                                <p><strong>Tiết kiệm chi phí:</strong> Sở hữu website bán hàng chuyên nghiệp mà không cần tốn chi phí thuê đơn vị thiết kế bên ngoài.</p>
+                            </div>
+                            <div class="flex items-start mt-4">
+                                <span class="flex-shrink-0 w-6 text-center"><i class="fa-solid fa-check-circle text-blue-500 mt-1"></i></span>
+                                <p><strong>Quản lý tập trung:</strong> Mọi đơn hàng từ website sẽ tự động được tạo thành phiếu đặt hàng trên KiotViet, giúp bạn quản lý bán hàng tại một nơi duy nhất.</p>
+                            </div>
+                            <p class="mt-4"><strong>Đối tượng phù hợp:</strong> Các chủ cửa hàng bán lẻ đang sử dụng KiotViet muốn mở rộng kinh doanh online một cách nhanh chóng, hiệu quả và tiết kiệm.</p>
+                        </section>
 
+                        <section id="cac-thao-tac-pho-bien" class="scroll-mt-24">
+                            <h3 class="text-xl font-bold text-gray-900 mt-10 mb-4">II. Các thao tác phổ biến</h3>
+                            <p>Đây là những thao tác nền tảng giúp bạn khởi tạo và vận hành website bán hàng của mình một cách hiệu quả.</p>
+                            <div class="toc-item mt-6">
+                                <h4 id="khoi-tao-website-ban-hang-lan-dau" class="text-lg font-bold text-gray-800 mb-3 scroll-mt-24">1. Khởi tạo Website bán hàng lần đầu</h4>
+                                <p><strong>Tình huống:</strong> Chị An, chủ cửa hàng thời trang "An Nhiên Store", muốn tạo một trang web bán hàng để đăng sản phẩm và tiếp cận thêm khách hàng online nhưng chưa biết bắt đầu từ đâu.</p>
+                                <p class="mt-4"><strong>Giải pháp của KiotViet:</strong></p>
+                                <ol class="list-decimal list-inside space-y-2 mt-2">
+                                    <li>Trên màn hình Quản lý KiotViet, chị An vào mục <strong>Bán Online -> Website bán hàng</strong>.</li>
+                                    <li>Nhấn vào nút <strong>Tạo website</strong>.</li>
+                                    <li>Nhập <strong>Tên cửa hàng</strong> muốn hiển thị trên website (ví dụ: "An Nhiên Fashion").</li>
+                                    <li>Chọn một giao diện ưng ý từ kho giao diện có sẵn và nhấn <strong>Xong</strong>.</li>
+                                    <li>Sau vài giây, hệ thống sẽ khởi tạo thành công. Tại trang "Website của tôi", chị An có thể xem trước website, đồng bộ dữ liệu, và thực hiện các chỉnh sửa cơ bản.</li>
+                                </ol>
+                            </div>
+                            <div class="toc-item mt-6">
+                                <h4 id="lua-chon-va-quan-ly-hang-hoa-hien-thi-tren-website" class="text-lg font-bold text-gray-800 mb-3 scroll-mt-24">2. Lựa chọn và quản lý hàng hóa hiển thị trên Website</h4>
+                                <p><strong>Tình huống:</strong> An Nhiên Store có một số sản phẩm chỉ bán tại cửa hàng và một số sản phẩm độc quyền online. Chị An cần tùy chỉnh để chỉ những mặt hàng mong muốn mới xuất hiện trên website.</p>
+                                <p class="mt-4"><strong>Giải pháp của KiotViet:</strong></p>
+                                <ol class="list-decimal list-inside space-y-2 mt-2">
+                                    <li>Chị An truy cập vào mục <strong>Website bán hàng -> Hàng hóa</strong>.</li>
+                                    <li>Tại tab <strong>Danh sách hàng hóa</strong>, hệ thống hiển thị toàn bộ sản phẩm đang có.</li>
+                                    <li>Chị có thể sử dụng bộ lọc để tìm kiếm sản phẩm và bật/tắt nút <strong>Hiển thị</strong> cho từng sản phẩm riêng lẻ.</li>
+                                    <li>Để thao tác nhanh hơn, chị có thể chọn nhiều sản phẩm cùng lúc và sử dụng tính năng <strong>Chọn thao tác -> Hiển thị/Ẩn hàng loạt</strong>.</li>
+                                    <li>Chị cũng có thể vào <strong>Thiết lập hàng hóa hiển thị</strong> để tự động ẩn các sản phẩm đã hết hàng.</li>
+                                </ol>
+                            </div>
+                            <div class="toc-item mt-6">
+                                <h4 id="xuat-ban-va-chia-se-website" class="text-lg font-bold text-gray-800 mb-3 scroll-mt-24">3. Xuất bản và chia sẻ Website</h4>
+                                <p><strong>Tình huống:</strong> Sau khi đã tạo website và đưa các sản phẩm chủ đạo lên trang, chị An muốn đưa website của mình vào hoạt động và gửi đường link cho khách hàng thân thiết.</p>
+                                <p class="mt-4"><strong>Giải pháp của KiotViet:</strong></p>
+                                <ol class="list-decimal list-inside space-y-2 mt-2">
+                                    <li>Tại trang "Website của tôi", chị An nhấn vào nút <strong>Xuất bản Website</strong>.</li>
+                                    <li>Sau khi xuất bản thành công, chị có thể dễ dàng giới thiệu website đến khách hàng bằng cách:
+                                        <ul class="list-disc list-inside ml-6 mt-2">
+                                            <li>Nhấn <strong>Chia sẻ website</strong> để sao chép đường link.</li>
+                                            <li>Tải ảnh gửi mã QR để khách hàng quét và truy cập nhanh.</li>
+                                            <li>Chia sẻ trực tiếp lên trang Facebook của cửa hàng.</li>
+                                        </ul>
+                                    </li>
+                                </ol>
+                            </div>
+                            <div class="toc-item mt-6">
+                                <h4 id="tiep-nhan-va-xu-ly-don-hang-tu-website" class="text-lg font-bold text-gray-800 mb-3 scroll-mt-24">4. Tiếp nhận và xử lý đơn hàng từ Website</h4>
+                                <p><strong>Tình huống:</strong> Một khách hàng vừa đặt mua thành công một chiếc váy trên website của An Nhiên Store. Chị An cần biết làm thế nào để nhận thông tin và xử lý đơn hàng này trên KiotViet.</p>
+                                <p class="mt-4"><strong>Giải pháp của KiotViet:</strong></p>
+                                <ol class="list-decimal list-inside space-y-2 mt-2">
+                                    <li>Ngay khi có đơn hàng mới, KiotViet sẽ gửi thông báo đẩy (push notification) trên ứng dụng quản lý di động.</li>
+                                    <li>Trên phần mềm KiotViet, chị An vào mục <strong>Giao dịch -> Đặt hàng</strong>.</li>
+                                    <li>Đơn hàng mới sẽ xuất hiện ở đầu danh sách với mã bắt đầu bằng "DHMK", kênh bán hàng là "Website" và trạng thái là "Phiếu tạm".</li>
+                                    <li>Chị An có thể bấm vào đơn hàng để xem chi tiết, liên hệ xác nhận với khách và chuyển đơn hàng sang hóa đơn để hoàn tất quy trình bán hàng.</li>
+                                </ol>
+                            </div>
+                        </section>
+
+                        <section id="cac-tinh-nang-chuyen-sau" class="scroll-mt-24">
+                            <h3 class="text-xl font-bold text-gray-900 mt-10 mb-4">III. Các tính năng chuyên sâu</h3>
+                            <p>Sau khi đã vận hành cơ bản, bạn có thể khám phá các tính năng nâng cao để website trở nên chuyên nghiệp và thu hút hơn.</p>
+                            <div class="toc-item mt-6">
+                                <h4 id="trang-tri-cua-hang-va-tuy-chinh-giao-dien" class="text-lg font-bold text-gray-800 mb-3 scroll-mt-24">1. Trang trí cửa hàng và tùy chỉnh giao diện</h4>
+                                <p><strong>Tình huống:</strong> Chị An muốn thay đổi màu sắc chủ đạo của website cho hợp với logo thương hiệu và thêm một số banner khuyến mãi bắt mắt để thu hút khách hàng.</p>
+                                <p class="mt-4"><strong>Giải pháp của KiotViet:</strong></p>
+                                <ol class="list-decimal list-inside space-y-2 mt-2">
+                                    <li>Chị An vào mục <strong>Website bán hàng -> Trang trí cửa hàng</strong>.</li>
+                                    <li>Tại đây, chị có thể:
+                                        <ul class="list-disc list-inside ml-6 mt-2">
+                                            <li><strong>Màu sắc chủ đề:</strong> Chọn màu sắc chính cho các nút bấm, tiêu đề và các thành phần quan trọng khác trên website.</li>
+                                            <li><strong>Cài đặt trang:</strong> Tùy chỉnh chi tiết từng thành phần như Logo, Banner, Nhóm hàng hóa, Bài viết, Chân trang... bằng cách thay đổi hình ảnh, nội dung, đường dẫn liên kết.</li>
+                                            <li><strong>Kho giao diện:</strong> Lựa chọn và áp dụng một giao diện hoàn toàn mới nếu muốn thay đổi phong cách.</li>
+                                            <li><strong>Kho hình ảnh:</strong> Tải lên và quản lý các banner, hình ảnh quảng cáo của riêng mình.</li>
+                                        </ul>
+                                    </li>
+                                </ol>
+                            </div>
+                            <div class="toc-item mt-6">
+                                <h4 id="thiet-lap-thong-tin-chi-tiet-cho-website" class="text-lg font-bold text-gray-800 mb-3 scroll-mt-24">2. Thiết lập thông tin chi tiết cho Website (Thông tin cửa hàng, thanh toán, tên miền)</h4>
+                                <p><strong>Tình huống:</strong> Chị An muốn thêm số Zalo, link Facebook, thiết lập thanh toán chuyển khoản và sử dụng một tên miền riêng chuyên nghiệp hơn là www.annhienstore.com.</p>
+                                <p class="mt-4"><strong>Giải pháp của KiotViet:</strong></p>
+                                <ol class="list-decimal list-inside space-y-2 mt-2">
+                                    <li>Chị An vào mục <strong>Website bán hàng -> Thiết lập</strong>.</li>
+                                    <li><strong>Cài đặt hiển thị -> Thông tin cửa hàng:</strong> Cập nhật Tên cửa hàng, Số điện thoại, Zalo, link Facebook, Email.</li>
+                                    <li><strong>Cài đặt hiển thị -> Liên kết chat:</strong> Bật hiển thị các kênh chat như Messenger, Zalo để khách hàng tiện liên hệ.</li>
+                                    <li><strong>Cài đặt hiển thị -> Phương thức thanh toán:</strong> Bật các tài khoản ngân hàng đã liên kết với KiotViet để khách hàng có thể thanh toán qua mã QR.</li>
+                                    <li><strong>Tên miền:</strong> Chọn mục <strong>Tên miền</strong>, nhập tên miền đã mua và làm theo hướng dẫn để kết nối.</li>
+                                </ol>
+                            </div>
+                            <div class="toc-item mt-6">
+                                <h4 id="tao-danh-muc-san-pham-noi-bat" class="text-lg font-bold text-gray-800 mb-3 scroll-mt-24">3. Tạo danh mục sản phẩm nổi bật</h4>
+                                <p><strong>Tình huống:</strong> An Nhiên Store vừa về một lô hàng mới rất đẹp. Chị An muốn tạo một khu vực "Hàng Mới Về" ngay trên trang chủ để khách hàng dễ dàng nhìn thấy.</p>
+                                <p class="mt-4"><strong>Giải pháp của KiotViet:</strong></p>
+                                <ol class="list-decimal list-inside space-y-2 mt-2">
+                                    <li>Chị An vào <strong>Website bán hàng -> Hàng hóa -> Danh mục nổi bật</strong>.</li>
+                                    <li>Nhấn <strong>Tạo danh mục</strong> và đặt tên là "Hàng Mới Về".</li>
+                                    <li>Nhấn <strong>Thêm hàng hóa</strong> và tích chọn những sản phẩm mới nhập từ danh sách.</li>
+                                    <li>Sau khi lưu, danh mục này sẽ hiển thị nổi bật trên trang chủ, giúp thu hút sự chú ý của khách hàng.</li>
+                                </ol>
+                            </div>
+                            <div class="toc-item mt-6">
+                                <h4 id="quan-ly-bai-viet-va-noi-dung" class="text-lg font-bold text-gray-800 mb-3 scroll-mt-24">4. Quản lý bài viết và nội dung</h4>
+                                <p><strong>Tình huống:</strong> Chị An muốn viết các bài chia sẻ về "Mẹo phối đồ công sở" hay "Xu hướng thời trang hè" để tăng tương tác và giữ chân khách hàng trên website.</p>
+                                <p class="mt-4"><strong>Giải pháp của KiotViet:</strong></p>
+                                <ol class="list-decimal list-inside space-y-2 mt-2">
+                                    <li>Chị An vào mục <strong>Website bán hàng -> Bài viết</strong>.</li>
+                                    <li><strong>Danh mục bài viết:</strong> Tạo các danh mục như "Tin tức", "Mẹo hay", "Bộ sưu tập mới".</li>
+                                    <li><strong>Danh sách bài viết:</strong> Nhấn <strong>Tạo bài viết</strong>, nhập tiêu đề, soạn thảo nội dung, chèn hình ảnh và chọn danh mục tương ứng.</li>
+                                    <li>Các bài viết sau khi đăng sẽ hiển thị trên website, giúp cung cấp thông tin hữu ích và hỗ trợ SEO.</li>
+                                </ol>
+                            </div>
+                        </section>
+
+                        <section id="thong-tin-lien-he-ho-tro" class="scroll-mt-24">
+                            <h3 class="text-xl font-bold text-gray-900 mt-10 mb-4">Thông tin liên hệ hỗ trợ</h3>
+                            <p>Nếu có bất kỳ thắc mắc nào trong quá trình sử dụng, đội ngũ KiotViet luôn sẵn sàng hỗ trợ bạn:</p>
+                            <ul class="list-disc list-inside space-y-2 mt-2">
+                                <li><strong>Tổng đài tư vấn bán hàng:</strong> 1800 6162</li>
+                                <li><strong>Tổng đài hỗ trợ phần mềm:</strong> 1900 6522</li>
+                                <li><strong>Email:</strong> hotro@kiotviet.com</li>
+                            </ul>
+                        </section>
+                    </article>
+                </main>
+                <aside class="hidden lg:block lg:col-span-3">
+                    <nav id="toc-nav" class="sticky top-24">
+                        <h3 class="font-semibold text-gray-900 mb-3">Trong bài viết này</h3>
+                        <div class="space-y-1">
+                            <div>
+                                <a href="#gioi-thieu-chung" class="toc-link toc-parent-link block border-l-2 border-transparent pl-4 py-1 text-sm text-gray-600 hover:text-blue-600 hover:border-gray-400">I.&nbsp;Giới thiệu chung</a>
+                            </div>
+                            <div>
+                                <a href="#cac-thao-tac-pho-bien" class="toc-link toc-parent-link block border-l-2 border-transparent pl-4 py-1 text-sm text-gray-600 hover:text-blue-600 hover:border-gray-400">II.&nbsp;Các thao tác phổ biến</a>
+                                <div class="toc-submenu ml-4 mt-1 space-y-1 border-l border-gray-200">
+                                    <a href="#khoi-tao-website-ban-hang-lan-dau" class="toc-link block pl-4 py-1 text-sm text-gray-500 hover:text-blue-600">1.&nbsp;Khởi tạo Website bán hàng lần đầu</a>
+                                    <a href="#lua-chon-va-quan-ly-hang-hoa-hien-thi-tren-website" class="toc-link block pl-4 py-1 text-sm text-gray-500 hover:text-blue-600">2.&nbsp;Lựa chọn và quản lý hàng hóa hiển thị trên Website</a>
+                                    <a href="#xuat-ban-va-chia-se-website" class="toc-link block pl-4 py-1 text-sm text-gray-500 hover:text-blue-600">3.&nbsp;Xuất bản và chia sẻ Website</a>
+                                    <a href="#tiep-nhan-va-xu-ly-don-hang-tu-website" class="toc-link block pl-4 py-1 text-sm text-gray-500 hover:text-blue-600">4. Tiếp nhận và xử lý đơn hàng từ Website</a>
+                                </div>
+                            </div>
+                            <div>
+                                <a href="#cac-tinh-nang-chuyen-sau" class="toc-link toc-parent-link block border-l-2 border-transparent pl-4 py-1 text-sm text-gray-600 hover:text-blue-600 hover:border-gray-400">III.&nbsp;Các tính năng chuyên sâu</a>
+                                <div class="toc-submenu ml-4 mt-1 space-y-1 border-l border-gray-200">
+                                    <a href="#trang-tri-cua-hang-va-tuy-chinh-giao-dien" class="toc-link block pl-4 py-1 text-sm text-gray-500 hover:text-blue-600">1.&nbsp;Trang trí cửa hàng và tùy chỉnh giao diện</a>
+                                    <a href="#thiet-lap-thong-tin-chi-tiet-cho-website" class="toc-link block pl-4 py-1 text-sm text-gray-500 hover:text-blue-600">2.&nbsp;Thiết lập thông tin chi tiết cho Website...</a>
+                                    <a href="#tao-danh-muc-san-pham-noi-bat" class="toc-link block pl-4 py-1 text-sm text-gray-500 hover:text-blue-600">3.&nbsp;Tạo danh mục sản phẩm nổi bật</a>
+                                    <a href="#quan-ly-bai-viet-va-noi-dung" class="toc-link block pl-4 py-1 text-sm text-gray-500 hover:text-blue-600">4.&nbsp;Quản lý bài viết và nội dung</a>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+                </aside>
+            </div>
+        </div>
+        <footer class="bg-white border-t border-gray-200 mt-12">
+            <div class="max-w-screen-2xl mx-auto py-6 px-4 sm:px-6 lg:px-8"><p class="text-center text-sm text-gray-500">&copy; 2025 KiotViet. All rights reserved.</p></div>
+        </footer>
+    </div>
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
+    <button id="scrollToTopBtn" class="hidden fixed bottom-5 right-5 z-50 p-3 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-opacity duration-300">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" /></svg>
+    </button>
+    <script>
+        // SCRIPT CONTENT (STATIC)
+        document.addEventListener('DOMContentLoaded', () => {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const closeSidebarButton = document.getElementById('close-sidebar-button');
+            const openSidebar = () => { sidebar.classList.remove('-translate-x-full'); overlay.classList.remove('hidden'); };
+            const closeSidebar = () => { sidebar.classList.add('-translate-x-full'); overlay.classList.add('hidden'); };
+            if (mobileMenuButton) mobileMenuButton.addEventListener('click', openSidebar);
+            if(closeSidebarButton) closeSidebarButton.addEventListener('click', closeSidebar);
+            if(overlay) overlay.addEventListener('click', closeSidebar);
+            document.querySelectorAll('#sidebar .main-nav-toggle').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const submenu = button.nextElementSibling;
+                    if (submenu && submenu.classList.contains('submenu')) {
+                        submenu.classList.toggle('open');
+                        const arrow = button.querySelector('.arrow-icon');
+                        if (arrow) { arrow.classList.toggle('open'); }
+                    }
+                });
+            });
+            const activeLink = document.querySelector('#sidebar .active');
+            if (activeLink) {
+                let parent = activeLink.closest('.submenu');
+                while(parent) {
+                    parent.classList.add('open');
+                    const prevButton = parent.previousElementSibling;
+                    if (prevButton && prevButton.classList.contains('main-nav-toggle')) {
+                        const arrow = prevButton.querySelector('.arrow-icon');
+                        if (arrow) { arrow.classList.add('open'); }
+                    }
+                    parent = parent.parentElement.closest('.submenu');
+                }
+            }
+            const sections = document.querySelectorAll('main section, main .toc-item');
+            const navLinks = document.querySelectorAll('#toc-nav a.toc-link');
+            const headerOffset = 120;
+            const activateLink = (id) => {
+                let activeParent = null;
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${id}`) {
+                        link.classList.add('active');
+                        const parentTocItem = link.closest('.toc-submenu');
+                        if(parentTocItem){ activeParent = parentTocItem.previousElementSibling; }
+                    }
+                });
+                if (activeParent && activeParent.classList.contains('toc-parent-link')) { activeParent.classList.add('active'); }
+            };
+            const onScroll = () => {
+                if (window.innerWidth < 1024) return;
+                let currentSectionId = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - headerOffset;
+                    if (window.pageYOffset >= sectionTop) { currentSectionId = section.id || section.querySelector('h4')?.id; }
+                });
+                if (currentSectionId) { activateLink(currentSectionId); } 
+                else if (window.scrollY === 0 && navLinks.length > 0) {
+                    navLinks.forEach(link => link.classList.remove('active'));
+                    const firstLink = document.querySelector('#toc-nav a.toc-parent-link');
+                    if (firstLink) firstLink.classList.add('active');
+                }
+            };
+            window.addEventListener('scroll', onScroll, { passive: true });
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - (headerOffset - 20);
+                        window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+                    }
+                });
+            });
+            onScroll();
+            const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+            if (scrollToTopBtn) {
+                window.addEventListener('scroll', () => { if (window.scrollY > 300) { scrollToTopBtn.classList.remove('hidden'); } else { scrollToTopBtn.classList.add('hidden'); } });
+                scrollToTopBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+            }
+        });
+    </script>
+</body>
+</html>
