@@ -1,1 +1,417 @@
-
+<!DOCTYPE html><html lang="vi"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale-1.0">
+    <title>Tổng Quan và Hướng Dẫn Sử Dụng Tính Năng Phân tích thông minh trên KiotViet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f9fafb; color: #111827; scroll-behavior: smooth; }
+        .toc-link.active { color: #2563eb; border-left-color: #2563eb; font-weight: 600; }
+        .main-nav-link.active, .sub-nav-link.active { background-color: #dbeafe; /* Tailwind blue-100 */ color: #1d4ed8; /* Tailwind blue-700 */ font-weight: 600; }
+        .main-nav-link.active i, .sub-nav-link.active i { color: #1d4ed8; /* Tailwind blue-700 */ }
+        #sidebar .submenu { transition: max-height 0.3s ease-in-out; max-height: 0; overflow: hidden; }
+        #sidebar .submenu.open { max-height: 1500px; }
+        .arrow-icon { transition: transform 0.3s ease-in-out; }
+        .arrow-icon.open { transform: rotate(90deg); }
+        /* Style for standard prose lists */
+        .prose ul, .prose ol { padding-left: 1.25rem; }
+        .prose ul > li, .prose ol > li { margin-top: 0.5rem; margin-bottom: 0.5rem; }
+    </style></head><body class="bg-gray-50">
+    <div id="app-wrapper">
+        <header class="bg-white sticky top-0 z-40 border-b border-gray-200">
+            <nav class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16">
+                    <div class="flex items-center">
+                        <button id="mobile-menu-button" class="lg:hidden mr-4 p-2 rounded-md text-gray-500 hover:text-gray-700 hover:bg-gray-100">
+                            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+                        </button>
+                        <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/"><img src="https://logo.kiotviet.vn/KiotViet-Logo-Horizontal.svg" alt="KiotViet Logo" class="h-8"></a>
+                    </div>
+                    <div class="flex items-center flex-1 justify-end space-x-4">
+                           <div class="relative hidden sm:block w-full max-w-lg">
+                             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                 <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                     <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
+                                 </svg>
+                             </div>
+                             <input class="block w-full bg-white border border-gray-300 rounded-full py-2 pl-10 pr-3 text-sm placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500" placeholder="Chúng tôi có thể giúp bạn như thế nào?" type="search" name="q">
+                         </div>
+                           <a href="#" class="hidden sm:block text-sm font-medium text-blue-600 bg-white border border-gray-300 hover:bg-gray-50 px-4 py-2 rounded-full whitespace-nowrap">Đăng nhập</a>
+                           <a href="#" class="hidden sm:block text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-full whitespace-nowrap">Đăng ký</a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="grid grid-cols-12 gap-8">
+                <aside id="sidebar" class="fixed top-0 left-0 h-full w-72 bg-white border-r border-gray-200 z-50 transform -translate-x-full transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0 lg:block lg:col-span-3 lg:h-auto lg:w-auto lg:bg-transparent lg:border-none lg:z-auto">
+                    <div class="p-4 border-b border-gray-200 lg:hidden flex justify-between items-center">
+                        <h2 class="font-bold text-lg">Menu</h2>
+                        <button id="close-sidebar-button" class="p-2 rounded-md text-gray-500 hover:text-gray-700 hover:bg-gray-100"><svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg></button>
+                    </div>
+                    <nav class="sticky top-24 space-y-1 p-4 lg:p-0 lg:pr-4 overflow-y-auto h-[calc(100vh-64px)] lg:h-auto">
+                        <div>
+                            <button class="main-nav-toggle w-full flex items-center justify-between px-3 py-2 text-left">
+                                <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Làm quen KiotViet Retail</h3>
+                                <svg class="arrow-icon h-4 w-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                            </button>
+                            <div class="submenu pl-3">
+                                <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/lam-quen/tong-quan" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-book-open w-5 text-center mr-3 text-gray-500"></i>Về 6 bước làm quen KiotViet Retail</a>
+                                <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/lam-quen/them-hang-hoa" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-plus-circle w-5 text-center mr-3 text-gray-500"></i>Bước 1: Thêm hàng hóa</a>
+                                <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/lam-quen/nhap-hang" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-dolly w-5 text-center mr-3 text-gray-500"></i>Bước 2: Nhập hàng</a>
+                                <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/lam-quen/ban-hang" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-cash-register w-5 text-center mr-3 text-gray-500"></i>Bước 3: Bán hàng</a>
+                                <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/lam-quen/tra-hang" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-undo w-5 text-center mr-3 text-gray-500"></i>Bước 4: Trả hàng</a>
+                                <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/lam-quen/cong-no" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-file-invoice-dollar w-5 text-center mr-3 text-gray-500"></i>Bước 5: Công nợ</a>
+                                <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/lam-quen/bao-cao" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-chart-pie w-5 text-center mr-3 text-gray-500"></i>Bước 6: Báo cáo</a>
+                            </div>
+                        </div>
+                        <div>
+                            <button class="main-nav-toggle w-full flex items-center justify-between px-3 py-2 text-left mt-4">
+                                <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Tối ưu Vận hành</h3>
+                                <svg class="arrow-icon h-4 w-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                            </button>
+                            <div class="submenu pl-3">
+                                <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/van-hanh/tong-quan" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-book-open w-5 text-center mr-3 text-gray-500"></i>Về các giải pháp tối ưu vận hành</a>
+                                <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/van-hanh/tim-san-pham" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-search w-5 text-center mr-3 text-gray-500"></i>Tìm sản phẩm</a>
+                                <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/van-hanh/ban-hang" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-cash-register w-5 text-center mr-3 text-gray-500"></i>Bán hàng</a>
+                                <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/van-hanh/tra-hang" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-undo w-5 text-center mr-3 text-gray-500"></i>Trả hàng</a>
+                                <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/van-hanh/dat-hang" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-cart-plus w-5 text-center mr-3 text-gray-500"></i>Đặt hàng</a>
+                                <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/van-hanh/thanh-toan" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-credit-card w-5 text-center mr-3 text-gray-500"></i>Thanh toán</a>
+                                <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/van-hanh/giao-van" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-truck w-5 text-center mr-3 text-gray-500"></i>Giao vận</a>
+                                <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/van-hanh/hoa-don-dien-tu" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-receipt w-5 text-center mr-3 text-gray-500"></i>Hóa đơn điện tử</a>
+                                <div>
+                                    <button class="main-nav-toggle w-full flex items-center justify-between text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md px-3 py-2 text-left group">
+                                        <span class="flex items-center"><i class="fa-solid fa-industry w-5 text-center mr-3 text-gray-500 group-hover:text-gray-700"></i>Chuyên ngành</span>
+                                        <svg class="arrow-icon h-4 w-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                                    </button>
+                                    <div class="submenu pl-6">
+                                        <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/van-hanh/chuyen-nganh/lo-hsd" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md">Các ngành quản lý Lô-HSD</a>
+                                        <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/van-hanh/chuyen-nganh/serial-imei" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md">Các ngành quản lý Serial-IMEI</a>
+                                        <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/van-hanh/chuyen-nganh/nha-thuoc" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md">Ngành Nhà thuốc</a>
+                                        <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/van-hanh/chuyen-nganh/vat-lieu-xay-dung" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md">Ngành Vật liệu xây dựng</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <button class="main-nav-toggle w-full flex items-center justify-between px-3 py-2 text-left mt-4">
+                                <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Tối ưu Quản lý</h3>
+                                <svg class="arrow-icon h-4 w-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                            </button>
+                            <div class="submenu pl-3">
+                                <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/quan-ly/tong-quan" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-book-open w-5 text-center mr-3 text-gray-500"></i>Về các giải pháp tối ưu quản lý</a>
+                                <div>
+                                    <button class="main-nav-toggle w-full flex items-center justify-between text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md px-3 py-2 text-left group">
+                                        <span class="flex items-center"><i class="fa-solid fa-boxes-stacked w-5 text-center mr-3 text-gray-500 group-hover:text-gray-700"></i>Hàng hóa</span>
+                                        <svg class="arrow-icon h-4 w-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                                    </button>
+                                    <div class="submenu pl-6">
+                                        <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/quan-ly/hang-hoa/thuat-ngu" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md">Các thuật ngữ về hàng hóa</a>
+                                        <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/quan-ly/hang-hoa/hang-hoa-thuong" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md">Hàng hóa thường</a>
+                                        <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/quan-ly/hang-hoa/hang-dich-vu" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md">Hàng dịch vụ</a>
+                                        <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/quan-ly/hang-hoa/hang-combo" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md">Hàng combo - đóng gói</a>
+                                        <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/quan-ly/hang-hoa/hang-san-xuat" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md">Hàng sản xuất</a>
+                                        <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/quan-ly/hang-hoa/hang-lo-hsd" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md">Hàng Lô - HSD</a>
+                                        <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/quan-ly/hang-hoa/hang-serial-imei" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md">Hàng Serial - IMEI</a>
+                                        <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/quan-ly/hang-hoa/kiem-kho" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md">Kiểm kho</a>
+                                        <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/quan-ly/hang-hoa/xuat-huy" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md">Xuất hủy</a>
+                                        <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/quan-ly/hang-hoa/chuyen-hang" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md">Chuyển hàng</a>
+                                    </div>
+                                </div>
+                                <div>
+                                    <button class="main-nav-toggle w-full flex items-center justify-between text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md px-3 py-2 text-left group">
+                                        <span class="flex items-center"><i class="fa-solid fa-truck-loading w-5 text-center mr-3 text-gray-500 group-hover:text-gray-700"></i>Giao dịch với NCC</span>
+                                        <svg class="arrow-icon h-4 w-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                                    </button>
+                                    <div class="submenu pl-6">
+                                        <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/quan-ly/giao-dich-ncc/quan-ly-don-hang" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-clipboard-list w-5 text-center mr-3 text-gray-500"></i>Quản lý đơn hàng</a>
+                                        <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/quan-ly/giao-dich-ncc/nhap-hang" class="sub-nav-link group flex items-center px-3 py-2 text-sm font-medium rounded-md"><i class="fa-solid fa-dolly w-5 text-center mr-3"></i>Nhập hàng</a>
+                                        <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/quan-ly/giao-dich-ncc/dat-hang-nhap" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-file-invoice w-5 text-center mr-3 text-gray-500"></i>Đặt hàng nhập</a>
+                                        <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/quan-ly/giao-dich-ncc/tra-hang-nhap" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-arrow-left-long w-5 text-center mr-3 text-gray-500"></i>Trả hàng nhập</a>
+                                    </div>
+                                </div>
+                                <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/quan-ly/nha-cung-cap" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-user-tie w-5 text-center mr-3 text-gray-500"></i>Nhà cung cấp</a>
+                                <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/quan-ly/khach-hang" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-users w-5 text-center mr-3 text-gray-500"></i>Khách hàng</a>
+                                <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/quan-ly/nhan-vien" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-user-gear w-5 text-center mr-3 text-gray-500"></i>Nhân viên</a>
+                                <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/quan-ly/so-quy" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-book w-5 text-center mr-3 text-gray-500"></i>Sổ quỹ</a>
+                                <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/quan-ly/bao-cao" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-chart-pie w-5 text-center mr-3 text-gray-500"></i>Báo cáo</a>
+                                <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/quan-ly/thiet-lap" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-cog w-5 text-center mr-3 text-gray-500"></i>Thiết lập</a>
+                            </div>
+                        </div>
+                        <div>
+                            <button class="main-nav-toggle w-full flex items-center justify-between px-3 py-2 text-left mt-4">
+                                <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Thúc đẩy Doanh thu</h3>
+                                <svg class="arrow-icon h-4 w-4 text-gray-500 open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                            </button>
+                            <div class="submenu pl-3 open">
+                                <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/doanh-thu/tong-quan" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-book-open w-5 text-center mr-3 text-gray-500"></i>Về các giải pháp thúc đẩy doanh thu</a>
+                                <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/doanh-thu/kiotviet-web" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-store-alt w-5 text-center mr-3 text-gray-500"></i>KiotViet Web</a>
+                                <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/doanh-thu/san-thuong-mai-dien-tu" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-shopping-basket w-5 text-center mr-3 text-gray-500"></i>Sàn TMĐT</a>
+                                <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/doanh-thu/mang-xa-hoi" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-share-alt w-5 text-center mr-3 text-gray-500"></i>Mạng xã hội</a>
+                                <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/doanh-thu/phan-tich" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md active"><i class="fa-solid fa-chart-line w-5 text-center mr-3 text-gray-500"></i>Phân tích</a>
+                                <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/doanh-thu/khuyen-mai" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-tags w-5 text-center mr-3 text-gray-500"></i>Khuyến mại</a>
+                                <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/doanh-thu/vouchers" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-ticket-alt w-5 text-center mr-3 text-gray-500"></i>Vouchers</a>
+                                <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/doanh-thu/coupons" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-star w-5 text-center mr-3 text-gray-500"></i>Coupons</a>
+                                <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/doanh-thu/tich-diem" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-gift w-5 text-center mr-3 text-gray-500"></i>Tích điểm</a>
+                                <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/doanh-thu/zalo-zns" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-comment-dots w-5 text-center mr-3 text-gray-500"></i>Zalo ZNS</a>
+                            </div>
+                        </div>
+                    </nav>
+                </aside>
+                <main class="col-span-12 lg:col-span-6 bg-white border border-gray-200 rounded-lg p-8">
+                    <div class="text-sm text-gray-500 mb-4">
+                        <a href="#" class="hover:underline">Thúc đẩy Doanh thu</a> &gt; <span class="text-gray-700">Phân tích</span>
+                    </div>
+                    <h1 class="text-3xl font-extrabold tracking-tight text-gray-900">
+                        Tổng Quan và Hướng Dẫn Sử Dụng Tính Năng Phân tích thông minh trên KiotViet
+                    </h1>
+                    <article class="prose max-w-none mt-8 text-gray-700">
+                        <section id="gioi-thieu-chung" class="scroll-mt-24">
+                            <h3 class="text-xl font-bold text-gray-900 mt-10 mb-4">I. Giới thiệu chung</h3>
+                            <p>Tính năng Phân tích trên KiotViet là một công cụ mạnh mẽ, cung cấp các báo cáo trực quan, chi tiết về nhiều khía cạnh của hoạt động kinh doanh. Nó giúp các nhà quản lý nắm bắt nhanh chóng thị hiếu tiêu dùng, tối ưu hóa quy trình quản lý và đưa ra các quyết định chính xác dựa trên dữ liệu thực tế.</p>
+                            <p class="mt-4"><strong>Mục đích và giá trị của tính năng:</strong> Tính năng Phân tích thông minh của KiotViet ra đời với mục đích hỗ trợ chủ cửa hàng:</p>
+                            <ul class="list-disc list-inside mt-2">
+                                <li><strong>Nắm bắt thị hiếu tiêu dùng:</strong> Theo dõi các số liệu về bán hàng, hàng hóa, khách hàng, tài chính để hiểu rõ xu hướng thị trường.</li>
+                                <li><strong>Nâng cao hiệu quả kinh doanh:</strong> Đánh giá hiệu suất bán hàng, quản lý tồn kho, tối ưu chi phí và cải thiện các khoản nợ phải thu.</li>
+                                <li><strong>Đảm bảo dòng tiền ổn định và giảm thiểu rủi ro tài chính:</strong> Quản lý công nợ khách hàng hiệu quả.</li>
+                            </ul>
+                            <p class="mt-4"><strong>Lợi ích chính:</strong></p>
+                            <div class="flex items-start mt-4">
+                                <span class="flex-shrink-0 w-6 text-center"><i class="fa-solid fa-check-circle text-blue-500 mt-1"></i></span>
+                                <p><strong>Tiết kiệm thời gian:</strong> Tự động tổng hợp và hiển thị dữ liệu một cách trực quan, giảm thiểu thời gian phân tích thủ công.</p>
+                            </div>
+                            <div class="flex items-start mt-4">
+                                <span class="flex-shrink-0 w-6 text-center"><i class="fa-solid fa-check-circle text-blue-500 mt-1"></i></span>
+                                <p><strong>Tăng tính chính xác:</strong> Cung cấp các số liệu chi tiết, giúp xác định điểm bất thường và đưa ra phương án cải tiến kịp thời.</p>
+                            </div>
+                            <div class="flex items-start mt-4">
+                                <span class="flex-shrink-0 w-6 text-center"><i class="fa-solid fa-check-circle text-blue-500 mt-1"></i></span>
+                                <p><strong>Quản lý hiệu quả:</strong> Theo dõi các chỉ số kinh doanh quan trọng như doanh thu, lợi nhuận, tỷ suất lợi nhuận, tốc độ tăng trưởng, tỷ lệ hoàn hàng.</p>
+                            </div>
+                            <div class="flex items-start mt-4">
+                                <span class="flex-shrink-0 w-6 text-center"><i class="fa-solid fa-check-circle text-blue-500 mt-1"></i></span>
+                                <p><strong>Tối ưu hóa hàng hóa:</strong> Theo dõi tồn kho, phân tích sản phẩm bán chạy, xu hướng nhập - xuất, tối ưu chi phí tồn kho.</p>
+                            </div>
+                            <div class="flex items-start mt-4">
+                                <span class="flex-shrink-0 w-6 text-center"><i class="fa-solid fa-check-circle text-blue-500 mt-1"></i></span>
+                                <p><strong>Hiểu rõ khách hàng:</strong> Quản lý khách hàng chuyên sâu, theo dõi hành vi mua sắm, mức độ trung thành, và phân loại khách hàng tiềm năng.</p>
+                            </div>
+                            <p class="mt-4"><strong>Đối tượng phù hợp:</strong> Tính năng Phân tích thông minh đặc biệt hữu ích cho:</p>
+                             <ul class="list-disc list-inside mt-2">
+                                <li><strong>Chủ cửa hàng/Quản lý cửa hàng:</strong> Để có cái nhìn tổng thể về hiệu quả kinh doanh và đưa ra các quyết định chiến lược.</li>
+                                <li><strong>Nhân viên bán hàng/Marketing:</strong> Để nắm bắt thị hiếu khách hàng, điều chỉnh chiến lược bán hàng và khuyến mãi phù hợp.</li>
+                                <li><strong>Kế toán/Nhân viên tài chính:</strong> Để theo dõi dòng tiền, quản lý công nợ và chi phí hoạt động.</li>
+                            </ul>
+                        </section>
+                        <section id="cac-thao-tac-pho-bien" class="scroll-mt-24">
+                            <h3 class="text-xl font-bold text-gray-900 mt-10 mb-4">II. Các thao tác phổ biến</h3>
+                            <p>Dưới đây là hướng dẫn chi tiết cho các nghiệp vụ cơ bản và thường gặp nhất khi sử dụng tính năng Phân tích. Để minh họa, chúng ta sẽ theo dõi chị Lan, chủ cửa hàng thời trang "Phong Cách Việt".</p>
+                            <div class="toc-item mt-6">
+                                <h4 id="truy-cap-va-su-dung-bo-loc" class="text-lg font-bold text-gray-800 mb-3 scroll-mt-24">1. Truy cập và sử dụng Bộ lọc</h4>
+                                <p><strong>Tình huống:</strong> Chị Lan muốn kiểm tra tổng quan tình hình kinh doanh của cửa hàng mình trong tháng vừa qua tại chi nhánh chính.</p>
+                                <p class="mt-4"><strong>Giải pháp của KiotViet:</strong></p>
+                                <ol class="list-decimal list-inside space-y-2 mt-2">
+                                    <li>Chị Lan vào màn hình Quản lý, trên menu bên trái, chị chọn <strong>Phân tích</strong>.</li>
+                                    <li>Hệ thống sẽ hiển thị các loại báo cáo. Tại góc trên bên phải, chị sẽ thấy bộ lọc <strong>Thời gian</strong> và <strong>Chi nhánh</strong>.</li>
+                                    <li>Chị chọn khoảng thời gian là "1 tháng" và tích chọn "Chi nhánh chính".</li>
+                                    <li>Sau khi chọn xong, chị kích <strong>Áp dụng</strong> để hệ thống hiển thị dữ liệu theo đúng bộ lọc. Thao tác này áp dụng cho hầu hết các báo cáo.</li>
+                                </ol>
+                            </div>
+                            <div class="toc-item mt-6">
+                                <h4 id="xem-phan-tich-ban-hang-sales-analytics" class="text-lg font-bold text-gray-800 mb-3 scroll-mt-24">2. Xem Phân tích Bán hàng (Sales Analytics)</h4>
+                                <p><strong>Tình huống:</strong> Chị Lan muốn biết chi nhánh nào đang mang lại doanh thu cao nhất và sản phẩm nào bán chạy nhất trong quý 1.</p>
+                                <p class="mt-4"><strong>Giải pháp của KiotViet:</strong></p>
+                                <ol class="list-decimal list-inside space-y-2 mt-2">
+                                    <li>Chị Lan chọn <strong>Phân tích -> Kinh doanh -> Tổng quan</strong>.</li>
+                                    <li>Hệ thống sẽ hiển thị các chỉ số kinh doanh chính như Hóa đơn, Doanh thu, Lợi nhuận gộp.</li>
+                                    <li>Chị có thể xem biểu đồ phân tích hiệu suất bán hàng tại các chi nhánh để biết chi nhánh nào hoạt động tốt, đạt doanh thu cao nhất.</li>
+                                    <li>Chị cũng có thể xem danh sách các sản phẩm bán chạy nhất và đóng góp của chúng vào doanh thu.</li>
+                                </ol>
+                            </div>
+                            <div class="toc-item mt-6">
+                                <h4 id="xem-phan-tich-hang-hoa-goods-analytics" class="text-lg font-bold text-gray-800 mb-3 scroll-mt-24">3. Xem Phân tích Hàng hóa (Goods Analytics)</h4>
+                                <p><strong>Tình huống:</strong> Chị Lan muốn biết tình hình tồn kho của các mẫu váy mới nhập và mẫu nào có nguy cơ hết hàng.</p>
+                                <p class="mt-4"><strong>Giải pháp của KiotViet:</strong></p>
+                                <ol class="list-decimal list-inside space-y-2 mt-2">
+                                    <li>Chị Lan chọn <strong>Phân tích -> Hàng hóa -> Tồn kho</strong>.</li>
+                                    <li>Báo cáo sẽ thể hiện giá trị hàng tồn và các chỉ số tổng quan. Chị có thể lọc theo Nhóm hàng (ví dụ: "Váy") để xem chi tiết.</li>
+                                    <li>Báo cáo cũng chỉ ra các sản phẩm có số lượng bán ít nhưng lợi nhuận cao (Tiềm năng) hoặc cả hai đều thấp (Cần cải thiện), giúp chị đưa ra quyết định kinh doanh phù hợp.</li>
+                                </ol>
+                            </div>
+                             <div class="toc-item mt-6">
+                                <h4 id="xem-phan-tich-khach-hang-customer-analytics" class="text-lg font-bold text-gray-800 mb-3 scroll-mt-24">4. Xem Phân tích Khách hàng (Customer Analytics)</h4>
+                                <p><strong>Tình huống:</strong> Chị Lan muốn biết có bao nhiêu khách hàng mới trong tháng và hành vi mua sắm của họ là gì.</p>
+                                <p class="mt-4"><strong>Giải pháp của KiotViet:</strong></p>
+                                <ol class="list-decimal list-inside space-y-2 mt-2">
+                                    <li>Chị Lan chọn <strong>Phân tích -> Khách hàng -> Tổng quan</strong>.</li>
+                                    <li>Báo cáo sẽ hiển thị Tổng lượng khách và Tổng doanh thu theo tỷ lệ khách hàng mới, khách hàng cũ và khách lẻ.</li>
+                                    <li>Chị có thể xem hành vi mua sắm theo thời gian, chi nhánh, kênh bán hàng và cả chân dung khách hàng theo độ tuổi, giới tính.</li>
+                                </ol>
+                            </div>
+                        </section>
+                        <section id="cac-tinh-nang-chuyen-sau" class="scroll-mt-24">
+                            <h3 class="text-xl font-bold text-gray-900 mt-10 mb-4">III. Các tính năng chuyên sâu</h3>
+                            <p>Bên cạnh các thao tác cơ bản, KiotViet còn cung cấp các tính năng phân tích sâu hơn giúp bạn quản lý kinh doanh hiệu quả.</p>
+                            <div class="toc-item mt-6">
+                                <h4 id="phan-loai-khach-hang-theo-nhom-rfm" class="text-lg font-bold text-gray-800 mb-3 scroll-mt-24">1. Phân loại khách hàng theo nhóm RFM</h4>
+                                <p><strong>Tình huống:</strong> Chị Lan muốn phân loại khách hàng thành các nhóm khác nhau để có chiến lược marketing và chăm sóc phù hợp.</p>
+                                <p class="mt-4"><strong>Giải pháp của KiotViet:</strong></p>
+                                <ol class="list-decimal list-inside space-y-2 mt-2">
+                                    <li>Chị Lan vào <strong>Phân tích -> Khách hàng -> Phân loại khách hàng</strong>.</li>
+                                    <li>Hệ thống sử dụng mô hình RFM (Thời gian mua gần nhất, Tần suất mua, Giá trị chi tiêu) để phân khách hàng vào các nhóm như "Thân thiết", "Trung thành", "Tiềm năng", "Cần quan tâm", "Sắp rời bỏ".</li>
+                                    <li>Chị có thể xem chi tiết từng nhóm, ví dụ, phát hiện nhóm khách hàng "Sắp rời bỏ" để chạy các chương trình ưu đãi đặc biệt nhằm giữ chân họ.</li>
+                                </ol>
+                            </div>
+                            <div class="toc-item mt-6">
+                                <h4 id="phan-tich-chi-phi-hoat-dong-chi-tiet" class="text-lg font-bold text-gray-800 mb-3 scroll-mt-24">2. Phân tích Chi phí hoạt động chi tiết</h4>
+                                <p><strong>Tình huống:</strong> Chị Lan muốn phân tích sâu hơn xem loại chi phí nào đang chiếm tỷ trọng lớn và chi nhánh nào đang chi tiêu vượt trội.</p>
+                                <p class="mt-4"><strong>Giải pháp của KiotViet:</strong></p>
+                                <ol class="list-decimal list-inside space-y-2 mt-2">
+                                    <li>Trong báo cáo <strong>Chi phí hoạt động</strong> (<strong>Phân tích -> Kinh doanh</strong>), chị có thể xem chi tiết theo <strong>Danh mục chi phí</strong> và <strong>Chi nhánh</strong>.</li>
+                                    <li>Báo cáo sẽ thể hiện danh sách các loại chi phí (lương, vận chuyển, thuê mặt bằng...) và tỷ lệ tăng trưởng so với kỳ trước.</li>
+                                    <li>Điều này giúp chị Lan nhận diện các khoản chi phí có xu hướng gia tăng bất hợp lý và so sánh hiệu quả quản lý chi phí giữa các chi nhánh.</li>
+                                </ol>
+                            </div>
+                            <div class="toc-item mt-6">
+                                <h4 id="quan-ly-cong-no-khach-hang" class="text-lg font-bold text-gray-800 mb-3 scroll-mt-24">3. Quản lý Công nợ khách hàng</h4>
+                                <p><strong>Tình huống:</strong> Chị Lan cần biết danh sách khách hàng đang nợ và tổng giá trị nợ hiện tại để lên kế hoạch thu hồi.</p>
+                                <p class="mt-4"><strong>Giải pháp của KiotViet:</strong></p>
+                                <ol class="list-decimal list-inside space-y-2 mt-2">
+                                    <li>Chị Lan chọn <strong>Phân tích -> Hiệu quả -> Công nợ khách hàng</strong>.</li>
+                                    <li>Báo cáo sẽ tổng hợp dữ liệu công nợ tính đến thời điểm hiện tại trên toàn bộ các chi nhánh.</li>
+                                    <li>Chị sẽ thấy các chỉ số chính như Số lượng khách nợ, Giá trị nợ hiện tại và Tỷ lệ nợ/doanh thu thuần, giúp đánh giá tình hình và quản lý dòng tiền hiệu quả.</li>
+                                </ol>
+                            </div>
+                        </section>
+                        <section id="thong-tin-lien-he-ho-tro" class="scroll-mt-24">
+                            <h3 class="text-xl font-bold text-gray-900 mt-10 mb-4">Thông tin liên hệ hỗ trợ</h3>
+                            <p>Nếu có bất kỳ thắc mắc nào trong quá trình sử dụng, đội ngũ KiotViet luôn sẵn sàng hỗ trợ bạn:</p>
+                            <ul class="list-disc list-inside mt-2">
+                                <li><strong>Tổng đài tư vấn bán hàng:</strong> 1800 6162</li>
+                                <li><strong>Tổng đài hỗ trợ phần mềm:</strong> 1900 6522</li>
+                                <li><strong>Email:</strong> hotro@kiotViet.com</li>
+                            </ul>
+                        </section>
+                    </article>
+                </main>
+                <aside class="hidden lg:block lg:col-span-3">
+                    <nav id="toc-nav" class="sticky top-24">
+                        <h3 class="font-semibold text-gray-900 mb-3">Trong bài viết này</h3>
+                        <div class="space-y-1">
+                            <div><a href="#gioi-thieu-chung" class="toc-link toc-parent-link block border-l-4 border-transparent pl-4 py-1 text-sm text-gray-600 hover:text-blue-600 hover:border-gray-300">I.&nbsp;Giới thiệu chung</a></div>
+                            <div><a href="#cac-thao-tac-pho-bien" class="toc-link toc-parent-link block border-l-4 border-transparent pl-4 py-1 text-sm text-gray-600 hover:text-blue-600 hover:border-gray-300">II.&nbsp;Các thao tác phổ biến</a>
+                                <div class="pl-4 mt-1 space-y-1 toc-submenu">
+                                    <a href="#truy-cap-va-su-dung-bo-loc" class="toc-link block border-l-4 border-transparent pl-4 py-1 text-sm text-gray-600 hover:text-blue-600 hover:border-gray-300">1.&nbsp;Truy cập và sử dụng Bộ lọc</a>
+                                    <a href="#xem-phan-tich-ban-hang-sales-analytics" class="toc-link block border-l-4 border-transparent pl-4 py-1 text-sm text-gray-600 hover:text-blue-600 hover:border-gray-300">2.&nbsp;Xem Phân tích Bán hàng (Sales Analytics)</a>
+                                    <a href="#xem-phan-tich-hang-hoa-goods-analytics" class="toc-link block border-l-4 border-transparent pl-4 py-1 text-sm text-gray-600 hover:text-blue-600 hover:border-gray-300">3.&nbsp;Xem Phân tích Hàng hóa (Goods Analytics)</a>
+                                    <a href="#xem-phan-tich-khach-hang-customer-analytics" class="toc-link block border-l-4 border-transparent pl-4 py-1 text-sm text-gray-600 hover:text-blue-600 hover:border-gray-300">4.&nbsp;Xem Phân tích Khách hàng (Customer Analytics)</a>
+                                </div>
+                            </div>
+                            <div><a href="#cac-tinh-nang-chuyen-sau" class="toc-link toc-parent-link block border-l-4 border-transparent pl-4 py-1 text-sm text-gray-600 hover:text-blue-600 hover:border-gray-300">III.&nbsp;Các tính năng chuyên sâu</a>
+                                <div class="pl-4 mt-1 space-y-1 toc-submenu">
+                                    <a href="#phan-loai-khach-hang-theo-nhom-rfm" class="toc-link block border-l-4 border-transparent pl-4 py-1 text-sm text-gray-600 hover:text-blue-600 hover:border-gray-300">1.&nbsp;Phân loại khách hàng theo nhóm RFM</a>
+                                    <a href="#phan-tich-chi-phi-hoat-dong-chi-tiet" class="toc-link block border-l-4 border-transparent pl-4 py-1 text-sm text-gray-600 hover:text-blue-600 hover:border-gray-300">2.&nbsp;Phân tích Chi phí hoạt động chi tiết</a>
+                                    <a href="#quan-ly-cong-no-khach-hang" class="toc-link block border-l-4 border-transparent pl-4 py-1 text-sm text-gray-600 hover:text-blue-600 hover:border-gray-300">3.&nbsp;Quản lý Công nợ khách hàng</a>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+                </aside>
+            </div>
+        </div>
+        <footer class="bg-white border-t border-gray-200 mt-12">
+            <div class="max-w-screen-2xl mx-auto py-6 px-4 sm:px-6 lg:px-8"><p class="text-center text-sm text-gray-500">&copy; 2025 KiotViet. All rights reserved.</p></div>
+        </footer>
+    </div>
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
+    <button id="scrollToTopBtn" class="hidden fixed bottom-5 right-5 z-50 p-3 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-opacity duration-300">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" /></svg>
+    </button>
+    <script>
+        // SCRIPT CONTENT (STATIC)
+        document.addEventListener('DOMContentLoaded', () => {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const closeSidebarButton = document.getElementById('close-sidebar-button');
+            const openSidebar = () => { sidebar.classList.remove('-translate-x-full'); overlay.classList.remove('hidden'); };
+            const closeSidebar = () => { sidebar.classList.add('-translate-x-full'); overlay.classList.add('hidden'); };
+            if (mobileMenuButton) mobileMenuButton.addEventListener('click', openSidebar);
+            if(closeSidebarButton) closeSidebarButton.addEventListener('click', closeSidebar);
+            if(overlay) overlay.addEventListener('click', closeSidebar);
+            document.querySelectorAll('#sidebar .main-nav-toggle').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const submenu = button.nextElementSibling;
+                    if (submenu && submenu.classList.contains('submenu')) {
+                        submenu.classList.toggle('open');
+                        const arrow = button.querySelector('.arrow-icon');
+                        if (arrow) { arrow.classList.toggle('open'); }
+                    }
+                });
+            });
+            const activeLink = document.querySelector('#sidebar .active');
+            if (activeLink) {
+                let parent = activeLink.closest('.submenu');
+                while(parent) {
+                    parent.classList.add('open');
+                    const prevButton = parent.previousElementSibling;
+                    if (prevButton && prevButton.classList.contains('main-nav-toggle')) {
+                        const arrow = prevButton.querySelector('.arrow-icon');
+                        if (arrow) { arrow.classList.add('open'); }
+                    }
+                    parent = parent.parentElement.closest('.submenu');
+                }
+            }
+            const sections = document.querySelectorAll('main section, main .toc-item');
+            const navLinks = document.querySelectorAll('#toc-nav a.toc-link');
+            const headerOffset = 120;
+            const activateLink = (id) => {
+                let activeParent = null;
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${id}`) {
+                        link.classList.add('active');
+                        const parentTocItem = link.closest('.toc-submenu');
+                        if(parentTocItem){ activeParent = parentTocItem.previousElementSibling; }
+                    }
+                });
+                if (activeParent && activeParent.classList.contains('toc-parent-link')) { activeParent.classList.add('active'); }
+            };
+            const onScroll = () => {
+                if (window.innerWidth < 1024) return;
+                let currentSectionId = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - headerOffset;
+                    if (window.pageYOffset >= sectionTop) { currentSectionId = section.id || section.querySelector('h4')?.id; }
+                });
+                if (currentSectionId) { activateLink(currentSectionId); } 
+                else if (window.scrollY === 0 && navLinks.length > 0) {
+                    navLinks.forEach(link => link.classList.remove('active'));
+                    const firstLink = document.querySelector('#toc-nav a.toc-parent-link');
+                    if (firstLink) firstLink.classList.add('active');
+                }
+            };
+            window.addEventListener('scroll', onScroll, { passive: true });
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - (headerOffset - 20);
+                        window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+                    }
+                });
+            });
+            onScroll();
+            const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+            if (scrollToTopBtn) {
+                window.addEventListener('scroll', () => { if (window.scrollY > 300) { scrollToTopBtn.classList.remove('hidden'); } else { scrollToTopBtn.classList.add('hidden'); } });
+                scrollToTopBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+            }
+        });
+    </script></body></html>
