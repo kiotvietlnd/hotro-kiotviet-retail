@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Báo cáo Đề xuất Tái cấu trúc Trang Hỗ trợ KiotViet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .main-nav-link.active { background-color: #dbeafe; color: #1e40af; font-weight: 600; }
+        .main-nav-link.active i { color: #1d4ed8; }
+        /* Override prose for better readability and emphasis */
+        .prose h2 {
+            display: flex;
+            align-items: center;
+            font-size: 1.875rem; /* text-3xl */
+            font-weight: 800; /* extrabold */
+            color: #111827; /* gray-900 */
+            border-bottom: 1px solid #e5e7eb; /* gray-200 */
+            padding-bottom: 0.75rem; /* pb-3 */
+            margin-bottom: 1.5rem; /* mb-6 */
+        }
+        .prose h2 i {
+            margin-right: 0.75rem;
+            color: #2563eb; /* blue-600 */
+        }
+        .prose h3 {
+            margin-top: 2.5rem; /* mt-10 */
+            margin-bottom: 1rem; /* mb-4 */
+            font-size: 1.25rem; /* text-xl */
+            font-weight: 700; /* bold */
+            color: #1f2937; /* gray-800 */
+        }
+         .prose h4 {
+            font-size: 1.125rem; /* text-lg */
+            font-weight: 600; /* semibold */
+         }
+        .prose p {
+            margin-bottom: 1.25rem; /* Consistent paragraph spacing */
+            line-height: 1.75;
+        }
+        .prose section {
+            scroll-margin-top: 5rem; /* 80px offset for scroll spy */
+            padding-bottom: 3rem; /* Increased spacing between sections */
+        }
+        /* Image Zoom Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.9);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90vw;
+            max-height: 90vh;
+            animation-name: zoom;
+            animation-duration: 0.3s;
+        }
+        @keyframes zoom {
+            from {transform:scale(0.1)}
+            to {transform:scale(1)}
+        }
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .close-modal:hover, .close-modal:focus {
+            color: #bbb;
+            text-decoration: none;
+        }
+        .zoomable-image {
+            cursor: zoom-in;
+            transition: opacity 0.3s ease;
+        }
+        .zoomable-image:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <div id="app-wrapper">
+        <header class="bg-white sticky top-0 z-40 border-b border-gray-200">
+            <nav class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16">
+                    <div class="flex items-center">
+                        <button id="mobile-menu-button" class="lg:hidden mr-4 p-2 rounded-md text-gray-500 hover:text-gray-700 hover:bg-gray-100">
+                            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+                        </button>
+                        <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+                            <img src="https://logo.kiotviet.vn/KiotViet-Logo-Horizontal.svg" alt="KiotViet Logo" class="h-8">
+                            <span class="ml-3 pl-3 border-l border-gray-300 text-base font-semibold text-gray-600 hidden md:block whitespace-nowrap">Báo cáo Đề xuất Tái cấu trúc Trang Hỗ trợ</span>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="grid grid-cols-12 gap-8">
+                <!-- SIDEBAR -->
+                <aside id="sidebar" class="fixed top-0 left-0 h-full w-72 bg-white border-r border-gray-200 z-50 transform -translate-x-full transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0 lg:block lg:col-span-3 lg:h-auto lg:w-auto lg:bg-transparent lg:border-none lg:z-auto">
+                    <div class="p-4 border-b border-gray-200 lg:hidden flex justify-between items-center">
+                        <h2 class="font-bold text-lg">Menu Báo cáo</h2>
+                        <button id="close-sidebar-button" class="p-2 rounded-md text-gray-500 hover:text-gray-700 hover:bg-gray-100"><svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg></button>
+                    </div>
+                    <nav class="sticky top-24 space-y-2 p-4 lg:p-0 lg:pr-4 overflow-y-auto h-[calc(100vh-64px)] lg:h-auto">
+                         <a href="#tong-quan" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-bullseye w-5 text-center mr-3 text-gray-500"></i>Tổng quan Dự án</a>
+                         <a href="#hien-trang" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-magnifying-glass-chart w-5 text-center mr-3 text-gray-500"></i>Phân tích Hiện trạng</a>
+                         <a href="#de-xuat" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-lightbulb w-5 text-center mr-3 text-gray-500"></i>Đề xuất Giải pháp</a>
+                         <a href="#chuyen-doi" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-people-arrows w-5 text-center mr-3 text-gray-500"></i>Kế hoạch Chuyển đổi</a>
+                         <a href="#loi-ich" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-star w-5 text-center mr-3 text-gray-500"></i>Lợi ích Chiến lược</a>
+                         <a href="#ket-luan" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-flag-checkered w-5 text-center mr-3 text-gray-500"></i>Kết luận</a>
+                    </nav>
+                </aside>
+
+                <!-- MAIN CONTENT -->
+                <main class="col-span-12 lg:col-span-9">
+                    <div class="bg-white border border-gray-200 rounded-lg p-6 sm:p-10 prose max-w-none">
+                        <div class="not-prose mb-8">
+                             <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-gray-900 leading-tight">
+                                Báo cáo Đề xuất Tái cấu trúc Trang Hỗ trợ KiotViet
+                            </h1>
+                            <p class="mt-2 text-lg text-gray-600">Nâng cao trải nghiệm người dùng và tối ưu hóa hiệu quả đào tạo</p>
+                        </div>
+
+                        <section id="tong-quan">
+                            <h2><i class="fa-solid fa-bullseye"></i>Tổng quan Dự án</h2>
+                            <div class="not-prose my-8 p-6 bg-gray-50 rounded-lg border">
+                                <!-- Transformation -->
+                                <div class="grid grid-cols-1 md:grid-cols-3 items-center text-center gap-4">
+                                    <div class="p-4 bg-red-100 border border-red-200 rounded-lg">
+                                        <i class="fa-solid fa-book-open text-3xl text-red-600 mb-2"></i>
+                                        <h3 class="font-bold text-lg text-red-800">TỪ: Thư viện tài liệu</h3>
+                                        <p class="text-sm text-red-700">Bị động, khó tìm kiếm</p>
+                                    </div>
+                                    <div class="hidden md:block">
+                                        <i class="fa-solid fa-arrow-right-long text-4xl text-gray-400"></i>
+                                    </div>
+                                     <div class="md:hidden flex justify-center">
+                                        <i class="fa-solid fa-arrow-down-long text-3xl text-gray-400"></i>
+                                    </div>
+                                    <div class="p-4 bg-blue-100 border border-blue-200 rounded-lg">
+                                        <i class="fa-solid fa-graduation-cap text-3xl text-blue-600 mb-2"></i>
+                                        <h3 class="font-bold text-lg text-blue-800">ĐẾN: Trung tâm đào tạo</h3>
+                                        <p class="text-sm text-blue-700">Chủ động, dẫn dắt người dùng</p>
+                                    </div>
+                                </div>
+                                
+                                <h3 class="text-center font-bold text-xl text-gray-800 my-8">Bằng cách thực hiện 3 trụ cột chính:</h3>
+
+                                <!-- 3 Pillars -->
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                                    <div class="p-6 bg-white border rounded-lg hover:shadow-lg transition">
+                                        <div class="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center mx-auto mb-4"><i class="fa-solid fa-sitemap text-3xl text-blue-600"></i></div>
+                                        <h4 class="font-bold text-lg mb-2">Tái cấu trúc Web</h4>
+                                        <p class="text-sm text-gray-600">Thiết kế lại giao diện theo hành trình người dùng, giúp dễ dàng tìm kiếm và khám phá.</p>
+                                    </div>
+                                    <div class="p-6 bg-white border rounded-lg hover:shadow-lg transition">
+                                        <div class="w-16 h-16 rounded-full bg-emerald-100 flex items-center justify-center mx-auto mb-4"><i class="fa-solid fa-pen-ruler text-3xl text-emerald-600"></i></div>
+                                        <h4 class="font-bold text-lg mb-2">Chuẩn hóa Nội dung</h4>
+                                        <p class="text-sm text-gray-600">Viết lại tài liệu theo hướng giải quyết vấn đề thực tế, sử dụng case study và tình huống cụ thể.</p>
+                                    </div>
+                                    <div class="p-6 bg-white border rounded-lg hover:shadow-lg transition">
+                                        <div class="w-16 h-16 rounded-full bg-amber-100 flex items-center justify-center mx-auto mb-4"><i class="fa-solid fa-video text-3xl text-amber-600"></i></div>
+                                        <h4 class="font-bold text-lg mb-2">Hiện đại hóa Video</h4>
+                                        <p class="text-sm text-gray-600">Sản xuất lại video theo kịch bản đào tạo, áp dụng công nghệ AI để tăng tốc và nâng cao chất lượng.</p>
+                                    </div>
+                                </div>
+                                
+                                <h3 class="text-center font-bold text-xl text-gray-800 my-8">Để đạt được các mục tiêu & lợi ích chính:</h3>
+                                <!-- Outcomes -->
+                                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-left">
+                                    <div class="flex items-center p-3 bg-white rounded-lg border"><i class="fa-solid fa-rocket text-xl text-blue-600 mr-3 w-8 text-center"></i><div><h4 class="font-semibold">Onboarding</h4></div></div>
+                                    <div class="flex items-center p-3 bg-white rounded-lg border"><i class="fa-solid fa-headset text-xl text-blue-600 mr-3 w-8 text-center"></i><div><h4 class="font-semibold">CSKH</h4></div></div>
+                                    <div class="flex items-center p-3 bg-white rounded-lg border"><i class="fa-solid fa-chart-line text-xl text-blue-600 mr-3 w-8 text-center"></i><div><h4 class="font-semibold">Sales</h4></div></div>
+                                    <div class="flex items-center p-3 bg-white rounded-lg border"><i class="fa-solid fa-crown text-xl text-blue-600 mr-3 w-8 text-center"></i><div><h4 class="font-semibold">Branding</h4></div></div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section id="hien-trang">
+                            <h2><i class="fa-solid fa-magnifying-glass-chart"></i>Phân tích Hiện trạng và Sự cần thiết phải thay đổi</h2>
+                             <p>Trang Hỗ trợ hiện tại, dù chứa nhiều thông tin, nhưng tồn tại các hạn chế cốt lõi gây ảnh hưởng tiêu cực đến trải nghiệm người dùng và hiệu quả hoạt động:</p>
+                             <div class="space-y-4 my-6 not-prose">
+                                 <div class="flex items-start p-4 bg-red-50 border-l-4 border-red-500 rounded-r-lg">
+                                     <i class="fa-solid fa-layer-group text-red-600 text-xl mt-1 mr-4"></i>
+                                     <div>
+                                         <h4 class="font-semibold text-gray-900">Về cấu trúc trang web</h4>
+                                         <p class="text-gray-700 mt-1">Gây quá tải thông tin với dạng danh sách dài, thiếu tính dẫn dắt, khiến người dùng mới không biết bắt đầu từ đâu.</p>
+                                     </div>
+                                 </div>
+                                 <div class="flex items-start p-4 bg-red-50 border-l-4 border-red-500 rounded-r-lg">
+                                     <i class="fa-solid fa-file-alt text-red-600 text-xl mt-1 mr-4"></i>
+                                     <div>
+                                         <h4 class="font-semibold text-gray-900">Về nội dung văn bản</h4>
+                                         <p class="text-gray-700 mt-1">Cách viết khô khan, tập trung vào mô tả nút bấm thay vì giải quyết vấn đề kinh doanh của người dùng.</p>
+                                     </div>
+                                 </div>
+                                 <div class="flex items-start p-4 bg-red-50 border-l-4 border-red-500 rounded-r-lg">
+                                     <i class="fa-solid fa-video-slash text-red-600 text-xl mt-1 mr-4"></i>
+                                     <div>
+                                         <h4 class="font-semibold text-gray-900">Về video hướng dẫn</h4>
+                                         <p class="text-gray-700 mt-1">Thiếu nhất quán về phương pháp, một số video mang tính marketing hơn là đào tạo.</p>
+                                     </div>
+                                 </div>
+                             </div>
+                            <h3>Minh họa: Giao diện Trang Hỗ trợ "Trước và Sau"</h3>
+                             <div class="grid md:grid-cols-2 gap-6 my-6 not-prose">
+                                <div class="flex flex-col items-center">
+                                    <p class="text-center font-semibold text-gray-700 mb-2">Phiên bản cũ</p>
+                                    <img src="https://i.postimg.cc/ZK68ZTwQ/Screen-Shot-Tool-20250903024233-1.png" alt="Trang Hỗ trợ KiotViet phiên bản cũ" class="rounded-lg shadow-md border zoomable-image">
+                                    <a href="https://www.kiotviet.vn/ho-tro" target="_blank" class="mt-3 inline-block w-full max-w-xs text-center px-4 py-2 rounded-md bg-gray-500 text-white hover:bg-gray-600 transition duration-300">
+                                        <i class="fas fa-external-link-alt mr-2"></i>Xem trang hiện tại
+                                    </a>
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <p class="text-center font-semibold text-gray-700 mb-2">Phiên bản mới (Đề xuất)</p>
+                                    <img src="https://i.postimg.cc/BZrTd8BD/Screen-Shot-Tool-20250903024424.png" alt="Trang Hỗ trợ KiotViet phiên bản mới đề xuất" class="rounded-lg shadow-md border zoomable-image">
+                                    <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/" target="_blank" class="mt-3 inline-block w-full max-w-xs text-center px-4 py-2 rounded-md bg-blue-600 text-white hover:bg-blue-700 transition duration-300">
+                                        <i class="fas fa-flask mr-2"></i>Xem Demo phiên bản mới
+                                    </a>
+                                </div>
+                             </div>
+                             <p>Những hạn chế trên dẫn đến hệ quả: khách hàng khó tự học, tỷ lệ gọi lên tổng đài hỗ trợ cho các vấn đề cơ bản còn cao, và nhiều tính năng giá trị của sản phẩm chưa được khai thác hết.</p>
+                        </section>
+                        
+                        <section id="de-xuat">
+                            <h2><i class="fa-solid fa-lightbulb"></i>Đề xuất Giải pháp và Kế hoạch Hành động</h2>
+                            <h3>Đội ngũ thực hiện</h3>
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 my-6 not-prose">
+                                <div class="bg-gray-100 rounded-lg p-4 text-center border border-gray-200 transition hover:shadow-lg hover:border-blue-400">
+                                    <img src="https://placehold.co/100x100/3b82f6/FFFFFF?text=HS" alt="Avatar Hoàng Sơn" class="w-20 h-20 rounded-full mx-auto mb-3">
+                                    <h4 class="font-bold text-lg text-gray-900">Hoàng Sơn</h4>
+                                    <p class="text-sm text-blue-700 font-semibold">Chuyên viên LND</p>
+                                </div>
+                                <div class="bg-gray-100 rounded-lg p-4 text-center border border-gray-200 transition hover:shadow-lg hover:emerald-400">
+                                    <img src="https://placehold.co/100x100/10b981/FFFFFF?text=HT" alt="Avatar Huyền Trang" class="w-20 h-20 rounded-full mx-auto mb-3">
+                                    <h4 class="font-bold text-lg text-gray-900">Huyền Trang</h4>
+                                    <p class="text-sm text-emerald-700 font-semibold">CV Nội dung</p>
+                                </div>
+                                <div class="bg-gray-100 rounded-lg p-4 text-center border border-gray-200 transition hover:shadow-lg hover:amber-400">
+                                    <img src="https://placehold.co/100x100/f59e0b/FFFFFF?text=LT" alt="Avatar Lê Thắng" class="w-20 h-20 rounded-full mx-auto mb-3">
+                                    <h4 class="font-bold text-lg text-gray-900">Lê Thắng</h4>
+                                    <p class="text-sm text-amber-700 font-semibold">Video Editor</p>
+                                </div>
+                            </div>
+
+                            <h3>Các đầu việc chính</h3>
+                            <div class="space-y-6">
+                                <div class="p-5 bg-blue-50 border-l-4 border-blue-500 rounded-r-lg">
+                                    <h4>1. Thiết kế và triển khai giao diện web mới</h4>
+                                    <p>Đội ngũ KMS sẽ thiết kế lại giao diện trang Hỗ trợ dựa trên bản demo do Hoàng Sơn xây dựng. Cấu trúc mới sẽ bao gồm: Lộ trình onboarding, Khám phá giải pháp, Tính năng mới, và FAQs theo ngành hàng.</p>
+                                </div>
+                                <div class="p-5 bg-emerald-50 border-l-4 border-emerald-500 rounded-r-lg">
+                                    <h4>2. Biên soạn lại toàn bộ nội dung văn bản</h4>
+                                    <p>Chuyển đổi hoàn toàn triết lý viết tài liệu, từ mô tả tính năng sang giải quyết vấn đề thực tế của khách hàng bằng phương pháp kể chuyện và case study.</p>
+                                     <div class="grid md:grid-cols-2 gap-6 mt-6 not-prose">
+                                        <div class="flex flex-col items-center">
+                                            <p class="text-center font-semibold text-gray-700 mb-2">Cách viết cũ: Liệt kê thao tác</p>
+                                            <img src="https://i.postimg.cc/Gtyk4rdH/Screen-Shot-Tool-20250903025246.png" alt="Tài liệu tính năng Đặt hàng phiên bản cũ" class="rounded-lg shadow-md border zoomable-image">
+                                            <a href="https://www.kiotviet.vn/huong-dan-su-dung-kiotviet/thuc-hien-giao-dich-web-retail/#ii-dat-hang" target="_blank" class="mt-3 inline-block w-full max-w-xs text-center px-4 py-2 rounded-md bg-gray-500 text-white hover:bg-gray-600 transition duration-300 text-sm">
+                                                <i class="fas fa-external-link-alt mr-2"></i>Xem tài liệu cũ
+                                            </a>
+                                        </div>
+                                        <div class="flex flex-col items-center">
+                                            <p class="text-center font-semibold text-gray-700 mb-2">Cách viết mới: Hướng dẫn theo tình huống</p>
+                                            <img src="https://i.postimg.cc/NFJWj6Gg/Screen-Shot-Tool-20250903030819.png" alt="Tài liệu tính năng Đặt hàng phiên bản mới" class="rounded-lg shadow-md border zoomable-image">
+                                            <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/van-hanh/dat-hang" target="_blank" class="mt-3 inline-block w-full max-w-xs text-center px-4 py-2 rounded-md bg-blue-600 text-white hover:bg-blue-700 transition duration-300 text-sm">
+                                                <i class="fas fa-flask mr-2"></i>Xem Demo tài liệu mới
+                                            </a>
+                                        </div>
+                                     </div>
+                                </div>
+                                <div class="p-5 bg-amber-50 border-l-4 border-amber-500 rounded-r-lg">
+                                    <h4>3. Tái sản xuất và chuẩn hóa hệ thống video</h4>
+                                    <p>Áp dụng cấu trúc kịch bản 5 phần (Giới thiệu -> Tình huống -> Hướng dẫn -> Nâng cao -> Tổng kết). Nâng cấp chất lượng voiceover bằng <code>AI Studio</code> và tự động hóa sản xuất video tổng quan bằng <code>NotebookLM</code>.</p>
+                                </div>
+                                 <div class="p-5 bg-sky-50 border-l-4 border-sky-500 rounded-r-lg">
+                                    <h4>4. Đào tạo và chuyển giao</h4>
+                                    <p>Tổ chức các buổi đào tạo nội bộ cho các phòng ban liên quan (CSKH, Triển khai, Kinh doanh) về cấu trúc và cách khai thác hiệu quả trang Hỗ trợ mới.</p>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section id="chuyen-doi">
+                            <h2><i class="fa-solid fa-people-arrows"></i>Kế hoạch Chuyển đổi</h2>
+                            <div class="my-8 not-prose relative">
+                                <!-- The vertical line -->
+                                <div class="absolute left-5 top-2 h-full w-0.5 bg-gray-200 hidden sm:block"></div>
+
+                                <!-- Step 1 -->
+                                <div class="relative pl-0 sm:pl-12 pb-12">
+                                    <div class="absolute left-0 top-0 flex items-center justify-center w-10 h-10 bg-blue-600 rounded-full z-10">
+                                        <i class="fa-solid fa-cogs text-white text-xl"></i>
+                                    </div>
+                                    <div class="ml-0 sm:ml-6 bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                                        <h4 class="font-bold text-lg text-gray-900 mb-2">Giai đoạn 1: Chuẩn bị hạ tầng & Công cụ</h4>
+                                        <ul class="list-disc pl-5 text-gray-700 space-y-2">
+                                            <li><strong>Team KMS:</strong> Xây dựng trang Hỗ trợ mới trên Wordpress theo bản demo, hoạt động trên đường dẫn riêng.</li>
+                                            <li><strong>Hoàng Sơn:</strong> Chuẩn bị tài nguyên và đào tạo đội ngũ sử dụng các công cụ AI (NotebookLM, Gemini Canvas, AI Studio).</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <!-- Step 2 -->
+                                <div class="relative pl-0 sm:pl-12 pb-12">
+                                    <div class="absolute left-0 top-0 flex items-center justify-center w-10 h-10 bg-emerald-600 rounded-full z-10">
+                                        <i class="fa-solid fa-pencil-ruler text-white text-xl"></i>
+                                    </div>
+                                    <div class="ml-0 sm:ml-6 bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                                        <h4 class="font-bold text-lg text-gray-900 mb-2">Giai đoạn 2: Sản xuất Nội dung</h4>
+                                        <p class="font-semibold text-gray-800">a. Quy trình sản xuất văn bản:</p>
+                                        <ol class="list-decimal pl-5 text-gray-700 space-y-2 mt-2">
+                                            <li><strong>Phân tích & Khởi tạo:</strong> Dùng <code>NotebookLM</code> để phân tích tài liệu cũ.</li>
+                                            <li><strong>Xây dựng & Biên soạn:</strong> Dùng <code>Gemini Canvas</code> để xây dựng nội dung mới.</li>
+                                            <li><strong>Hoàn thiện:</strong> Đưa nội dung lên WordPress, đối chiếu và bổ sung screenshot.</li>
+                                            <li><strong>Kiểm duyệt:</strong> Hoàng Sơn duyệt bài trước khi publish.</li>
+                                        </ol>
+                                        <p class="font-semibold text-gray-800 mt-4">b. Quy trình sản xuất video:</p>
+                                        <ol class="list-decimal pl-5 text-gray-700 space-y-2 mt-2">
+                                            <li><strong>Xây dựng kịch bản:</strong> Dùng <code>Gemini Canvas</code> để viết kịch bản.</li>
+                                            <li><strong>Sản xuất:</strong> Lê Thắng dựng video, áp dụng voiceover từ <code>AI Studio</code>.</li>
+                                            <li><strong>Kiểm duyệt:</strong> Nhận phản hồi từ team để hoàn thiện video.</li>
+                                        </ol>
+                                    </div>
+                                </div>
+
+                                <!-- Step 3 -->
+                                <div class="relative pl-0 sm:pl-12">
+                                    <div class="absolute left-0 top-0 flex items-center justify-center w-10 h-10 bg-sky-600 rounded-full z-10">
+                                        <i class="fa-solid fa-rocket text-white text-xl"></i>
+                                    </div>
+                                    <div class="ml-0 sm:ml-6 bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
+                                        <h4 class="font-bold text-lg text-gray-900 mb-2">Giai đoạn 3: Ra mắt & Chuyển đổi</h4>
+                                        <ul class="list-disc pl-5 text-gray-700 space-y-2">
+                                            <li>Sau khi toàn bộ nội dung hoàn thiện, phối hợp với team KMS để "Go-live".</li>
+                                            <li>Trỏ đường dẫn cũ sang trang mới, lưu trữ hệ thống cũ và thông báo rộng rãi.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section id="loi-ich">
+                            <h2><i class="fa-solid fa-star"></i>Lợi ích chiến lược của Dự án</h2>
+                            <div class="not-prose grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+                                <div class="flex items-center p-4 bg-gray-50 rounded-lg border"><i class="fa-solid fa-users text-2xl text-blue-600 mr-4 w-8 text-center"></i><div><h4 class="font-semibold text-gray-900">Khách hàng</h4><p class="text-sm text-gray-600">Onboarding mượt mà, dễ tự học, khai thác tối đa giá trị sản phẩm.</p></div></div>
+                                <div class="flex items-center p-4 bg-gray-50 rounded-lg border"><i class="fa-solid fa-headset text-2xl text-blue-600 mr-4 w-8 text-center"></i><div><h4 class="font-semibold text-gray-900">Bộ phận CSKH</h4><p class="text-sm text-gray-600">Giảm 30-40% câu hỏi cơ bản, tăng hiệu suất xử lý.</p></div></div>
+                                <div class="flex items-center p-4 bg-gray-50 rounded-lg border"><i class="fa-solid fa-chalkboard-teacher text-2xl text-blue-600 mr-4 w-8 text-center"></i><div><h4 class="font-semibold text-gray-900">Bộ phận Đào tạo</h4><p class="text-sm text-gray-600">Sở hữu hệ thống giáo trình chuẩn hóa, chất lượng cao.</p></div></div>
+                                <div class="flex items-center p-4 bg-gray-50 rounded-lg border"><i class="fa-solid fa-handshake text-2xl text-blue-600 mr-4 w-8 text-center"></i><div><h4 class="font-semibold text-gray-900">Kinh doanh & Triển khai</h4><p class="text-sm text-gray-600">Có công cụ tư vấn và hướng dẫn khách hàng hiệu quả.</p></div></div>
+                                <div class="flex items-center p-4 bg-gray-50 rounded-lg border md:col-span-2"><i class="fa-solid fa-building text-2xl text-blue-600 mr-4 w-8 text-center"></i><div><h4 class="font-semibold text-gray-900">KiotViet (Tổng thể)</h4><p class="text-sm text-gray-600">Nâng cao hình ảnh thương hiệu, tăng tỷ lệ giữ chân khách hàng (retention) và giảm chi phí hỗ trợ.</p></div></div>
+                            </div>
+                        </section>
+
+                        <section id="ket-luan" class="mt-12 not-prose">
+                             <div class="p-6 bg-gradient-to-r from-blue-600 to-indigo-700 rounded-lg text-white">
+                                <h2 class="!text-white flex items-center"><i class="fa-solid fa-flag-checkered !text-white"></i>Kết luận</h2>
+                                <p class="!text-blue-100 text-lg mt-4">Việc tái cấu trúc trang Hỗ trợ không chỉ là một cải tiến về mặt vận hành mà là một <strong>đầu tư chiến lược vào sự thành công của khách hàng (Customer Success)</strong>. Bằng cách kết hợp phương pháp đào tạo hiện đại và công nghệ AI, chúng ta có thể tạo ra một lợi thế cạnh tranh bền vững. Kính đề xuất Ban Lãnh đạo xem xét và phê duyệt kế hoạch triển khai dự án này.</p>
+                             </div>
+                        </section>
+                    </div>
+                </main>
+            </div>
+        </div>
+        
+        <footer class="bg-white border-t border-gray-200 mt-12">
+            <div class="max-w-screen-2xl mx-auto py-6 px-4 sm:px-6 lg:px-8"><p class="text-center text-sm text-gray-500">&copy; 2025 KiotViet. All rights reserved.</p></div>
+        </footer>
+    </div>
+
+    <!-- Image Modal Structure -->
+    <div id="imageModal" class="modal">
+        <span id="closeModal" class="close-modal">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden lg:hidden"></div>
+    
+    <button id="scrollToTopBtn" class="hidden fixed bottom-5 right-5 z-50 p-3 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-opacity duration-300">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" /></svg>
+    </button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Sidebar Navigation ---
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const closeSidebarButton = document.getElementById('close-sidebar-button');
+            const mainNavLinks = document.querySelectorAll('#sidebar a.main-nav-link');
+            const sections = document.querySelectorAll('main section');
+            const headerOffset = 80; // height of sticky header
+
+            const openSidebar = () => { sidebar.classList.remove('-translate-x-full'); overlay.classList.remove('hidden'); };
+            const closeSidebar = () => { sidebar.classList.add('-translate-x-full'); overlay.classList.add('hidden'); };
+            
+            if (mobileMenuButton) mobileMenuButton.addEventListener('click', openSidebar);
+            if (closeSidebarButton) closeSidebarButton.addEventListener('click', closeSidebar);
+            if (overlay) overlay.addEventListener('click', closeSidebar);
+
+            // Active link highlighting on scroll
+            const activateLink = (id) => {
+                 mainNavLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${id}`) {
+                        link.classList.add('active');
+                    }
+                });
+            };
+
+            const onScroll = () => {
+                let currentSectionId = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - headerOffset;
+                    if (window.pageYOffset >= sectionTop) { currentSectionId = section.id; }
+                });
+
+                if (currentSectionId) {
+                    activateLink(currentSectionId);
+                } else if (window.pageYOffset === 0) {
+                     mainNavLinks.forEach(link => link.classList.remove('active'));
+                }
+            };
+            window.addEventListener('scroll', onScroll, { passive: true });
+            
+            // Smooth scroll on link click
+            mainNavLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                        const offsetPosition = elementPosition - headerOffset + 5; // small adjustment
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                    if (window.innerWidth < 1024) {
+                        closeSidebar();
+                    }
+                });
+            });
+
+            // --- Scroll to Top Button ---
+            const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+            if (scrollToTopBtn) {
+                window.addEventListener('scroll', () => { if (window.scrollY > 300) { scrollToTopBtn.classList.remove('hidden'); } else { scrollToTopBtn.classList.add('hidden'); } });
+                scrollToTopBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+            }
+            
+            // --- Image Modal Logic ---
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const closeModalBtn = document.getElementById('closeModal');
+
+            document.querySelectorAll('.zoomable-image').forEach(image => {
+                image.addEventListener('click', function() {
+                    modal.style.display = "flex";
+                    modalImg.src = this.src;
+                });
+            });
+
+            const closeModal = () => {
+                modal.style.display = "none";
+            }
+            closeModalBtn.addEventListener('click', closeModal);
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
