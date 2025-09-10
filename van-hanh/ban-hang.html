@@ -1,14 +1,12 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
+<!DOCTYPE html><html lang="vi"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tổng Quan và Hướng Dẫn Sử Dụng Tính Năng Bán Hàng trên KiotViet</title>
+    <title>Tính Năng Bán Hàng trên KiotViet (Ngành Retail)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" xintegrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #f9fafb; color: #111827; scroll-behavior: smooth; }
         .toc-link.active { color: #2563eb; border-left-color: #2563eb; font-weight: 600; }
@@ -18,14 +16,15 @@
         #sidebar .submenu.open { max-height: 1500px; }
         .arrow-icon { transition: transform 0.3s ease-in-out; }
         .arrow-icon.open { transform: rotate(90deg); }
-        /* Style for standard prose lists */
+        /* Style for standard prose lists to ensure bullet points are dots */
+        .prose ul { list-style-type: disc; }
         .prose ul, .prose ol { padding-left: 1.25rem; }
         .prose ul > li, .prose ol > li { margin-top: 0.5rem; margin-bottom: 0.5rem; }
-    </style>
-</head>
-<body class="bg-gray-50">
+        .prose ul > li::marker { color: #111827; }
+    </style></head><body class="bg-gray-50">
     <div id="app-wrapper">
         <header class="bg-white sticky top-0 z-40 border-b border-gray-200">
+            <!-- HEADER CONTENT (STATIC) -->
             <nav class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex items-center justify-between h-16">
                     <div class="flex items-center">
@@ -52,11 +51,13 @@
         <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div class="grid grid-cols-12 gap-8">
                 <aside id="sidebar" class="fixed top-0 left-0 h-full w-72 bg-white border-r border-gray-200 z-50 transform -translate-x-full transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0 lg:block lg:col-span-3 lg:h-auto lg:w-auto lg:bg-transparent lg:border-none lg:z-auto">
+                    <!-- FULL, STATIC LEFT SIDEBAR. DYNAMIC HIGHLIGHTS WILL BE ADDED HERE. -->
                     <div class="p-4 border-b border-gray-200 lg:hidden flex justify-between items-center">
                         <h2 class="font-bold text-lg">Menu</h2>
                         <button id="close-sidebar-button" class="p-2 rounded-md text-gray-500 hover:text-gray-700 hover:bg-gray-100"><svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg></button>
                     </div>
                     <nav class="sticky top-24 space-y-1 p-4 lg:p-0 lg:pr-4 overflow-y-auto h-[calc(100vh-64px)] lg:h-auto">
+                        <!-- Làm quen KiotViet Retail -->
                         <div>
                             <button class="main-nav-toggle w-full flex items-center justify-between px-3 py-2 text-left">
                                 <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Làm quen KiotViet Retail</h3>
@@ -73,12 +74,13 @@
                                 <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/lam-quen/bao-cao" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-chart-pie w-5 text-center mr-3 text-gray-500"></i>Bước 6: Báo cáo</a>
                             </div>
                         </div>
+                        <!-- Tối ưu Vận hành -->
                         <div>
                             <button class="main-nav-toggle w-full flex items-center justify-between px-3 py-2 text-left mt-4">
                                 <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Tối ưu Vận hành</h3>
-                                <svg class="arrow-icon h-4 w-4 text-gray-500 open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                                <svg class="arrow-icon h-4 w-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
                             </button>
-                            <div class="submenu pl-3 open">
+                            <div class="submenu pl-3">
                                 <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/van-hanh/tong-quan" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-book-open w-5 text-center mr-3 text-gray-500"></i>Về các giải pháp tối ưu vận hành</a>
                                 <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/van-hanh/tim-san-pham" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-search w-5 text-center mr-3 text-gray-500"></i>Tìm sản phẩm</a>
                                 <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/van-hanh/ban-hang" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md active"><i class="fa-solid fa-cash-register w-5 text-center mr-3 text-gray-500"></i>Bán hàng</a>
@@ -87,7 +89,7 @@
                                 <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/van-hanh/thanh-toan" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-credit-card w-5 text-center mr-3 text-gray-500"></i>Thanh toán</a>
                                 <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/van-hanh/giao-van" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-truck w-5 text-center mr-3 text-gray-500"></i>Giao vận</a>
                                 <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/van-hanh/hoa-don-dien-tu" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-receipt w-5 text-center mr-3 text-gray-500"></i>Hóa đơn điện tử</a>
-                                <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/van-hanh/thiet-bi-phan-cung" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-desktop w-5 text-center mr-3 text-gray-500"></i>Thiết bị phần cứng</a>
+                                <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/van-hanh/thiet-bi-phan-cung" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-print w-5 text-center mr-3 text-gray-500"></i>Thiết bị phần cứng</a>
                                 <div>
                                     <button class="main-nav-toggle w-full flex items-center justify-between text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md px-3 py-2 text-left group">
                                         <span class="flex items-center"><i class="fa-solid fa-industry w-5 text-center mr-3 text-gray-500 group-hover:text-gray-700"></i>Chuyên ngành</span>
@@ -102,6 +104,7 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- Tối ưu Quản lý -->
                         <div>
                             <button class="main-nav-toggle w-full flex items-center justify-between px-3 py-2 text-left mt-4">
                                 <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Tối ưu Quản lý</h3>
@@ -148,6 +151,7 @@
                                 <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/quan-ly/ket-noi-api" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-plug w-5 text-center mr-3 text-gray-500"></i>Kết nối API</a>
                             </div>
                         </div>
+                        <!-- Thúc đẩy Doanh thu -->
                         <div>
                             <button class="main-nav-toggle w-full flex items-center justify-between px-3 py-2 text-left mt-4">
                                 <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Thúc đẩy Doanh thu</h3>
@@ -169,138 +173,147 @@
                     </nav>
                 </aside>
                 <main class="col-span-12 lg:col-span-6 bg-white border border-gray-200 rounded-lg p-8">
+                    <!-- BREADCRUMBS (DYNAMIC) -->
                     <div class="text-sm text-gray-500 mb-4">
                         <a href="#" class="hover:underline">Tối ưu Vận hành</a> &gt; <span class="text-gray-700">Bán hàng</span>
                     </div>
+                    <!-- TITLE (DYNAMIC) -->
                     <h1 class="text-3xl font-extrabold tracking-tight text-gray-900">
-                        Tổng Quan và Hướng Dẫn Sử Dụng Tính Năng Bán Hàng trên KiotViet
+                        Tính Năng Bán Hàng trên KiotViet (Ngành Retail)
                     </h1>
-                    <article class="prose max-w-none mt-8 text-gray-700">
+                    <!-- ARTICLE CONTENT (DYNAMIC) -->
+                    <article class="prose max-w-none mt-8 text-gray-900">
                         <section id="gioi-thieu-chung" class="scroll-mt-24">
                             <h3 class="text-xl font-bold text-gray-900 mt-10 mb-4">I. Giới thiệu chung</h3>
-                            <p>Tính năng Bán hàng trên KiotViet là giao diện cốt lõi, giúp người dùng thực hiện các giao dịch bán hàng trực tiếp với khách hàng, tạo mới hóa đơn một cách nhanh chóng và hiệu quả. Màn hình bán hàng của KiotViet được thiết kế hiện đại, tinh giản, mạch lạc và chuyên nghiệp, hỗ trợ đa dạng các chế độ bán hàng để phù hợp với nhu cầu kinh doanh khác nhau của từng cửa hàng.</p>
-                            <p class="mt-4"><strong>Lợi ích chính:</strong></p>
-                            <div class="flex items-start mt-4">
-                                <span class="flex-shrink-0 w-6 text-center"><i class="fa-solid fa-check-circle text-blue-500 mt-1"></i></span>
-                                <p><strong>Tiết kiệm thời gian:</strong> Thực hiện giao dịch bán hàng, thêm hàng hóa và thanh toán nhanh chóng, giúp giảm thiểu thời gian chờ đợi của khách hàng.</p>
-                            </div>
-                            <div class="flex items-start mt-4">
-                                <span class="flex-shrink-0 w-6 text-center"><i class="fa-solid fa-check-circle text-blue-500 mt-1"></i></span>
-                                <p><strong>Tăng tính chính xác:</strong> Hỗ trợ nhiều công cụ tìm kiếm, gợi ý sản phẩm và tự động tính toán, giảm thiểu sai sót trong quá trình bán hàng.</p>
-                            </div>
-                            <div class="flex items-start mt-4">
-                                <span class="flex-shrink-0 w-6 text-center"><i class="fa-solid fa-check-circle text-blue-500 mt-1"></i></span>
-                                <p><strong>Quản lý hiệu quả:</strong> Cung cấp các chế độ bán hàng linh hoạt, cho phép chủ cửa hàng tùy chỉnh theo quy trình vận hành và nhu cầu của từng loại hình kinh doanh.</p>
-                            </div>
-                            <div class="flex items-start mt-4">
-                                <span class="flex-shrink-0 w-6 text-center"><i class="fa-solid fa-check-circle text-blue-500 mt-1"></i></span>
-                                <p><strong>Nâng cao trải nghiệm khách hàng:</strong> Tích hợp các tùy chọn thanh toán đa dạng (bao gồm cả điểm tích lũy, đa tiền tệ) và khả năng in hóa đơn/phiếu giao hàng nhanh chóng.</p>
-                            </div>
-                            <p class="mt-4"><strong>Đối tượng phù hợp:</strong></p>
-                            <ul class="list-disc list-inside mt-2">
-                                <li><strong>Nhân viên bán hàng:</strong> Cần một công cụ nhanh chóng, dễ sử dụng để lên đơn hàng và thanh toán cho khách.</li>
-                                <li><strong>Quản lý cửa hàng:</strong> Cần theo dõi hiệu suất bán hàng, quản lý tồn kho và đảm bảo quy trình bán hàng diễn ra suôn sẻ.</li>
+                            <p>Tính năng Bán hàng trên KiotViet là giao diện cốt lõi, giúp bạn thực hiện các giao dịch bán hàng trực tiếp với khách, tạo mới hóa đơn một cách nhanh chóng và hiệu quả. Màn hình được thiết kế hiện đại, tinh giản và chuyên nghiệp, hỗ trợ đa dạng các chế độ bán hàng để phù hợp với nhu cầu kinh doanh của từng cửa hàng.</p>
+                            <p class="mt-4"><strong>Lợi ích nổi bật của tính năng:</strong></p>
+                            <ul>
+                                <li><strong>Tiết kiệm thời gian:</strong> Giúp nhân viên bán hàng thực hiện giao dịch, thêm hàng hóa và thanh toán nhanh chóng, giảm thiểu thời gian chờ đợi của khách.</li>
+                                <li><strong>Tăng tính chính xác:</strong> Hỗ trợ nhiều công cụ tìm kiếm, gợi ý sản phẩm và tự động tính toán, giúp nhân viên bán hàng giảm thiểu sai sót trong quá trình lên đơn.</li>
+                                <li><strong>Quản lý hiệu quả:</strong> Cho phép chủ cửa hàng và quản lý tùy chỉnh các chế độ bán hàng linh hoạt theo quy trình vận hành và nhu cầu của từng loại hình kinh doanh.</li>
+                                <li><strong>Nâng cao trải nghiệm khách hàng:</strong> Tích hợp các tùy chọn thanh toán đa dạng và khả năng in hóa đơn/phiếu giao hàng tức thì, mang lại sự chuyên nghiệp.</li>
                             </ul>
                         </section>
-                        <section id="cac-thao-tac-pho-bien" class="scroll-mt-24">
-                            <h3 class="text-xl font-bold text-gray-900 mt-10 mb-4">II. Các thao tác phổ biến</h3>
-                            <p>Dưới đây là hướng dẫn quy trình bán hàng cơ bản nhất mà một nhân viên thường thực hiện. Chúng ta sẽ cùng theo dõi qua ví dụ minh họa của chị Lan, chủ shop thời trang "Thanh Lịch".</p>
+
+                        <section id="huong-dan-cac-thao-tac-co-ban" class="scroll-mt-24">
+                            <h3 class="text-xl font-bold text-gray-900 mt-10 mb-4">II. Hướng Dẫn Các Thao Tác Cơ Bản</h3>
+                            <p>Luồng thao tác cơ bản bao gồm việc truy cập màn hình bán hàng, thiết lập phiên làm việc, sau đó thêm hàng hóa, nhập thông tin khách và hoàn tất thanh toán cho một hóa đơn.</p>
+
                             <div class="toc-item mt-6">
-                                <h4 id="dang-nhap-va-thiet-lap-ban-dau" class="text-lg font-bold text-gray-800 mb-3 scroll-mt-24">1. Đăng nhập và thiết lập ban đầu</h4>
-                                <p><strong>Tình huống:</strong> Trước khi bắt đầu ca làm việc, nhân viên của chị Lan cần truy cập màn hình bán hàng, chọn đúng chi nhánh và chế độ bán phù hợp cho khách tại quầy.</p>
-                                <p class="mt-4"><strong>Giải pháp của KiotViet:</strong></p>
-                                <ol class="list-decimal list-inside space-y-2 mt-2">
-                                    <li><strong>Đăng nhập vào màn hình Bán hàng:</strong> Nhân viên có thể truy cập màn hình Bán hàng ngay từ màn hình Đăng nhập, từ màn hình Quản lý, hoặc tạo nhanh hóa đơn mới bằng dấu + từ các màn hình giao dịch khác.</li>
-                                    <li><strong>Chọn chi nhánh bán hàng:</strong> Nếu cửa hàng có nhiều chi nhánh, nhân viên cần kích vào tên chi nhánh ở góc dưới bên phải màn hình để chọn đúng chi nhánh đang thực hiện giao dịch.</li>
-                                    <li><strong>Chọn chế độ bán hàng:</strong> KiotViet hỗ trợ 3 chế độ:
-                                        <ul class="list-disc list-inside ml-4 mt-2">
+                                <h4 id="dang-nhap-va-thiet-lap-phien" class="text-lg font-bold text-gray-800 mb-3 scroll-mt-24">1. Đăng nhập và thiết lập phiên bán hàng</h4>
+                                <p><em>Câu dẫn dắt: Trước khi bắt đầu bán hàng, bạn cần truy cập vào đúng màn hình chức năng, chọn chi nhánh và chế độ bán phù hợp cho từng loại giao dịch.</em></p>
+                                <p class="mt-4"><strong>Thao tác trên KiotViet:</strong></p>
+                                <ul>
+                                    <li>Bạn có thể truy cập màn hình Bán hàng ngay từ màn hình Đăng nhập, từ màn hình Quản lý, hoặc tạo nhanh hóa đơn mới bằng biểu tượng dấu "+" từ các màn hình giao dịch khác.</li>
+                                    <li>Nếu quản lý nhiều chi nhánh, bạn nhấn vào tên chi nhánh ở góc dưới bên phải màn hình để chọn đúng chi nhánh đang thực hiện giao dịch.</li>
+                                    <li>Chọn một trong các chế độ bán hàng phù hợp:
+                                        <ul>
                                             <li><strong>Bán nhanh:</strong> Dùng khi khách đã chọn sẵn sản phẩm và muốn thanh toán ngay.</li>
-                                            <li><strong>Bán thường:</strong> Dùng khi cần hiển thị hình ảnh sản phẩm để tư vấn và chọn hàng cho khách.</li>
-                                            <li><strong>Bán giao hàng:</strong> Dùng cho các đơn hàng cần giao tận nơi.</li>
+                                            <li><strong>Bán thường:</strong> Dùng khi cần hiển thị hình ảnh sản phẩm để tư vấn cho khách.</li>
+                                            <li><strong>Bán giao hàng:</strong> Dùng cho các đơn hàng cần giao đến địa chỉ của khách.</li>
                                         </ul>
-                                        Với khách mua tại quầy, nhân viên của chị Lan sẽ chọn chế độ <strong>Bán nhanh</strong>.
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="toc-item mt-6">
+                                <h4 id="tao-mot-hoa-don-ban-hang" class="text-lg font-bold text-gray-800 mb-3 scroll-mt-24">2. Tạo một hóa đơn bán hàng</h4>
+                                <p><em>Câu dẫn dắt: Đây là quy trình 3 bước để tạo một hóa đơn hoàn chỉnh cho khách mua tại quầy và thanh toán ngay.</em></p>
+                                <p class="mt-4"><strong>Thao tác trên KiotViet:</strong></p>
+                                <ol>
+                                    <li><strong>Thêm hàng hóa vào đơn:</strong>
+                                        <ul>
+                                            <li>Sử dụng ô tìm kiếm để tìm sản phẩm theo tên, mã hàng hoặc quét mã vạch.</li>
+                                            <li>Nhập số lượng cần bán. Nếu được cấp quyền, bạn có thể điều chỉnh trực tiếp giá bán trên dòng hàng hóa trong trường hợp cần giảm giá cho khách.</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Nhập thông tin khách hàng:</strong>
+                                        <ul>
+                                            <li>Bạn có thể tìm kiếm theo tên hoặc số điện thoại nếu là khách quen đã có thông tin.</li>
+                                            <li>Đối với khách hàng mới không cần lưu thông tin, bạn có thể bỏ trống mục này, hệ thống sẽ mặc định là "Khách lẻ".</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Thanh toán và hoàn thành:</strong>
+                                        <ul>
+                                            <li>Chọn phương thức thanh toán (ví dụ: Tiền mặt).</li>
+                                            <li>Nhấn nút Thanh toán (hoặc phím tắt F9). Giao dịch sẽ được ghi nhận, hệ thống tự động trừ tồn kho và in hóa đơn cho khách.</li>
+                                        </ul>
                                     </li>
                                 </ol>
                             </div>
-                            <div class="toc-item mt-6">
-                                <h4 id="tao-hoa-don-ban-hang-co-ban" class="text-lg font-bold text-gray-800 mb-3 scroll-mt-24">2. Tạo hóa đơn bán hàng cơ bản</h4>
-                                <p><strong>Tình huống:</strong> Một khách hàng vãng lai đến mua 2 chiếc "Váy hoa Vintage" và muốn thanh toán bằng tiền mặt ngay lập tức.</p>
-                                <p class="mt-4"><strong>Giải pháp của KiotViet:</strong> Quy trình tạo một hóa đơn nhanh chóng gồm 3 bước:</p>
-                                <ol class="list-decimal list-inside space-y-2 mt-2">
-                                    <li><strong>Bước 1: Thêm hàng hóa vào đơn</strong><br>Nhân viên tìm kiếm "Váy hoa Vintage" bằng tên hoặc mã vạch.<br>Sau đó, nhập số lượng là 2. Nếu khách hàng mặc cả, nhân viên có thể điều chỉnh lại giá bán trực tiếp trên dòng hàng hóa (nếu được cấp quyền).<br><em>Ví dụ: Khách hàng mặc cả một chiếc khăn lụa từ 100.000đ xuống còn 90.000đ, nhân viên có thể sửa trực tiếp giá bán trên hóa đơn.</em></li>
-                                    <li><strong>Bước 2: Nhập thông tin khách hàng</strong><br>Nhân viên có thể tìm kiếm và chọn thông tin nếu là khách quen, hoặc bỏ trống để mặc định là "Khách lẻ" cho khách hàng mới, không có nhu cầu lưu thông tin.<br><em>Ví dụ: Với khách hàng này, nhân viên để trống và hệ thống ghi nhận là "Khách lẻ".</em></li>
-                                    <li><strong>Bước 3: Thanh toán và hoàn thành</strong><br>Nhân viên chọn phương thức thanh toán là <strong>Tiền mặt</strong>.<br>Cuối cùng, nhân viên kích nút "Thanh toán" (hoặc nhấn phím F9). Hệ thống sẽ ghi nhận giao dịch, tự động trừ tồn kho và in hóa đơn cho khách.</li>
-                                </ol>
-                            </div>
                         </section>
-                        <section id="cac-tinh-nang-chuyen-sau-va-nghiep-vu-dac-thu" class="scroll-mt-24">
-                            <h3 class="text-xl font-bold text-gray-900 mt-10 mb-4">III. Các tính năng chuyên sâu và nghiệp vụ đặc thù</h3>
-                            <p>Bên cạnh quy trình cơ bản, màn hình bán hàng của KiotViet còn tích hợp nhiều tính năng nâng cao để xử lý các tình huống kinh doanh đa dạng.</p>
+
+                        <section id="cac-tinh-nang-nang-cao" class="scroll-mt-24">
+                            <h3 class="text-xl font-bold text-gray-900 mt-10 mb-4">III. Các Tính Năng Nâng Cao</h3>
+                            
                             <div class="toc-item mt-6">
-                                <h4 id="ap-dung-khuyen-mai-va-giam-gia" class="text-lg font-bold text-gray-800 mb-3 scroll-mt-24">1. Áp dụng khuyến mại và giảm giá</h4>
-                                <p><strong>Tình huống:</strong> Một khách hàng thân thiết mua 3 chiếc áo phông, đủ điều kiện hưởng chương trình "Mua 2 tặng 1" của cửa hàng.</p>
-                                <p class="mt-4"><strong>Giải pháp của KiotViet:</strong></p>
-                                <ol class="list-decimal list-inside space-y-2 mt-2">
-                                    <li>Khi nhân viên thêm đủ 3 chiếc áo phông vào đơn, biểu tượng "Hộp quà" sẽ tự động xuất hiện trên dòng hàng hóa.</li>
-                                    <li>Nhân viên chỉ cần kích vào biểu tượng đó và chọn chương trình khuyến mại "Mua 2 tặng 1" để hệ thống tự động áp dụng ưu đãi cho khách hàng.</li>
-                                </ol>
+                                <h4 id="ap-dung-khuyen-mai-va-giam-gia" class="text-lg font-bold text-gray-800 mb-3 scroll-mt-24">Áp dụng khuyến mại và giảm giá</h4>
+                                <p><em>Câu dẫn dắt: Khi đơn hàng của khách đủ điều kiện hưởng một chương trình khuyến mại đã được thiết lập sẵn, bạn có thể áp dụng ưu đãi một cách nhanh chóng.</em></p>
+                                <p class="mt-4"><strong>Các bước thực hiện:</strong></p>
+                                <ul>
+                                    <li>Khi bạn thêm đủ số lượng hoặc sản phẩm vào đơn hàng theo điều kiện của chương trình, biểu tượng "Hộp quà" sẽ tự động xuất hiện. Bạn chỉ cần nhấn vào biểu tượng đó và chọn chương trình khuyến mại tương ứng để hệ thống tự động áp dụng.</li>
+                                </ul>
                             </div>
+
                             <div class="toc-item mt-6">
-                                <h4 id="ban-hang-co-quan-ly-lo-han-su-dung" class="text-lg font-bold text-gray-800 mb-3 scroll-mt-24">2. Bán hàng có quản lý Lô – Hạn sử dụng</h4>
-                                <p><strong>Tình huống:</strong> Cửa hàng của chị Lan kinh doanh mỹ phẩm, cần ưu tiên bán các sản phẩm sắp hết hạn sử dụng trước để tránh tồn kho quá hạn.</p>
-                                <p class="mt-4"><strong>Giải pháp của KiotViet:</strong></p>
-                                <p>Khi nhân viên bán một sản phẩm được quản lý theo lô (ví dụ: kem dưỡng da), hệ thống sẽ tự động gợi ý xuất bán từ lô hàng có hạn sử dụng gần nhất theo nguyên tắc FEFO (First Expired, First Out), giúp chị Lan tối ưu việc quản lý hàng tồn kho.</p>
+                                <h4 id="ban-hang-co-quan-ly-lo-han-su-dung" class="text-lg font-bold text-gray-800 mb-3 scroll-mt-24">Bán hàng có quản lý Lô – Hạn sử dụng</h4>
+                                <p><em>Câu dẫn dắt: Đối với các mặt hàng cần quản lý theo lô và hạn sử dụng, hệ thống sẽ hỗ trợ bạn xuất bán sản phẩm một cách tối ưu.</em></p>
+                                <p class="mt-4"><strong>Các bước thực hiện:</strong></p>
+                                <ul>
+                                    <li>Khi bạn bán một sản phẩm được quản lý theo lô, hệ thống sẽ tự động gợi ý xuất bán từ lô hàng có hạn sử dụng gần nhất theo nguyên tắc FEFO (First Expired, First Out), giúp bạn hạn chế rủi ro tồn kho quá hạn.</li>
+                                </ul>
                             </div>
+
                             <div class="toc-item mt-6">
-                                <h4 id="xu-ly-don-hang-giao-tan-noi" class="text-lg font-bold text-gray-800 mb-3 scroll-mt-24">3. Xử lý đơn hàng giao tận nơi</h4>
-                                <p><strong>Tình huống:</strong> Một khách hàng mua một chiếc áo khoác qua điện thoại và muốn chị Lan giao hàng đến địa chỉ nhà.</p>
-                                <p class="mt-4"><strong>Giải pháp của KiotViet:</strong></p>
-                                <ol class="list-decimal list-inside space-y-2 mt-2">
-                                    <li>Nhân viên tạo hóa đơn như bình thường.</li>
-                                    <li>Đến bước thanh toán, nhân viên bật tùy chọn "Giao hàng".</li>
-                                    <li>Một cửa sổ sẽ hiện ra để nhập đầy đủ thông tin người nhận (tên, SĐT, địa chỉ) và lựa chọn đối tác vận chuyển (ví dụ: Giao hàng nhanh) đã được tích hợp sẵn với KiotViet.</li>
-                                    <li>Sau khi hoàn tất, đơn hàng sẽ được chuyển cho hãng vận chuyển để giao tới khách hàng.</li>
-                                </ol>
+                                <h4 id="xu-ly-don-hang-giao-tan-noi" class="text-lg font-bold text-gray-800 mb-3 scroll-mt-24">Xử lý đơn hàng giao tận nơi</h4>
+                                <p><em>Câu dẫn dắt: Để tạo đơn hàng cho khách có nhu cầu giao hàng tận nhà, bạn cần chuyển hóa đơn sang trạng thái giao hàng và điền các thông tin cần thiết.</em></p>
+                                <p class="mt-4"><strong>Các bước thực hiện:</strong></p>
+                                <ul>
+                                    <li>Sau khi tạo hóa đơn như bình thường, tại bước thanh toán, bạn bật tùy chọn "Giao hàng".</li>
+                                    <li>Một cửa sổ sẽ hiện ra để bạn nhập đầy đủ thông tin người nhận (tên, SĐT, địa chỉ) và lựa chọn đối tác vận chuyển đã được tích hợp sẵn.</li>
+                                    <li>Sau khi hoàn tất, đơn hàng sẽ được chuyển thông tin cho hãng vận chuyển để tiến hành giao hàng.</li>
+                                </ul>
                             </div>
+                            
                             <div class="toc-item mt-6">
-                                <h4 id="cac-tien-ich-quan-ly-khac" class="text-lg font-bold text-gray-800 mb-3 scroll-mt-24">4. Các tiện ích quản lý khác</h4>
-                                <p><strong>Tình huống:</strong> Trong quá trình bán hàng, nhân viên cần tra cứu nhanh tồn kho của một sản phẩm tại các chi nhánh khác, hoặc ghi chú lại yêu cầu đặc biệt của khách hàng.</p>
-                                <p class="mt-4"><strong>Giải pháp của KiotViet:</strong></p>
-                                <ul class="list-disc list-inside space-y-2 mt-2">
-                                    <li><strong>Tra cứu thông tin hàng hóa:</strong> Ngay trên dòng hàng hóa đang chọn, nhân viên có thể kích vào biểu tượng để xem chi tiết thông tin sản phẩm và lượng tồn kho tức thì.</li>
-                                    <li><strong>Nhập thông tin bổ sung:</strong> Nhân viên có thể dễ dàng thay đổi Người bán, chọn Kênh bán, thêm các khoản Thu khác (ví dụ: phí gói quà) hoặc điền Ghi chú cho đơn hàng (ví dụ: "Khách dặn không gọi điện trước khi giao").</li>
+                                <h4 id="cac-tien-ich-quan-ly-khac" class="text-lg font-bold text-gray-800 mb-3 scroll-mt-24">Các tiện ích quản lý khác</h4>
+                                <p><em>Câu dẫn dắt: Ngay trên màn hình bán hàng, bạn có thể thực hiện nhiều tác vụ quản lý bổ sung cho hóa đơn một cách linh hoạt.</em></p>
+                                <p class="mt-4"><strong>Các bước thực hiện:</strong></p>
+                                <ul>
+                                    <li><strong>Tra cứu thông tin hàng hóa:</strong> Nhấn vào biểu tượng chi tiết trên dòng hàng hóa để xem nhanh lượng tồn kho ở các chi nhánh khác.</li>
+                                    <li><strong>Nhập thông tin bổ sung:</strong> Bạn có thể thay đổi Người bán, chọn Kênh bán, thêm các khoản Thu khác (ví dụ: phí gói quà) hoặc điền Ghi chú cho đơn hàng.</li>
                                 </ul>
                             </div>
                         </section>
-                        <section id="thong-tin-lien-he-ho-tro" class="scroll-mt-24">
-                            <h3 class="text-xl font-bold text-gray-900 mt-10 mb-4">Thông tin liên hệ hỗ trợ</h3>
-                            <p>Nếu có bất kỳ thắc mắc nào trong quá trình sử dụng, đội ngũ KiotViet luôn sẵn sàng hỗ trợ bạn:</p>
-                            <ul class="list-disc list-inside mt-2">
+
+                        <section id="thong-tin-ho-tro" class="scroll-mt-24">
+                            <h3 class="text-xl font-bold text-gray-900 mt-10 mb-4">Thông Tin Hỗ Trợ</h3>
+                            <ul>
                                 <li><strong>Tổng đài tư vấn bán hàng:</strong> 1800 6162</li>
                                 <li><strong>Tổng đài hỗ trợ phần mềm:</strong> 1900 6522</li>
-                                <li><strong>Email:</strong> hotro@kiotviet.com</li>
+                                <li><strong>Email hỗ trợ:</strong> hotro@kiotviet.com</li>
                             </ul>
                         </section>
+
                     </article>
                 </main>
                 <aside class="hidden lg:block lg:col-span-3">
                     <nav id="toc-nav" class="sticky top-24">
                         <h3 class="font-semibold text-gray-900 mb-3">Trong bài viết này</h3>
+                        <!-- RIGHT SIDEBAR ToC (DYNAMIC) -->
                         <div class="space-y-1">
-                            <div><a href="#gioi-thieu-chung" class="toc-link toc-parent-link block border-l-4 border-transparent pl-4 py-1 text-sm text-gray-600 hover:text-blue-600 hover:border-gray-300">I.&nbsp;Giới thiệu chung</a></div>
-                            <div><a href="#cac-thao-tac-pho-bien" class="toc-link toc-parent-link block border-l-4 border-transparent pl-4 py-1 text-sm text-gray-600 hover:text-blue-600 hover:border-gray-300">II.&nbsp;Các thao tác phổ biến</a>
-                                <div class="pl-4 mt-1 space-y-1 toc-submenu">
-                                    <a href="#dang-nhap-va-thiet-lap-ban-dau" class="toc-link block border-l-4 border-transparent pl-4 py-1 text-sm text-gray-600 hover:text-blue-600 hover:border-gray-300">1.&nbsp;Đăng nhập và thiết lập ban đầu</a>
-                                    <a href="#tao-hoa-don-ban-hang-co-ban" class="toc-link block border-l-4 border-transparent pl-4 py-1 text-sm text-gray-600 hover:text-blue-600 hover:border-gray-300">2.&nbsp;Tạo hóa đơn bán hàng cơ bản</a>
-                                </div>
+                            <div><a href="#gioi-thieu-chung" class="toc-link toc-parent-link border-l-2 border-transparent pl-4 py-1 text-sm text-gray-600 hover:text-blue-600 hover:border-blue-600">I.&nbsp;Giới thiệu chung</a></div>
+                            <div><a href="#huong-dan-cac-thao-tac-co-ban" class="toc-link toc-parent-link border-l-2 border-transparent pl-4 py-1 text-sm text-gray-600 hover:text-blue-600 hover:border-blue-600">II.&nbsp;Hướng Dẫn Các Thao Tác Cơ Bản</a></div>
+                            <div class="toc-submenu space-y-1 pl-4">
+                                <a href="#dang-nhap-va-thiet-lap-phien" class="toc-link block border-l-2 border-transparent pl-4 py-1 text-sm text-gray-600 hover:text-blue-600 hover:border-blue-600">1.&nbsp;Đăng nhập và thiết lập phiên bán hàng</a>
+                                <a href="#tao-mot-hoa-don-ban-hang" class="toc-link block border-l-2 border-transparent pl-4 py-1 text-sm text-gray-600 hover:text-blue-600 hover:border-blue-600">2.&nbsp;Tạo một hóa đơn bán hàng</a>
                             </div>
-                            <div><a href="#cac-tinh-nang-chuyen-sau-va-nghiep-vu-dac-thu" class="toc-link toc-parent-link block border-l-4 border-transparent pl-4 py-1 text-sm text-gray-600 hover:text-blue-600 hover:border-gray-300">III.&nbsp;Các tính năng chuyên sâu và nghiệp vụ đặc thù</a>
-                                <div class="pl-4 mt-1 space-y-1 toc-submenu">
-                                    <a href="#ap-dung-khuyen-mai-va-giam-gia" class="toc-link block border-l-4 border-transparent pl-4 py-1 text-sm text-gray-600 hover:text-blue-600 hover:border-gray-300">1.&nbsp;Áp dụng khuyến mại và giảm giá</a>
-                                    <a href="#ban-hang-co-quan-ly-lo-han-su-dung" class="toc-link block border-l-4 border-transparent pl-4 py-1 text-sm text-gray-600 hover:text-blue-600 hover:border-gray-300">2.&nbsp;Bán hàng có quản lý Lô – Hạn sử dụng</a>
-                                    <a href="#xu-ly-don-hang-giao-tan-noi" class="toc-link block border-l-4 border-transparent pl-4 py-1 text-sm text-gray-600 hover:text-blue-600 hover:border-gray-300">3.&nbsp;Xử lý đơn hàng giao tận nơi</a>
-                                    <a href="#cac-tien-ich-quan-ly-khac" class="toc-link block border-l-4 border-transparent pl-4 py-1 text-sm text-gray-600 hover:text-blue-600 hover:border-gray-300">4.&nbsp;Các tiện ích quản lý khác</a>
-                                </div>
+                            <div><a href="#cac-tinh-nang-nang-cao" class="toc-link toc-parent-link border-l-2 border-transparent pl-4 py-1 text-sm text-gray-600 hover:text-blue-600 hover:border-blue-600">III.&nbsp;Các Tính Năng Nâng Cao</a></div>
+                            <div class="toc-submenu space-y-1 pl-4">
+                                <a href="#ap-dung-khuyen-mai-va-giam-gia" class="toc-link block border-l-2 border-transparent pl-4 py-1 text-sm text-gray-600 hover:text-blue-600 hover:border-blue-600">1.&nbsp;Áp dụng khuyến mại và giảm giá</a>
+                                <a href="#ban-hang-co-quan-ly-lo-han-su-dung" class="toc-link block border-l-2 border-transparent pl-4 py-1 text-sm text-gray-600 hover:text-blue-600 hover:border-blue-600">2.&nbsp;Bán hàng có quản lý Lô – Hạn sử dụng</a>
+                                <a href="#xu-ly-don-hang-giao-tan-noi" class="toc-link block border-l-2 border-transparent pl-4 py-1 text-sm text-gray-600 hover:text-blue-600 hover:border-blue-600">3.&nbsp;Xử lý đơn hàng giao tận nơi</a>
+                                <a href="#cac-tien-ich-quan-ly-khac" class="toc-link block border-l-2 border-transparent pl-4 py-1 text-sm text-gray-600 hover:text-blue-600 hover:border-blue-600">4.&nbsp;Các tiện ích quản lý khác</a>
                             </div>
                         </div>
                     </nav>
@@ -308,6 +321,7 @@
             </div>
         </div>
         <footer class="bg-white border-t border-gray-200 mt-12">
+            <!-- FOOTER CONTENT (STATIC) -->
             <div class="max-w-screen-2xl mx-auto py-6 px-4 sm:px-6 lg:px-8"><p class="text-center text-sm text-gray-500">&copy; 2025 KiotViet. All rights reserved.</p></div>
         </footer>
     </div>
@@ -399,6 +413,5 @@
                 scrollToTopBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
             }
         });
-    </script>
-</body>
-</html>
+    </script></body></html>
+
