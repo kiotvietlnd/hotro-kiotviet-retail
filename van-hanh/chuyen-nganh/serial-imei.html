@@ -1,12 +1,12 @@
 <!DOCTYPE html><html lang="vi"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tổng Quan và Hướng Dẫn Sử Dụng Tính Năng Quản lý hàng hóa theo Serial/IMEI trên KiotViet</title>
+    <title>Tính Năng Quản lý hàng hóa theo Serial/IMEI trên KiotViet (Ngành Retail)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" xintegrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #f9fafb; color: #111827; scroll-behavior: smooth; }
         .toc-link.active { color: #2563eb; border-left-color: #2563eb; font-weight: 600; }
@@ -16,12 +16,15 @@
         #sidebar .submenu.open { max-height: 1500px; }
         .arrow-icon { transition: transform 0.3s ease-in-out; }
         .arrow-icon.open { transform: rotate(90deg); }
-        /* Style for standard prose lists */
+        /* Style for standard prose lists to ensure bullet points are dots */
+        .prose ul { list-style-type: disc; }
         .prose ul, .prose ol { padding-left: 1.25rem; }
         .prose ul > li, .prose ol > li { margin-top: 0.5rem; margin-bottom: 0.5rem; }
+        .prose ul > li::marker { color: #111827; }
     </style></head><body class="bg-gray-50">
     <div id="app-wrapper">
         <header class="bg-white sticky top-0 z-40 border-b border-gray-200">
+            <!-- HEADER CONTENT (STATIC) -->
             <nav class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex items-center justify-between h-16">
                     <div class="flex items-center">
@@ -48,11 +51,13 @@
         <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div class="grid grid-cols-12 gap-8">
                 <aside id="sidebar" class="fixed top-0 left-0 h-full w-72 bg-white border-r border-gray-200 z-50 transform -translate-x-full transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0 lg:block lg:col-span-3 lg:h-auto lg:w-auto lg:bg-transparent lg:border-none lg:z-auto">
+                    <!-- FULL, STATIC LEFT SIDEBAR. DYNAMIC HIGHLIGHTS WILL BE ADDED HERE. -->
                     <div class="p-4 border-b border-gray-200 lg:hidden flex justify-between items-center">
                         <h2 class="font-bold text-lg">Menu</h2>
                         <button id="close-sidebar-button" class="p-2 rounded-md text-gray-500 hover:text-gray-700 hover:bg-gray-100"><svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg></button>
                     </div>
                     <nav class="sticky top-24 space-y-1 p-4 lg:p-0 lg:pr-4 overflow-y-auto h-[calc(100vh-64px)] lg:h-auto">
+                        <!-- Làm quen KiotViet Retail -->
                         <div>
                             <button class="main-nav-toggle w-full flex items-center justify-between px-3 py-2 text-left">
                                 <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Làm quen KiotViet Retail</h3>
@@ -60,6 +65,7 @@
                             </button>
                             <div class="submenu pl-3">
                                 <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/lam-quen/tong-quan" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-book-open w-5 text-center mr-3 text-gray-500"></i>Về 6 bước làm quen KiotViet Retail</a>
+                                <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/lam-quen/dang-ky-su-dung" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-user-plus w-5 text-center mr-3 text-gray-500"></i>Đăng ký sử dụng</a>
                                 <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/lam-quen/them-hang-hoa" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-plus-circle w-5 text-center mr-3 text-gray-500"></i>Bước 1: Thêm hàng hóa</a>
                                 <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/lam-quen/nhap-hang" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-dolly w-5 text-center mr-3 text-gray-500"></i>Bước 2: Nhập hàng</a>
                                 <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/lam-quen/ban-hang" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-cash-register w-5 text-center mr-3 text-gray-500"></i>Bước 3: Bán hàng</a>
@@ -68,6 +74,7 @@
                                 <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/lam-quen/bao-cao" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-chart-pie w-5 text-center mr-3 text-gray-500"></i>Bước 6: Báo cáo</a>
                             </div>
                         </div>
+                        <!-- Tối ưu Vận hành -->
                         <div>
                             <button class="main-nav-toggle w-full flex items-center justify-between px-3 py-2 text-left mt-4">
                                 <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Tối ưu Vận hành</h3>
@@ -82,6 +89,7 @@
                                 <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/van-hanh/thanh-toan" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-credit-card w-5 text-center mr-3 text-gray-500"></i>Thanh toán</a>
                                 <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/van-hanh/giao-van" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-truck w-5 text-center mr-3 text-gray-500"></i>Giao vận</a>
                                 <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/van-hanh/hoa-don-dien-tu" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-receipt w-5 text-center mr-3 text-gray-500"></i>Hóa đơn điện tử</a>
+                                <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/van-hanh/thiet-bi-phan-cung" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-print w-5 text-center mr-3 text-gray-500"></i>Thiết bị phần cứng</a>
                                 <div>
                                     <button class="main-nav-toggle w-full flex items-center justify-between text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md px-3 py-2 text-left group">
                                         <span class="flex items-center"><i class="fa-solid fa-industry w-5 text-center mr-3 text-gray-500 group-hover:text-gray-700"></i>Chuyên ngành</span>
@@ -96,19 +104,20 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- Tối ưu Quản lý -->
                         <div>
                             <button class="main-nav-toggle w-full flex items-center justify-between px-3 py-2 text-left mt-4">
                                 <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Tối ưu Quản lý</h3>
-                                <svg class="arrow-icon h-4 w-4 text-gray-500 open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                                <svg class="arrow-icon h-4 w-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
                             </button>
-                            <div class="submenu pl-3 open">
+                            <div class="submenu pl-3">
                                 <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/quan-ly/tong-quan" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-book-open w-5 text-center mr-3 text-gray-500"></i>Về các giải pháp tối ưu quản lý</a>
                                 <div>
                                     <button class="main-nav-toggle w-full flex items-center justify-between text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md px-3 py-2 text-left group">
                                         <span class="flex items-center"><i class="fa-solid fa-boxes-stacked w-5 text-center mr-3 text-gray-500 group-hover:text-gray-700"></i>Hàng hóa</span>
-                                        <svg class="arrow-icon h-4 w-4 text-gray-500 open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                                        <svg class="arrow-icon h-4 w-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
                                     </button>
-                                    <div class="submenu pl-6 open">
+                                    <div class="submenu pl-6">
                                         <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/quan-ly/hang-hoa/thuat-ngu" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md">Các thuật ngữ về hàng hóa</a>
                                         <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/quan-ly/hang-hoa/hang-hoa-thuong" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md">Hàng hóa thường</a>
                                         <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/quan-ly/hang-hoa/hang-dich-vu" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md">Hàng dịch vụ</a>
@@ -139,8 +148,10 @@
                                 <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/quan-ly/so-quy" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-book w-5 text-center mr-3 text-gray-500"></i>Sổ quỹ</a>
                                 <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/quan-ly/bao-cao" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-chart-pie w-5 text-center mr-3 text-gray-500"></i>Báo cáo</a>
                                 <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/quan-ly/thiet-lap" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-cog w-5 text-center mr-3 text-gray-500"></i>Thiết lập</a>
+                                <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/quan-ly/ket-noi-api" class="main-nav-link group flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-md"><i class="fa-solid fa-plug w-5 text-center mr-3 text-gray-500"></i>Kết nối API</a>
                             </div>
                         </div>
+                        <!-- Thúc đẩy Doanh thu -->
                         <div>
                             <button class="main-nav-toggle w-full flex items-center justify-between px-3 py-2 text-left mt-4">
                                 <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Thúc đẩy Doanh thu</h3>
@@ -162,161 +173,152 @@
                     </nav>
                 </aside>
                 <main class="col-span-12 lg:col-span-6 bg-white border border-gray-200 rounded-lg p-8">
+                    <!-- BREADCRUMBS (DYNAMIC) -->
                     <div class="text-sm text-gray-500 mb-4">
                         <a href="#" class="hover:underline">Tối ưu Quản lý</a> &gt; <a href="#" class="hover:underline">Hàng hóa</a> &gt; <span class="text-gray-700">Hàng Serial - IMEI</span>
                     </div>
+                    <!-- TITLE (DYNAMIC) -->
                     <h1 class="text-3xl font-extrabold tracking-tight text-gray-900">
-                        Tổng Quan và Hướng Dẫn Sử Dụng Tính Năng Quản lý hàng hóa theo Serial/IMEI trên KiotViet
+                        Tính Năng Quản lý hàng hóa theo Serial/IMEI trên KiotViet (Ngành Retail)
                     </h1>
-                    <article class="prose max-w-none mt-8 text-gray-700">
+                    <!-- ARTICLE CONTENT (DYNAMIC) -->
+                    <article class="prose max-w-none mt-8 text-gray-900">
                         <section id="gioi-thieu-chung" class="scroll-mt-24">
                             <h3 class="text-xl font-bold text-gray-900 mt-10 mb-4">I. Giới thiệu chung</h3>
-                            <p>KiotViet hiểu rằng các mặt hàng có giá trị cao hoặc cần theo dõi thông tin chi tiết từng đơn vị sản phẩm (như điện thoại, máy tính, thiết bị điện tử) đòi hỏi một phương pháp quản lý riêng biệt. Tính năng quản lý tồn kho theo Serial/IMEI ra đời để đáp ứng chính xác nhu cầu này, giúp theo dõi vòng đời của từng sản phẩm một cách chi tiết.</p>
-                            <p class="mt-4"><strong>Mục đích và giá trị của tính năng:</strong></p>
-                            <p>Tính năng này giúp các cửa hàng đảm bảo tính chính xác tuyệt đối trong việc theo dõi từng sản phẩm cụ thể từ khi nhập kho đến khi bán ra, hỗ trợ quy trình bảo hành, bảo trì và giảm thiểu thất thoát hàng hóa.</p>
-                            <p class="mt-4"><strong>Lợi ích chính:</strong></p>
-                            <div class="flex items-start mt-4"><span class="flex-shrink-0 w-6 text-center"><i class="fa-solid fa-check-circle text-blue-500 mt-1"></i></span><p><strong>Quản lý chi tiết:</strong> Theo dõi lịch sử giao dịch của mỗi mã Serial/IMEI riêng biệt.</p></div>
-                            <div class="flex items-start mt-4"><span class="flex-shrink-0 w-6 text-center"><i class="fa-solid fa-check-circle text-blue-500 mt-1"></i></span><p><strong>Tăng cường chính xác:</strong> Hạn chế nhầm lẫn giữa các sản phẩm tương tự, kiểm soát tồn kho chính xác đến từng đơn vị.</p></div>
-                            <div class="flex items-start mt-4"><span class="flex-shrink-0 w-6 text-center"><i class="fa-solid fa-check-circle text-blue-500 mt-1"></i></span><p><strong>Hỗ trợ dịch vụ hậu mãi:</strong> Dễ dàng tra cứu thông tin sản phẩm để phục vụ bảo hành, đổi trả một cách nhanh chóng.</p></div>
-                            <div class="flex items-start mt-4"><span class="flex-shrink-0 w-6 text-center"><i class="fa-solid fa-check-circle text-blue-500 mt-1"></i></span><p><strong>Giảm thiểu thất thoát:</strong> Nắm bắt chính xác sản phẩm nào đã bán, sản phẩm nào còn tồn, tránh mất mát.</p></div>
-                            <p class="mt-4"><strong>Đối tượng phù hợp:</strong></p>
-                            <p>Tính năng này đặc biệt hữu ích cho các ngành hàng kinh doanh sản phẩm có mã định danh duy nhất như:</p>
-                            <ul class="list-disc list-inside mt-2">
-                                <li>Cửa hàng kinh doanh điện thoại di động, máy tính, phụ kiện công nghệ.</li>
-                                <li>Cửa hàng điện tử – điện máy, thiết bị gia dụng.</li>
-                                <li>Doanh nghiệp kinh doanh máy móc, thiết bị công nghiệp.</li>
+                            <p>Tính năng quản lý tồn kho theo Serial/IMEI được thiết kế cho các mặt hàng có giá trị cao hoặc cần theo dõi thông tin chi tiết từng đơn vị sản phẩm (như điện thoại, máy tính, thiết bị điện tử). Tính năng này giúp bạn theo dõi vòng đời của từng sản phẩm, đảm bảo tính chính xác trong việc quản lý từ khi nhập kho đến khi bán ra, đồng thời hỗ trợ hiệu quả cho quy trình bảo hành và giảm thiểu thất thoát.</p>
+                            <p class="mt-4"><strong>Lợi ích nổi bật của tính năng:</strong></p>
+                            <ul>
+                                <li><strong>Giúp bạn quản lý chi tiết:</strong> Theo dõi lịch sử giao dịch của mỗi mã Serial/IMEI riêng biệt.</li>
+                                <li><strong>Tăng cường độ chính xác khi quản lý:</strong> Hạn chế nhầm lẫn giữa các sản phẩm tương tự, kiểm soát tồn kho chính xác đến từng đơn vị.</li>
+                                <li><strong>Hỗ trợ dịch vụ hậu mãi hiệu quả:</strong> Dễ dàng tra cứu thông tin sản phẩm để phục vụ bảo hành, đổi trả một cách nhanh chóng.</li>
+                                <li><strong>Giúp bạn giảm thiểu thất thoát:</strong> Nắm bắt chính xác sản phẩm nào đã bán, sản phẩm nào còn tồn, tránh mất mát.</li>
+                            </ul>
+                            <p>Tính năng này đặc biệt hữu ích cho các ngành hàng kinh doanh sản phẩm có mã định danh duy nhất như cửa hàng điện thoại, máy tính, điện máy, hoặc doanh nghiệp kinh doanh máy móc, thiết bị.</p>
+                        </section>
+                        <section id="huong-dan-cac-thao-tac-co-ban" class="scroll-mt-24">
+                            <h3 class="text-xl font-bold text-gray-900 mt-10 mb-4">II. Hướng Dẫn Các Thao Tác Cơ Bản</h3>
+                            <p>Luồng thao tác cơ bản bao gồm việc kích hoạt tính năng trong thiết lập, khai báo hàng hóa cần quản lý, nhập hàng kèm theo danh sách Serial/IMEI, bán hàng bằng cách quét mã và cuối cùng là kiểm kho để đối chiếu.</p>
+                            <div class="toc-item mt-6">
+                                <h4 id="kich-hoat-tinh-nang-quan-ly-theo-serialimei" class="text-lg font-bold text-gray-800 mb-3 scroll-mt-24">1. Kích hoạt tính năng quản lý theo Serial/IMEI</h4>
+                                <p>Để bắt đầu sử dụng, trước tiên bạn cần kích hoạt tính năng này trong phần thiết lập chung của cửa hàng.</p>
+                                <p class="mt-4"><strong>Thao tác trên KiotViet:</strong></p>
+                                <ul>
+                                    <li>Bạn truy cập vào mục <strong>Thiết lập -&gt; Thiết lập cửa hàng</strong>.</li>
+                                    <li>Tại khối "Thiết lập quản lý", bạn chọn tab <strong>Hàng hóa</strong> và bật tính năng <strong>Quản lý tồn kho theo Serial/IMEI</strong>.</li>
+                                </ul>
+                            </div>
+                            <div class="toc-item mt-6">
+                                <h4 id="them-moi-hang-hoa-quan-ly-theo-serialimei" class="text-lg font-bold text-gray-800 mb-3 scroll-mt-24">2. Thêm mới hàng hóa quản lý theo Serial/IMEI</h4>
+                                <p>Sau khi kích hoạt, bạn cần thiết lập cho từng sản phẩm cụ thể mà bạn muốn quản lý theo phương thức này.</p>
+                                <p class="mt-4"><strong>Thao tác trên KiotViet:</strong></p>
+                                <ul>
+                                    <li>Trên màn hình <strong>Hàng hóa -&gt; Danh mục</strong>, bạn nhấn <strong>+ Thêm mới</strong>.</li>
+                                    <li>Trong cửa sổ "Thêm hàng hóa", sau khi nhập thông tin cơ bản, bạn tích chọn vào ô "Quản lý theo Serial/IMEI".</li>
+                                    <li><strong>Lưu ý:</strong> Khi tùy chọn này được bật, ô "Tồn kho ban đầu" sẽ được ẩn đi vì tồn kho sẽ được tính tự động dựa trên số lượng mã IMEI bạn nhập vào ở các giao dịch sau. Nhấn <strong>Lưu</strong> để hoàn tất.</li>
+                                </ul>
+                            </div>
+                            <div class="toc-item mt-6">
+                                <h4 id="nhap-hang-va-khai-bao-serialimei" class="text-lg font-bold text-gray-800 mb-3 scroll-mt-24">3. Nhập hàng và khai báo Serial/IMEI</h4>
+                                <p>Khi nhập hàng về kho, bạn cần khai báo chính xác danh sách các mã Serial/IMEI tương ứng với sản phẩm.</p>
+                                <p class="mt-4"><strong>Thao tác trên KiotViet:</strong></p>
+                                <ul>
+                                    <li>Bạn vào <strong>Giao dịch -&gt; Nhập hàng</strong> và tạo một phiếu nhập mới.</li>
+                                    <li>Sau khi chọn sản phẩm, bạn nhập từng mã vào ô "Nhập số Serial/IMEI" (bằng cách nhập tay hoặc dùng máy quét mã vạch).</li>
+                                    <li>Số lượng hàng hóa trên phiếu nhập sẽ tự động cập nhật bằng với số lượng mã Serial/IMEI đã nhập. Bạn cũng có thể sử dụng tính năng nhập hàng loạt từ file Excel.</li>
+                                    <li>Nhấn <strong>Hoàn thành</strong> để ghi nhận phiếu nhập. Tồn kho của sản phẩm sẽ tăng lên tương ứng với số lượng mã mới.</li>
+                                </ul>
+                            </div>
+                            <div class="toc-item mt-6">
+                                <h4 id="ban-hang-va-chon-serialimei-cu-the" class="text-lg font-bold text-gray-800 mb-3 scroll-mt-24">4. Bán hàng và chọn Serial/IMEI cụ thể</h4>
+                                <p>Khi bán hàng, bạn cần xuất đúng sản phẩm với mã Serial/IMEI mà khách hàng đã chọn.</p>
+                                <p class="mt-4"><strong>Thao tác trên KiotViet:</strong></p>
+                                <ul>
+                                    <li>Trên màn hình <strong>Bán hàng</strong>, sau khi chọn sản phẩm, hệ thống sẽ hiển thị ô để bạn nhập hoặc quét mã Serial/IMEI.</li>
+                                    <li>Bạn sử dụng máy quét mã vạch để quét IMEI trên sản phẩm hoặc nhập thủ công. Hệ thống sẽ tự động gán đúng sản phẩm đó vào hóa đơn.</li>
+                                    <li>Tiến hành <strong>Thanh toán</strong> như bình thường.</li>
+                                </ul>
+                            </div>
+                            <div class="toc-item mt-6">
+                                <h4 id="kiem-kho-hang-hoa-theo-serialimei" class="text-lg font-bold text-gray-800 mb-3 scroll-mt-24">5. Kiểm kho hàng hóa theo Serial/IMEI</h4>
+                                <p>Để đảm bảo số liệu tồn kho trên hệ thống và thực tế luôn khớp nhau, bạn cần thực hiện kiểm kê chi tiết theo từng mã Serial/IMEI.</p>
+                                <p class="mt-4"><strong>Thao tác trên KiotViet:</strong></p>
+                                <ul>
+                                    <li>Bạn tạo một phiếu <strong>Kiểm kho</strong> mới và chọn sản phẩm cần kiểm.</li>
+                                    <li>Tiến hành quét mã IMEI của tất cả các sản phẩm đang có trong kho.</li>
+                                    <li>Hệ thống sẽ tự động đối chiếu và hiển thị rõ các mã bị chênh lệch (thừa hoặc thiếu), giúp bạn xác định nhanh chóng nếu có thất thoát.</li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section id="cac-tinh-nang-nang-cao" class="scroll-mt-24">
+                            <h3 class="text-xl font-bold text-gray-900 mt-10 mb-4">III. Các Tính Năng Nâng Cao</h3>
+                            <div class="toc-item mt-6">
+                                <h4 id="quan-ly-bao-hanh-bao-tri-theo-serialimei" class="text-lg font-bold text-gray-800 mb-3 scroll-mt-24">1. Quản lý bảo hành, bảo trì theo Serial/IMEI</h4>
+                                <p>Tính năng này hỗ trợ đắc lực cho việc tra cứu thông tin và quản lý dịch vụ hậu mãi. Khi bán hàng, hệ thống có thể tự động tạo phiếu bảo hành tương ứng với mỗi mã Serial/IMEI. Điều này cho phép bạn dễ dàng tìm kiếm phiếu bảo hành hoặc lịch sử sửa chữa chỉ bằng cách nhập mã IMEI của sản phẩm, đảm bảo thông tin luôn chính xác và minh bạch.</p>
+                            </div>
+                            <div class="toc-item mt-6">
+                                <h4 id="chuyen-hang-giua-cac-chi-nhanh-theo-serialimei" class="text-lg font-bold text-gray-800 mb-3 scroll-mt-24">2. Chuyển hàng giữa các chi nhánh theo Serial/IMEI</h4>
+                                <p>Bạn có thể kiểm soát chặt chẽ hàng hóa khi luân chuyển giữa các kho, chi nhánh.</p>
+                                <p class="mt-4"><strong>Các bước thực hiện:</strong></p>
+                                <ul>
+                                    <li>Khi tạo phiếu <strong>Chuyển hàng</strong>, bạn sẽ chọn các mã Serial/IMEI cụ thể cần chuyển.</li>
+                                    <li>Tại chi nhánh nhận, nhân viên xác nhận đã nhận đúng các mã IMEI đó để hoàn tất giao dịch.</li>
+                                </ul>
+                            </div>
+                            <div class="toc-item mt-6">
+                                <h4 id="xu-ly-tra-hangxuat-huy-theo-serialimei" class="text-lg font-bold text-gray-800 mb-3 scroll-mt-24">3. Xử lý Trả hàng/Xuất hủy theo Serial/IMEI</h4>
+                                <p>Các giao dịch trả hàng hoặc xuất hủy cũng được quản lý chi tiết đến từng mã định danh.</p>
+                                <p class="mt-4"><strong>Các bước thực hiện:</strong></p>
+                                <ul>
+                                    <li>Khi tạo phiếu <strong>Trả hàng</strong>, bạn có thể tìm kiếm hóa đơn gốc theo mã Serial/IMEI của sản phẩm.</li>
+                                    <li>Sau khi hoàn tất, hệ thống sẽ tự động cộng lại tồn kho cho đúng mã Serial/IMEI đó.</li>
+                                    <li>Tương tự, khi <strong>Xuất hủy</strong>, bạn cũng cần chọn mã Serial/IMEI cụ thể của sản phẩm bị hỏng.</li>
+                                </ul>
+                            </div>
+                            <div class="toc-item mt-6">
+                                <h4 id="in-thong-tin-serialimei-tren-hoa-don" class="text-lg font-bold text-gray-800 mb-3 scroll-mt-24">4. In thông tin Serial/IMEI trên hóa đơn</h4>
+                                <p>Để tăng tính chuyên nghiệp và minh bạch, bạn có thể tùy chỉnh để hiển thị thông tin Serial/IMEI trên các mẫu in.</p>
+                                <p class="mt-4"><strong>Các bước thực hiện:</strong></p>
+                                <ul>
+                                    <li>Trong phần <strong>Thiết lập -&gt; Quản lý mẫu in</strong>, bạn có thể chỉnh sửa các mẫu in (hóa đơn, phiếu xuất kho...).</li>
+                                    <li>Thêm thẻ <strong>{IMEI}</strong> vào vị trí mong muốn trên mẫu in.</li>
+                                    <li>Khi in, hệ thống sẽ tự động điền mã Serial/IMEI của sản phẩm tương ứng vào vị trí đó.</li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="scroll-mt-24">
+                            <h3 class="text-xl font-bold text-gray-900 mt-10 mb-4">Thông Tin Hỗ Trợ</h3>
+                            <ul>
+                                <li><strong>Tổng đài tư vấn bán hàng:</strong> 1800 6162</li>
+                                <li><strong>Tổng đài hỗ trợ phần mềm:</strong> 1900 6522</li>
+                                <li><strong>Email hỗ trợ:</strong> hotro@kiotviet.com</li>
                             </ul>
                         </section>
-                        <section id="cac-thao-tac-pho-bien" class="scroll-mt-24">
-                            <h3 class="text-xl font-bold text-gray-900 mt-10 mb-4">II. Các thao tác phổ biến</h3>
-                            <p>Dưới đây là hướng dẫn cho các nghiệp vụ cơ bản và thường gặp nhất. Để minh họa, chúng ta sẽ theo dõi anh Minh, chủ cửa hàng điện thoại "Minh Mobile".</p>
-                            <div class="toc-item mt-6">
-                                <h4 id="kich-hoat-tinh-nang" class="text-lg font-bold text-gray-800 mb-3 scroll-mt-24">1. Kích hoạt tính năng quản lý theo Serial/IMEI</h4>
-                                <p><strong>Tình huống:</strong> Anh Minh muốn bắt đầu quản lý tất cả các sản phẩm điện thoại của mình theo số IMEI để theo dõi chính xác từng máy bán ra và tồn kho.</p>
-                                <p class="mt-4"><strong>Giải pháp của KiotViet:</strong></p>
-                                <ol class="list-decimal list-inside mt-2 space-y-2">
-                                    <li>Anh Minh truy cập vào mục Thiết lập -> Thiết lập cửa hàng.</li>
-                                    <li>Tại khối "Thiết lập quản lý", anh chọn tab Hàng hóa và bật tính năng Quản lý tồn kho theo Serial/IMEI.</li>
-                                </ol>
-                            </div>
-                            <div class="toc-item mt-6">
-                                <h4 id="them-moi-hang-hoa" class="text-lg font-bold text-gray-800 mb-3 scroll-mt-24">2. Thêm mới hàng hóa quản lý theo Serial/IMEI</h4>
-                                <p><strong>Tình huống:</strong> Anh Minh vừa nhập về một mẫu điện thoại mới là "Galaxy S25" và cần thêm sản phẩm này vào hệ thống với thiết lập quản lý theo IMEI.</p>
-                                <p class="mt-4"><strong>Giải pháp của KiotViet:</strong></p>
-                                <ol class="list-decimal list-inside mt-2 space-y-2">
-                                    <li>Trên màn hình Hàng hóa -> Danh mục, anh Minh nhấn + Thêm mới.</li>
-                                    <li>Trong cửa sổ "Thêm hàng hóa", anh nhập các thông tin cơ bản của sản phẩm và quan trọng nhất là tích chọn vào ô "Quản lý theo Serial/IMEI".</li>
-                                    <li>Sau khi tích chọn, ô "Tồn kho ban đầu" sẽ được ẩn đi, vì tồn kho sẽ được tính tự động dựa trên số lượng mã IMEI được nhập vào. Anh nhấn Lưu để hoàn tất.</li>
-                                </ol>
-                            </div>
-                            <div class="toc-item mt-6">
-                                <h4 id="nhap-hang-va-khai-bao" class="text-lg font-bold text-gray-800 mb-3 scroll-mt-24">3. Nhập hàng và khai báo Serial/IMEI</h4>
-                                <p><strong>Tình huống:</strong> Anh Minh nhận một lô hàng gồm 10 chiếc "Galaxy S25" từ nhà phân phối, mỗi chiếc có một số IMEI riêng. Anh cần nhập chính xác 10 mã IMEI này vào kho.</p>
-                                <p class="mt-4"><strong>Giải pháp của KiotViet:</strong></p>
-                                <ol class="list-decimal list-inside mt-2 space-y-2">
-                                    <li>Anh Minh vào Giao dịch -> Nhập hàng và tạo một phiếu nhập mới.</li>
-                                    <li>Sau khi chọn sản phẩm "Galaxy S25", anh nhập từng mã IMEI vào ô "Nhập số Serial/IMEI" (có thể nhập tay hoặc dùng máy quét mã vạch). Mỗi mã nhập xong sẽ hiển thị trong một ô riêng biệt.</li>
-                                    <li>Số lượng hàng hóa trên phiếu nhập sẽ tự động cập nhật bằng với số lượng mã IMEI đã nhập. Anh cũng có thể nhập hàng loạt từ file Excel để tiết kiệm thời gian.</li>
-                                    <li>Anh nhấn Hoàn thành để ghi nhận phiếu nhập. Tồn kho của sản phẩm sẽ tăng thêm 10 đơn vị, tương ứng với 10 mã IMEI mới.</li>
-                                </ol>
-                            </div>
-                            <div class="toc-item mt-6">
-                                <h4 id="ban-hang-va-chon-imei" class="text-lg font-bold text-gray-800 mb-3 scroll-mt-24">4. Bán hàng và chọn Serial/IMEI cụ thể</h4>
-                                <p><strong>Tình huống:</strong> Một khách hàng đến cửa hàng "Minh Mobile" và quyết định mua một chiếc "Galaxy S25". Nhân viên cần xuất bán đúng chiếc điện thoại với mã IMEI mà khách đã chọn.</p>
-                                <p class="mt-4"><strong>Giải pháp của KiotViet:</strong></p>
-                                <ol class="list-decimal list-inside mt-2 space-y-2">
-                                    <li>Trên màn hình Bán hàng, sau khi chọn sản phẩm "Galaxy S25", hệ thống sẽ hiển thị ô để nhập hoặc quét mã Serial/IMEI.</li>
-                                    <li>Nhân viên chỉ cần dùng máy quét mã vạch để quét IMEI trên hộp sản phẩm, hoặc nhập thủ công. Hệ thống sẽ tự động gán đúng sản phẩm đó vào hóa đơn để tiến hành thanh toán.</li>
-                                </ol>
-                            </div>
-                            <div class="toc-item mt-6">
-                                <h4 id="kiem-kho-theo-imei" class="text-lg font-bold text-gray-800 mb-3 scroll-mt-24">5. Kiểm kho hàng hóa theo Serial/IMEI</h4>
-                                <p><strong>Tình huống:</strong> Cuối tháng, anh Minh muốn thực hiện kiểm kê để đảm bảo số lượng điện thoại "Galaxy S25" trên hệ thống khớp với số lượng thực tế tại cửa hàng, kiểm tra chi tiết theo từng IMEI.</p>
-                                <p class="mt-4"><strong>Giải pháp của KiotViet:</strong></p>
-                                <ol class="list-decimal list-inside mt-2 space-y-2">
-                                    <li>Anh Minh tạo một phiếu kiểm kho mới và chọn sản phẩm "Galaxy S25".</li>
-                                    <li>Anh tiến hành quét mã IMEI của tất cả các sản phẩm "Galaxy S25" đang có trong kho.</li>
-                                    <li>Hệ thống sẽ tự động đối chiếu giữa danh sách IMEI thực tế vừa quét với danh sách IMEI đang được ghi nhận tồn kho trên phần mềm, và hiển thị rõ các mã bị chênh lệch (thừa hoặc thiếu), giúp anh Minh xác định nhanh chóng nếu có thất thoát.</li>
-                                </ol>
-                            </div>
-                        </section>
-                        <section id="cac-tinh-nang-chuyen-sau" class="scroll-mt-24">
-                            <h3 class="text-xl font-bold text-gray-900 mt-10 mb-4">III. Các tính năng chuyên sâu</h3>
-                            <div class="toc-item mt-6">
-                                <h4 id="quan-ly-bao-hanh" class="text-lg font-bold text-gray-800 mb-3 scroll-mt-24">1. Quản lý bảo hành, bảo trì theo Serial/IMEI</h4>
-                                <p><strong>Tình huống:</strong> Một khách hàng mang chiếc "Galaxy S25" đã mua trước đó đến cửa hàng để bảo hành. Anh Minh cần tra cứu nhanh lịch sử mua hàng và thông tin bảo hành của chính xác chiếc máy này.</p>
-                                <p class="mt-4"><strong>Giải pháp của KiotViet:</strong></p>
-                                <p>Khi bán hàng, hệ thống tự động tạo một phiếu bảo hành tương ứng với mỗi mã IMEI bán ra. Anh Minh có thể dễ dàng tìm kiếm phiếu bảo hành hoặc lịch sử sửa chữa chỉ bằng cách nhập mã IMEI của sản phẩm. Điều này đảm bảo thông tin bảo hành luôn chính xác và minh bạch.</p>
-                            </div>
-                            <div class="toc-item mt-6">
-                                <h4 id="chuyen-hang-giua-chi-nhanh" class="text-lg font-bold text-gray-800 mb-3 scroll-mt-24">2. Chuyển hàng giữa các chi nhánh</h4>
-                                <p><strong>Tình huống:</strong> Chi nhánh chính của "Minh Mobile" cần chuyển 2 chiếc "Galaxy S25" cụ thể sang chi nhánh phụ đang thiếu hàng.</p>
-                                <p class="mt-4"><strong>Giải pháp của KiotViet:</strong></p>
-                                <p>Khi tạo phiếu chuyển hàng, anh Minh sẽ chọn các mã IMEI cụ thể cần chuyển. Tại chi nhánh nhận, nhân viên chỉ cần xác nhận đã nhận đúng các mã IMEI đó. Quá trình này giúp kiểm soát chặt chẽ hàng hóa khi luân chuyển giữa các kho.</p>
-                            </div>
-                            <div class="toc-item mt-6">
-                                <h4 id="xu-ly-tra-hang-xuat-huy" class="text-lg font-bold text-gray-800 mb-3 scroll-mt-24">3. Xử lý Trả hàng/Xuất hủy theo Serial/IMEI</h4>
-                                <p><strong>Tình huống:</strong> Một khách hàng muốn trả lại chiếc điện thoại đã mua do lỗi từ nhà sản xuất. Anh Minh cần ghi nhận việc trả hàng và nhập lại đúng mã IMEI đó vào kho.</p>
-                                <p class="mt-4"><strong>Giải pháp của KiotViet:</strong></p>
-                                <p>Khi tạo phiếu trả hàng, anh Minh có thể tìm kiếm hóa đơn gốc theo mã IMEI của sản phẩm. Sau khi hoàn tất, hệ thống sẽ tự động cộng lại tồn kho cho đúng mã IMEI đó. Tương tự, khi xuất hủy, anh cũng cần chọn mã IMEI cụ thể của sản phẩm bị hỏng.</p>
-                            </div>
-                            <div class="toc-item mt-6">
-                                <h4 id="in-thong-tin-imei" class="text-lg font-bold text-gray-800 mb-3 scroll-mt-24">4. In thông tin Serial/IMEI trên hóa đơn</h4>
-                                <p><strong>Tình huống:</strong> Để tăng tính chuyên nghiệp và minh bạch, anh Minh muốn hóa đơn bán hàng và phiếu bảo hành in ra phải có rõ số IMEI của sản phẩm khách đã mua.</p>
-                                <p class="mt-4"><strong>Giải pháp của KiotViet:</strong></p>
-                                <p>Trong phần Thiết lập -> Quản lý mẫu in, anh Minh có thể chỉnh sửa các mẫu in (hóa đơn, phiếu xuất kho...) và thêm thẻ {IMEI} vào vị trí mong muốn. Khi in, hệ thống sẽ tự động điền mã IMEI của sản phẩm tương ứng vào vị trí đó.</p>
-                            </div>
-                        </section>
-                        <section id="thong-tin-lien-he-ho-tro" class="scroll-mt-24">
-                            <h3 class="text-xl font-bold text-gray-900 mt-10 mb-4">Thông tin liên hệ hỗ trợ</h3>
-                            <p>Tổng đài tư vấn bán hàng: 1800 6162</p>
-                            <p>Tổng đài hỗ trợ phần mềm: 1900 6522</p>
-                            <p>Email: hotro@kiotviet.com</p>
-                        </section>
                     </article>
                 </main>
                 <aside class="hidden lg:block lg:col-span-3">
                     <nav id="toc-nav" class="sticky top-24">
                         <h3 class="font-semibold text-gray-900 mb-3">Trong bài viết này</h3>
+                        <!-- RIGHT SIDEBAR ToC (DYNAMIC) -->
                         <div class="space-y-1">
-                            <div><a href="#gioi-thieu-chung" class="toc-link toc-parent-link block border-l-2 border-transparent py-1 pl-4 text-sm text-gray-600 hover:text-blue-600 hover:border-blue-600">I.&nbsp;Giới thiệu chung</a></div>
-                            <div><a href="#cac-thao-tac-pho-bien" class="toc-link toc-parent-link block border-l-2 border-transparent py-1 pl-4 text-sm text-gray-600 hover:text-blue-600 hover:border-blue-600">II.&nbsp;Các thao tác phổ biến</a></div>
-                            <div class="toc-submenu ml-4 space-y-1 border-l border-gray-200">
-                                <a href="#kich-hoat-tinh-nang" class="toc-link block border-l-2 border-transparent py-1 pl-4 text-sm text-gray-600 hover:text-blue-600 hover:border-blue-600">1.&nbsp;Kích hoạt tính năng quản lý theo Serial/IMEI</a>
-                                <a href="#them-moi-hang-hoa" class="toc-link block border-l-2 border-transparent py-1 pl-4 text-sm text-gray-600 hover:text-blue-600 hover:border-blue-600">2.&nbsp;Thêm mới hàng hóa quản lý theo Serial/IMEI</a>
-                                <a href="#nhap-hang-va-khai-bao" class="toc-link block border-l-2 border-transparent py-1 pl-4 text-sm text-gray-600 hover:text-blue-600 hover:border-blue-600">3.&nbsp;Nhập hàng và khai báo Serial/IMEI</a>
-                                <a href="#ban-hang-va-chon-imei" class="toc-link block border-l-2 border-transparent py-1 pl-4 text-sm text-gray-600 hover:text-blue-600 hover:border-blue-600">4.&nbsp;Bán hàng và chọn Serial/IMEI cụ thể</a>
-                                <a href="#kiem-kho-theo-imei" class="toc-link block border-l-2 border-transparent py-1 pl-4 text-sm text-gray-600 hover:text-blue-600 hover:border-blue-600">5.&nbsp;Kiểm kho hàng hóa theo Serial/IMEI</a>
+                            <div><a href="#gioi-thieu-chung" class="toc-link toc-parent-link block border-l-2 border-transparent pl-4 py-1 text-sm text-gray-600 hover:text-blue-600 hover:border-gray-300">I.&nbsp;Giới thiệu chung</a></div>
+                            <div>
+                                <a href="#huong-dan-cac-thao-tac-co-ban" class="toc-link toc-parent-link block border-l-2 border-transparent pl-4 py-1 text-sm text-gray-600 hover:text-blue-600 hover:border-gray-300">II.&nbsp;Hướng Dẫn Các Thao Tác Cơ Bản</a>
+                                <div class="space-y-1 mt-1 pl-4 toc-submenu">
+                                    <a href="#kich-hoat-tinh-nang-quan-ly-theo-serialimei" class="toc-link block border-l-2 border-transparent pl-4 py-1 text-sm text-gray-600 hover:text-blue-600 hover:border-gray-300">1.&nbsp;Kích hoạt tính năng quản lý theo Serial/IMEI</a>
+                                    <a href="#them-moi-hang-hoa-quan-ly-theo-serialimei" class="toc-link block border-l-2 border-transparent pl-4 py-1 text-sm text-gray-600 hover:text-blue-600 hover:border-gray-300">2.&nbsp;Thêm mới hàng hóa quản lý theo Serial/IMEI</a>
+                                    <a href="#nhap-hang-va-khai-bao-serialimei" class="toc-link block border-l-2 border-transparent pl-4 py-1 text-sm text-gray-600 hover:text-blue-600 hover:border-gray-300">3.&nbsp;Nhập hàng và khai báo Serial/IMEI</a>
+                                    <a href="#ban-hang-va-chon-serialimei-cu-the" class="toc-link block border-l-2 border-transparent pl-4 py-1 text-sm text-gray-600 hover:text-blue-600 hover:border-gray-300">4.&nbsp;Bán hàng và chọn Serial/IMEI cụ thể</a>
+                                    <a href="#kiem-kho-hang-hoa-theo-serialimei" class="toc-link block border-l-2 border-transparent pl-4 py-1 text-sm text-gray-600 hover:text-blue-600 hover:border-gray-300">5.&nbsp;Kiểm kho hàng hóa theo Serial/IMEI</a>
+                                </div>
                             </div>
-                            <div><a href="#cac-tinh-nang-chuyen-sau" class="toc-link toc-parent-link block border-l-2 border-transparent py-1 pl-4 text-sm text-gray-600 hover:text-blue-600 hover:border-blue-600">III.&nbsp;Các tính năng chuyên sâu</a></div>
-                             <div class="toc-submenu ml-4 space-y-1 border-l border-gray-200">
-                                <a href="#quan-ly-bao-hanh" class="toc-link block border-l-2 border-transparent py-1 pl-4 text-sm text-gray-600 hover:text-blue-600 hover:border-blue-600">1.&nbsp;Quản lý bảo hành, bảo trì theo Serial/IMEI</a>
-                                <a href="#chuyen-hang-giua-chi-nhanh" class="toc-link block border-l-2 border-transparent py-1 pl-4 text-sm text-gray-600 hover:text-blue-600 hover:border-blue-600">2.&nbsp;Chuyển hàng giữa các chi nhánh</a>
-                                <a href="#xu-ly-tra-hang-xuat-huy" class="toc-link block border-l-2 border-transparent py-1 pl-4 text-sm text-gray-600 hover:text-blue-600 hover:border-blue-600">3.&nbsp;Xử lý Trả hàng/Xuất hủy theo Serial/IMEI</a>
-                                <a href="#in-thong-tin-imei" class="toc-link block border-l-2 border-transparent py-1 pl-4 text-sm text-gray-600 hover:text-blue-600 hover:border-blue-600">4.&nbsp;In thông tin Serial/IMEI trên hóa đơn</a>
-                            </div>
-                        </section>
-                    </article>
-                </main>
-                <aside class="hidden lg:block lg:col-span-3">
-                    <nav id="toc-nav" class="sticky top-24">
-                        <h3 class="font-semibold text-gray-900 mb-3">Trong bài viết này</h3>
-                        <div class="space-y-1">
-                            <div><a href="#gioi-thieu-chung" class="toc-link toc-parent-link block border-l-2 border-transparent py-1 pl-4 text-sm text-gray-600 hover:text-blue-600 hover:border-blue-600">I.&nbsp;Giới thiệu chung</a></div>
-                            <div><a href="#cac-thao-tac-pho-bien" class="toc-link toc-parent-link block border-l-2 border-transparent py-1 pl-4 text-sm text-gray-600 hover:text-blue-600 hover:border-blue-600">II.&nbsp;Các thao tác phổ biến</a></div>
-                            <div class="toc-submenu ml-4 space-y-1 border-l border-gray-200">
-                                <a href="#kich-hoat-tinh-nang" class="toc-link block border-l-2 border-transparent py-1 pl-4 text-sm text-gray-600 hover:text-blue-600 hover:border-blue-600">1.&nbsp;Kích hoạt tính năng quản lý theo Serial/IMEI</a>
-                                <a href="#them-moi-hang-hoa" class="toc-link block border-l-2 border-transparent py-1 pl-4 text-sm text-gray-600 hover:text-blue-600 hover:border-blue-600">2.&nbsp;Thêm mới hàng hóa quản lý theo Serial/IMEI</a>
-                                <a href="#nhap-hang-va-khai-bao" class="toc-link block border-l-2 border-transparent py-1 pl-4 text-sm text-gray-600 hover:text-blue-600 hover:border-blue-600">3.&nbsp;Nhập hàng và khai báo Serial/IMEI</a>
-                                <a href="#ban-hang-va-chon-imei" class="toc-link block border-l-2 border-transparent py-1 pl-4 text-sm text-gray-600 hover:text-blue-600 hover:border-blue-600">4.&nbsp;Bán hàng và chọn Serial/IMEI cụ thể</a>
-                                <a href="#kiem-kho-theo-imei" class="toc-link block border-l-2 border-transparent py-1 pl-4 text-sm text-gray-600 hover:text-blue-600 hover:border-blue-600">5.&nbsp;Kiểm kho hàng hóa theo Serial/IMEI</a>
-                            </div>
-                            <div><a href="#cac-tinh-nang-chuyen-sau" class="toc-link toc-parent-link block border-l-2 border-transparent py-1 pl-4 text-sm text-gray-600 hover:text-blue-600 hover:border-blue-600">III.&nbsp;Các tính năng chuyên sâu</a></div>
-                            <div class="toc-submenu ml-4 space-y-1 border-l border-gray-200">
-                                <a href="#quan-ly-bao-hanh" class="toc-link block border-l-2 border-transparent py-1 pl-4 text-sm text-gray-600 hover:text-blue-600 hover:border-blue-600">1.&nbsp;Quản lý bảo hành, bảo trì theo Serial/IMEI</a>
-                                <a href="#chuyen-hang-giua-chi-nhanh" class="toc-link block border-l-2 border-transparent py-1 pl-4 text-sm text-gray-600 hover:text-blue-600 hover:border-blue-600">2.&nbsp;Chuyển hàng giữa các chi nhánh</a>
-                                <a href="#xu-ly-tra-hang-xuat-huy" class="toc-link block border-l-2 border-transparent py-1 pl-4 text-sm text-gray-600 hover:text-blue-600 hover:border-blue-600">3.&nbsp;Xử lý Trả hàng/Xuất hủy theo Serial/IMEI</a>
-                                <a href="#in-thong-tin-imei" class="toc-link block border-l-2 border-transparent py-1 pl-4 text-sm text-gray-600 hover:text-blue-600 hover:border-blue-600">4.&nbsp;In thông tin Serial/IMEI trên hóa đơn</a>
+                             <div>
+                                <a href="#cac-tinh-nang-nang-cao" class="toc-link toc-parent-link block border-l-2 border-transparent pl-4 py-1 text-sm text-gray-600 hover:text-blue-600 hover:border-gray-300">III.&nbsp;Các Tính Năng Nâng Cao</a>
+                                <div class="space-y-1 mt-1 pl-4 toc-submenu">
+                                    <a href="#quan-ly-bao-hanh-bao-tri-theo-serialimei" class="toc-link block border-l-2 border-transparent pl-4 py-1 text-sm text-gray-600 hover:text-blue-600 hover:border-gray-300">1.&nbsp;Quản lý bảo hành, bảo trì theo Serial/IMEI</a>
+                                    <a href="#chuyen-hang-giua-cac-chi-nhanh-theo-serialimei" class="toc-link block border-l-2 border-transparent pl-4 py-1 text-sm text-gray-600 hover:text-blue-600 hover:border-gray-300">2.&nbsp;Chuyển hàng giữa các chi nhánh theo Serial/IMEI</a>
+                                    <a href="#xu-ly-tra-hangxuat-huy-theo-serialimei" class="toc-link block border-l-2 border-transparent pl-4 py-1 text-sm text-gray-600 hover:text-blue-600 hover:border-gray-300">3.&nbsp;Xử lý Trả hàng/Xuất hủy theo Serial/IMEI</a>
+                                    <a href="#in-thong-tin-serialimei-tren-hoa-don" class="toc-link block border-l-2 border-transparent pl-4 py-1 text-sm text-gray-600 hover:text-blue-600 hover:border-gray-300">4. In thông tin Serial/IMEI trên hóa đơn</a>
+                                </div>
                             </div>
                         </div>
                     </nav>
@@ -324,6 +326,7 @@
             </div>
         </div>
         <footer class="bg-white border-t border-gray-200 mt-12">
+            <!-- FOOTER CONTENT (STATIC) -->
             <div class="max-w-screen-2xl mx-auto py-6 px-4 sm:px-6 lg:px-8"><p class="text-center text-sm text-gray-500">&copy; 2025 KiotViet. All rights reserved.</p></div>
         </footer>
     </div>
@@ -416,3 +419,4 @@
             }
         });
     </script></body></html>
+
