@@ -8,6 +8,9 @@
     <!-- Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Swiper.js for Slider -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -41,6 +44,22 @@
             width: 100%;
             height: 100%;
         }
+        
+        /* [START] CSS CHO ĐIỀU HƯỚNG DẠNG DẤU CHẤM */
+        .swiper-pagination {
+            position: static; /* Ghi đè position absolute mặc định để nó nằm dưới slider */
+        }
+        .swiper-pagination-bullet {
+            width: 12px;
+            height: 12px;
+            background-color: #D1D5DB; /* Màu xám nhạt cho dấu chấm không hoạt động */
+            opacity: 1; /* Đảm bảo nó luôn hiện rõ */
+            transition: background-color 0.3s ease;
+        }
+        .swiper-pagination-bullet-active {
+            background-color: #2563EB; /* Màu xanh dương của KiotViet cho dấu chấm đang hoạt động */
+        }
+        /* [END] CSS CHO ĐIỀU HƯỚNG DẠNG DẤU CHẤM */
     </style>
 </head>
 <body class="bg-gray-50">
@@ -93,7 +112,7 @@
         </section>
 
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-            <!-- Làm quen với KiotViet Retail -->
+            <!-- [START] SECTION VIDEO SLIDER (VERSION MỚI) -->
             <section id="getting-started" class="mb-20">
                 <div class="text-center max-w-3xl mx-auto">
                     <h2 class="text-3xl font-bold text-gray-800 mb-4">
@@ -101,119 +120,146 @@
                     </h2>
                     <p class="text-gray-600 mb-12">Bắt đầu hành trình chinh phục quản lý bán hàng chuyên nghiệp! Với 6 bài viết hướng dẫn trực quan, bạn sẽ nhanh chóng làm chủ KiotViet và vận hành cửa hàng trơn tru ngay từ ngày đầu tiên.</p>
                 </div>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Cards 1-6 -->
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover transition-all duration-300 flex flex-col">
-                        <div class="aspect-16-9">
-                            <a href="https://www.youtube.com/watch?v=h3tR69tnO_I" target="_blank" rel="noopener noreferrer" class="block w-full h-full play-icon-wrapper">
-                                <img src="https://img.youtube.com/vi/h3tR69tnO_I/hqdefault.jpg" alt="Thêm mới sản phẩm" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-                                    <div class="play-icon bg-white bg-opacity-80 rounded-full w-16 h-16 flex items-center justify-center transition-transform duration-300"><i class="fa-solid fa-play text-blue-600 text-2xl ml-1"></i></div>
+                
+                <div class="relative">
+                    <div class="swiper-container kiotviet-retail-slider overflow-hidden">
+                        <div class="swiper-wrapper pb-8">
+                            <!-- Card 1 -->
+                            <div class="swiper-slide h-auto">
+                                <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover transition-all duration-300 flex flex-col h-full border border-gray-200">
+                                    <div class="aspect-16-9">
+                                        <a href="https://www.youtube.com/watch?v=h3tR69tnO_I" target="_blank" rel="noopener noreferrer" class="block w-full h-full play-icon-wrapper">
+                                            <img src="https://img.youtube.com/vi/h3tR69tnO_I/hqdefault.jpg" alt="Thêm mới sản phẩm" class="w-full h-full object-cover">
+                                            <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                                                <div class="play-icon bg-white bg-opacity-80 rounded-full w-16 h-16 flex items-center justify-center transition-transform duration-300"><i class="fa-solid fa-play text-blue-600 text-2xl ml-1"></i></div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="p-5 flex-grow flex flex-col">
+                                        <span class="text-sm text-blue-600 font-semibold">Bước 1</span>
+                                        <h3 class="font-semibold text-gray-900 text-lg mt-1">Thêm mới Sản Phẩm</h3>
+                                        <div class="mt-4 flex-grow flex items-end gap-3">
+                                            <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/lam-quen/them-hang-hoa" target="_blank" class="w-full text-center text-sm bg-blue-600 text-white px-3 py-2 rounded-md font-semibold hover:bg-blue-700 transition-colors">Xem bài viết</a>
+                                            <a href="https://www.youtube.com/watch?v=h3tR69tnO_I" target="_blank" class="w-full text-center text-sm border border-gray-300 text-gray-700 px-3 py-2 rounded-md font-semibold hover:bg-gray-100 transition-colors">Xem video</a>
+                                        </div>
+                                    </div>
                                 </div>
-                            </a>
-                        </div>
-                        <div class="p-5 flex-grow flex flex-col">
-                            <span class="text-sm text-blue-600 font-semibold">Bước 1</span>
-                            <h3 class="font-semibold text-gray-900 text-lg mt-1">Thêm mới Sản Phẩm</h3>
-                            <div class="mt-4 flex-grow flex items-end gap-3">
-                                <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/lam-quen/them-hang-hoa" target="_blank" class="w-1/2 text-center text-sm bg-blue-600 text-white px-3 py-2 rounded-md font-semibold hover:bg-blue-700 transition-colors">Xem bài viết</a>
-                                <a href="https://www.youtube.com/watch?v=h3tR69tnO_I" target="_blank" class="w-1/2 text-center text-sm border border-gray-300 text-gray-700 px-3 py-2 rounded-md font-semibold hover:bg-gray-100 transition-colors">Xem video</a>
+                            </div>
+                            <!-- Card 2 -->
+                            <div class="swiper-slide h-auto">
+                                <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover transition-all duration-300 flex flex-col h-full border border-gray-200">
+                                    <div class="aspect-16-9">
+                                        <a href="https://www.youtube.com/watch?v=EE3Xj5M73PU" target="_blank" rel="noopener noreferrer" class="block w-full h-full play-icon-wrapper">
+                                            <img src="https://img.youtube.com/vi/EE3Xj5M73PU/hqdefault.jpg" alt="Tạo phiếu nhập hàng" class="w-full h-full object-cover">
+                                            <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                                                 <div class="play-icon bg-white bg-opacity-80 rounded-full w-16 h-16 flex items-center justify-center transition-transform duration-300"><i class="fa-solid fa-play text-blue-600 text-2xl ml-1"></i></div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="p-5 flex-grow flex flex-col">
+                                        <span class="text-sm text-blue-600 font-semibold">Bước 2</span>
+                                        <h3 class="font-semibold text-gray-900 text-lg mt-1">Tạo phiếu Nhập Hàng</h3>
+                                         <div class="mt-4 flex-grow flex items-end gap-3">
+                                            <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/lam-quen/nhap-hang" target="_blank" class="w-full text-center text-sm bg-blue-600 text-white px-3 py-2 rounded-md font-semibold hover:bg-blue-700 transition-colors">Xem bài viết</a>
+                                            <a href="https://www.youtube.com/watch?v=EE3Xj5M73PU" target="_blank" class="w-full text-center text-sm border border-gray-300 text-gray-700 px-3 py-2 rounded-md font-semibold hover:bg-gray-100 transition-colors">Xem video</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Card 3 -->
+                            <div class="swiper-slide h-auto">
+                                <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover transition-all duration-300 flex flex-col h-full border border-gray-200">
+                                    <div class="aspect-16-9">
+                                        <a href="https://www.youtube.com/watch?v=DFG3aAgY48E" target="_blank" rel="noopener noreferrer" class="block w-full h-full play-icon-wrapper">
+                                            <img src="https://img.youtube.com/vi/DFG3aAgY48E/hqdefault.jpg" alt="Tạo hóa đơn bán hàng" class="w-full h-full object-cover">
+                                            <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                                                 <div class="play-icon bg-white bg-opacity-80 rounded-full w-16 h-16 flex items-center justify-center transition-transform duration-300"><i class="fa-solid fa-play text-blue-600 text-2xl ml-1"></i></div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="p-5 flex-grow flex flex-col">
+                                        <span class="text-sm text-blue-600 font-semibold">Bước 3</span>
+                                        <h3 class="font-semibold text-gray-900 text-lg mt-1">Tạo hóa đơn Bán Hàng</h3>
+                                         <div class="mt-4 flex-grow flex items-end gap-3">
+                                            <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/lam-quen/ban-hang" target="_blank" class="w-full text-center text-sm bg-blue-600 text-white px-3 py-2 rounded-md font-semibold hover:bg-blue-700 transition-colors">Xem bài viết</a>
+                                            <a href="https://www.youtube.com/watch?v=DFG3aAgY48E" target="_blank" class="w-full text-center text-sm border border-gray-300 text-gray-700 px-3 py-2 rounded-md font-semibold hover:bg-gray-100 transition-colors">Xem video</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Card 4 -->
+                            <div class="swiper-slide h-auto">
+                                <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover transition-all duration-300 flex flex-col h-full border border-gray-200">
+                                    <div class="aspect-16-9">
+                                       <a href="https://www.youtube.com/watch?v=8J8-OnE-5XI" target="_blank" rel="noopener noreferrer" class="block w-full h-full play-icon-wrapper">
+                                            <img src="https://img.youtube.com/vi/8J8-OnE-5XI/hqdefault.jpg" alt="Tạo phiếu trả hàng" class="w-full h-full object-cover">
+                                            <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                                                 <div class="play-icon bg-white bg-opacity-80 rounded-full w-16 h-16 flex items-center justify-center transition-transform duration-300"><i class="fa-solid fa-play text-blue-600 text-2xl ml-1"></i></div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="p-5 flex-grow flex flex-col">
+                                        <span class="text-sm text-blue-600 font-semibold">Bước 4</span>
+                                        <h3 class="font-semibold text-gray-900 text-lg mt-1">Tạo phiếu Trả Hàng</h3>
+                                         <div class="mt-4 flex-grow flex items-end gap-3">
+                                            <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/lam-quen/tra-hang" target="_blank" class="w-full text-center text-sm bg-blue-600 text-white px-3 py-2 rounded-md font-semibold hover:bg-blue-700 transition-colors">Xem bài viết</a>
+                                            <a href="https://www.youtube.com/watch?v=8J8-OnE-5XI" target="_blank" class="w-full text-center text-sm border border-gray-300 text-gray-700 px-3 py-2 rounded-md font-semibold hover:bg-gray-100 transition-colors">Xem video</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Card 5 -->
+                            <div class="swiper-slide h-auto">
+                                <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover transition-all duration-300 flex flex-col h-full border border-gray-200">
+                                    <div class="aspect-16-9">
+                                        <a href="https://www.youtube.com/watch?v=dlkS_MzbfuY" target="_blank" rel="noopener noreferrer" class="block w-full h-full play-icon-wrapper">
+                                            <img src="https://img.youtube.com/vi/dlkS_MzbfuY/hqdefault.jpg" alt="Quản lý công nợ" class="w-full h-full object-cover">
+                                            <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                                                <div class="play-icon bg-white bg-opacity-80 rounded-full w-16 h-16 flex items-center justify-center transition-transform duration-300"><i class="fa-solid fa-play text-blue-600 text-2xl ml-1"></i></div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="p-5 flex-grow flex flex-col">
+                                        <span class="text-sm text-blue-600 font-semibold">Bước 5</span>
+                                        <h3 class="font-semibold text-gray-900 text-lg mt-1">Quản lý Công Nợ</h3>
+                                        <div class="mt-4 flex-grow flex items-end gap-3">
+                                            <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/lam-quen/cong-no" target="_blank" class="w-full text-center text-sm bg-blue-600 text-white px-3 py-2 rounded-md font-semibold hover:bg-blue-700 transition-colors">Xem bài viết</a>
+                                            <a href="https://www.youtube.com/watch?v=dlkS_MzbfuY" target="_blank" class="w-full text-center text-sm border border-gray-300 text-gray-700 px-3 py-2 rounded-md font-semibold hover:bg-gray-100 transition-colors">Xem video</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Card 6 -->
+                            <div class="swiper-slide h-auto">
+                               <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover transition-all duration-300 flex flex-col h-full border border-gray-200">
+                                   <div class="aspect-16-9">
+                                       <a href="https://www.youtube.com/watch?v=Br4bW1Hlkuw" target="_blank" rel="noopener noreferrer" class="block w-full h-full play-icon-wrapper">
+                                            <img src="https://img.youtube.com/vi/Br4bW1Hlkuw/hqdefault.jpg" alt="Báo cáo" class="w-full h-full object-cover">
+                                            <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                                                <div class="play-icon bg-white bg-opacity-80 rounded-full w-16 h-16 flex items-center justify-center transition-transform duration-300"><i class="fa-solid fa-play text-blue-600 text-2xl ml-1"></i></div>
+                                            </div>
+                                        </a>
+                                   </div>
+                                    <div class="p-5 flex-grow flex flex-col">
+                                        <span class="text-sm text-blue-600 font-semibold">Bước 6</span>
+                                        <h3 class="font-semibold text-gray-900 text-lg mt-1">Báo Cáo</h3>
+                                        <div class="mt-4 flex-grow flex items-end gap-3">
+                                            <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/lam-quen/bao-cao" target="_blank" class="w-full text-center text-sm bg-blue-600 text-white px-3 py-2 rounded-md font-semibold hover:bg-blue-700 transition-colors">Xem bài viết</a>
+                                            <a href="https://www.youtube.com/watch?v=Br4bW1Hlkuw" target="_blank" class="w-full text-center text-sm border border-gray-300 text-gray-700 px-3 py-2 rounded-md font-semibold hover:bg-gray-100 transition-colors">Xem video</a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover transition-all duration-300 flex flex-col">
-                        <div class="aspect-16-9">
-                            <a href="https://www.youtube.com/watch?v=EE3Xj5M73PU" target="_blank" rel="noopener noreferrer" class="block w-full h-full play-icon-wrapper">
-                                <img src="https://img.youtube.com/vi/EE3Xj5M73PU/hqdefault.jpg" alt="Tạo phiếu nhập hàng" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-                                     <div class="play-icon bg-white bg-opacity-80 rounded-full w-16 h-16 flex items-center justify-center transition-transform duration-300"><i class="fa-solid fa-play text-blue-600 text-2xl ml-1"></i></div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="p-5 flex-grow flex flex-col">
-                            <span class="text-sm text-blue-600 font-semibold">Bước 2</span>
-                            <h3 class="font-semibold text-gray-900 text-lg mt-1">Tạo phiếu Nhập Hàng</h3>
-                             <div class="mt-4 flex-grow flex items-end gap-3">
-                                <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/lam-quen/nhap-hang" target="_blank" class="w-1/2 text-center text-sm bg-blue-600 text-white px-3 py-2 rounded-md font-semibold hover:bg-blue-700 transition-colors">Xem bài viết</a>
-                                <a href="https://www.youtube.com/watch?v=EE3Xj5M73PU" target="_blank" class="w-1/2 text-center text-sm border border-gray-300 text-gray-700 px-3 py-2 rounded-md font-semibold hover:bg-gray-100 transition-colors">Xem video</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover transition-all duration-300 flex flex-col">
-                        <div class="aspect-16-9">
-                            <a href="https://www.youtube.com/watch?v=DFG3aAgY48E" target="_blank" rel="noopener noreferrer" class="block w-full h-full play-icon-wrapper">
-                                <img src="https://img.youtube.com/vi/DFG3aAgY48E/hqdefault.jpg" alt="Tạo hóa đơn bán hàng" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-                                     <div class="play-icon bg-white bg-opacity-80 rounded-full w-16 h-16 flex items-center justify-center transition-transform duration-300"><i class="fa-solid fa-play text-blue-600 text-2xl ml-1"></i></div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="p-5 flex-grow flex flex-col">
-                            <span class="text-sm text-blue-600 font-semibold">Bước 3</span>
-                            <h3 class="font-semibold text-gray-900 text-lg mt-1">Tạo hóa đơn Bán Hàng</h3>
-                             <div class="mt-4 flex-grow flex items-end gap-3">
-                                <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/lam-quen/ban-hang" target="_blank" class="w-1/2 text-center text-sm bg-blue-600 text-white px-3 py-2 rounded-md font-semibold hover:bg-blue-700 transition-colors">Xem bài viết</a>
-                                <a href="https://www.youtube.com/watch?v=DFG3aAgY48E" target="_blank" class="w-1/2 text-center text-sm border border-gray-300 text-gray-700 px-3 py-2 rounded-md font-semibold hover:bg-gray-100 transition-colors">Xem video</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover transition-all duration-300 flex flex-col">
-                        <div class="aspect-16-9">
-                           <a href="https://www.youtube.com/watch?v=8J8-OnE-5XI" target="_blank" rel="noopener noreferrer" class="block w-full h-full play-icon-wrapper">
-                                <img src="https://img.youtube.com/vi/8J8-OnE-5XI/hqdefault.jpg" alt="Tạo phiếu trả hàng" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-                                     <div class="play-icon bg-white bg-opacity-80 rounded-full w-16 h-16 flex items-center justify-center transition-transform duration-300"><i class="fa-solid fa-play text-blue-600 text-2xl ml-1"></i></div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="p-5 flex-grow flex flex-col">
-                            <span class="text-sm text-blue-600 font-semibold">Bước 4</span>
-                            <h3 class="font-semibold text-gray-900 text-lg mt-1">Tạo phiếu Trả Hàng</h3>
-                             <div class="mt-4 flex-grow flex items-end gap-3">
-                                <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/lam-quen/tra-hang" target="_blank" class="w-1/2 text-center text-sm bg-blue-600 text-white px-3 py-2 rounded-md font-semibold hover:bg-blue-700 transition-colors">Xem bài viết</a>
-                                <a href="https://www.youtube.com/watch?v=8J8-OnE-5XI" target="_blank" class="w-1/2 text-center text-sm border border-gray-300 text-gray-700 px-3 py-2 rounded-md font-semibold hover:bg-gray-100 transition-colors">Xem video</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover transition-all duration-300 flex flex-col">
-                        <div class="aspect-16-9">
-                            <a href="https://www.youtube.com/watch?v=dlkS_MzbfuY" target="_blank" rel="noopener noreferrer" class="block w-full h-full play-icon-wrapper">
-                                <img src="https://img.youtube.com/vi/dlkS_MzbfuY/hqdefault.jpg" alt="Quản lý công nợ" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-                                    <div class="play-icon bg-white bg-opacity-80 rounded-full w-16 h-16 flex items-center justify-center transition-transform duration-300"><i class="fa-solid fa-play text-blue-600 text-2xl ml-1"></i></div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="p-5 flex-grow flex flex-col">
-                            <span class="text-sm text-blue-600 font-semibold">Bước 5</span>
-                            <h3 class="font-semibold text-gray-900 text-lg mt-1">Quản lý Công Nợ</h3>
-                            <div class="mt-4 flex-grow flex items-end gap-3">
-                                <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/lam-quen/cong-no" target="_blank" class="w-1/2 text-center text-sm bg-blue-600 text-white px-3 py-2 rounded-md font-semibold hover:bg-blue-700 transition-colors">Xem bài viết</a>
-                                <a href="https://www.youtube.com/watch?v=dlkS_MzbfuY" target="_blank" class="w-1/2 text-center text-sm border border-gray-300 text-gray-700 px-3 py-2 rounded-md font-semibold hover:bg-gray-100 transition-colors">Xem video</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden card-hover transition-all duration-300 flex flex-col">
-                       <div class="aspect-16-9">
-                           <a href="https://www.youtube.com/watch?v=Br4bW1Hlkuw" target="_blank" rel="noopener noreferrer" class="block w-full h-full play-icon-wrapper">
-                                <img src="https://img.youtube.com/vi/Br4bW1Hlkuw/hqdefault.jpg" alt="Báo cáo" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-                                    <div class="play-icon bg-white bg-opacity-80 rounded-full w-16 h-16 flex items-center justify-center transition-transform duration-300"><i class="fa-solid fa-play text-blue-600 text-2xl ml-1"></i></div>
-                                </div>
-                            </a>
-                       </div>
-                        <div class="p-5 flex-grow flex flex-col">
-                            <span class="text-sm text-blue-600 font-semibold">Bước 6</span>
-                            <h3 class="font-semibold text-gray-900 text-lg mt-1">Báo Cáo</h3>
-                            <div class="mt-4 flex-grow flex items-end gap-3">
-                                <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/lam-quen/bao-cao" target="_blank" class="w-1/2 text-center text-sm bg-blue-600 text-white px-3 py-2 rounded-md font-semibold hover:bg-blue-700 transition-colors">Xem bài viết</a>
-                                <a href="https://www.youtube.com/watch?v=Br4bW1Hlkuw" target="_blank" class="w-1/2 text-center text-sm border border-gray-300 text-gray-700 px-3 py-2 rounded-md font-semibold hover:bg-gray-100 transition-colors">Xem video</a>
-                            </div>
-                        </div>
-                    </div>
+                    
+                    <!-- Điều hướng bằng dấu chấm (Pagination) -->
+                    <div class="swiper-pagination mt-8 text-center"></div>
                 </div>
             </section>
+            <!-- [END] SECTION VIDEO SLIDER -->
 
+            <!-- [START] NỘI DUNG ĐƯỢC KHÔI PHỤC -->
             <!-- Giải pháp toàn diện -->
             <section id="comprehensive-solutions" class="mb-20 bg-slate-50 p-8 rounded-xl">
                 <div class="text-center max-w-3xl mx-auto mb-12">
@@ -234,7 +280,6 @@
                              <li><a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/van-hanh/thanh-toan" class="flex items-center justify-between p-3 rounded-md hover:bg-slate-100 group"><span class="flex items-center"><i class="fa-solid fa-credit-card w-5 h-5 text-blue-500 mr-3 flex-shrink-0 text-center"></i><span>Thanh toán</span></span><i class="fa-solid fa-arrow-right text-gray-300 group-hover:text-blue-600 transition-colors"></i></a></li>
                              <li><a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/van-hanh/giao-van" class="flex items-center justify-between p-3 rounded-md hover:bg-slate-100 group"><span class="flex items-center"><i class="fa-solid fa-truck-fast w-5 h-5 text-blue-500 mr-3 flex-shrink-0 text-center"></i><span>Giao vận</span></span><i class="fa-solid fa-arrow-right text-gray-300 group-hover:text-blue-600 transition-colors"></i></a></li>
                              <li><a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/van-hanh/hoa-don-dien-tu" class="flex items-center justify-between p-3 rounded-md hover:bg-slate-100 group"><span class="flex items-center"><i class="fa-solid fa-file-invoice-dollar w-5 h-5 text-blue-500 mr-3 flex-shrink-0 text-center"></i><span>Hóa đơn điện tử</span></span><i class="fa-solid fa-arrow-right text-gray-300 group-hover:text-blue-600 transition-colors"></i></a></li>
-                             <!-- NEW ITEM ADDED HERE -->
                              <li><a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/van-hanh/thiet-bi-phan-cung" class="flex items-center justify-between p-3 rounded-md hover:bg-slate-100 group"><span class="flex items-center"><i class="fa-solid fa-desktop w-5 h-5 text-blue-500 mr-3 flex-shrink-0 text-center"></i><span>Thiết bị phần cứng</span></span><i class="fa-solid fa-arrow-right text-gray-300 group-hover:text-blue-600 transition-colors"></i></a></li>
                              <li><a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/van-hanh/chuyen-nganh/lo-hsd" class="flex items-center justify-between p-3 rounded-md hover:bg-slate-100 group"><span class="flex items-center"><i class="fa-solid fa-boxes-stacked w-5 h-5 text-blue-500 mr-3 flex-shrink-0 text-center"></i><span>Chuyên ngành</span></span><i class="fa-solid fa-arrow-right text-gray-300 group-hover:text-blue-600 transition-colors"></i></a></li>
                         </ul>
@@ -253,7 +298,6 @@
                            <li><a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/quan-ly/so-quy" class="flex items-center justify-between p-3 rounded-md hover:bg-slate-100 group"><span class="flex items-center"><i class="fa-solid fa-book w-5 h-5 text-blue-500 mr-3 flex-shrink-0 text-center"></i><span>Sổ quỹ</span></span><i class="fa-solid fa-arrow-right text-gray-300 group-hover:text-blue-600 transition-colors"></i></a></li>
                            <li><a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/quan-ly/bao-cao" class="flex items-center justify-between p-3 rounded-md hover:bg-slate-100 group"><span class="flex items-center"><i class="fa-solid fa-chart-column w-5 h-5 text-blue-500 mr-3 flex-shrink-0 text-center"></i><span>Báo cáo</span></span><i class="fa-solid fa-arrow-right text-gray-300 group-hover:text-blue-600 transition-colors"></i></a></li>
                            <li><a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/quan-ly/thiet-lap" class="flex items-center justify-between p-3 rounded-md hover:bg-slate-100 group"><span class="flex items-center"><i class="fa-solid fa-gear w-5 h-5 text-blue-500 mr-3 flex-shrink-0 text-center"></i><span>Thiết lập</span></span><i class="fa-solid fa-arrow-right text-gray-300 group-hover:text-blue-600 transition-colors"></i></a></li>
-                           <!-- NEW ITEM ADDED HERE -->
                            <li><a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/quan-ly/ket-noi-api" class="flex items-center justify-between p-3 rounded-md hover:bg-slate-100 group"><span class="flex items-center"><i class="fa-solid fa-plug w-5 h-5 text-blue-500 mr-3 flex-shrink-0 text-center"></i><span>Kết nối API</span></span><i class="fa-solid fa-arrow-right text-gray-300 group-hover:text-blue-600 transition-colors"></i></a></li>
                         </ul>
                     </div>
@@ -277,7 +321,6 @@
                 </div>
             </section>
             
-            <!-- [START] SECTION MOVED -->
             <!-- Phần cứng -->
             <section id="hardware" class="mb-20">
                 <div class="bg-white p-8 rounded-xl shadow-lg">
@@ -285,22 +328,30 @@
                         <h2 class="text-3xl font-bold text-gray-800 mb-4">Phần cứng KiotViet</h2>
                         <p class="text-gray-600">Hoàn thiện hệ sinh thái bán hàng chuyên nghiệp với trọn bộ thiết bị phần cứng chính hãng từ KiotViet, đảm bảo hoạt động ổn định và hiệu quả tối đa.</p>
                     </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                        <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/van-hanh/thiet-bi-phan-cung" target="_blank" class="block p-6 border border-gray-200 rounded-lg hover:shadow-lg hover:border-blue-500 transition-all text-center group card-hover">
-                            <img src="https://cdn-images.kiotviet.vn/kiotvietphancung/b8e2436722224ee891aa42544e04a9cd.png" alt="Máy in hóa đơn KV804" class="h-32 w-auto mx-auto mb-4 object-contain border-2 border-blue-100 rounded-lg p-2">
-                            <h4 class="font-semibold text-gray-800 group-hover:text-blue-600">Máy in hóa đơn KV804</h4>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+                        <a href="https://kiotviet.vn/thiet-bi-ban-hang/may-pos-ban-hang-cam-ung/" target="_blank" class="block p-3 border border-gray-200 rounded-lg text-center hover:shadow-md transition-shadow">
+                            <img src="https://cdn-kvweb.kiotviet.vn/kiotviet-website/wp-content/uploads/2023/06/D10.2-1.png" alt="Máy POS cảm ứng" class="h-28 w-auto mx-auto mb-2 object-contain">
+                            <h4 class="font-semibold text-gray-700 text-xs">Máy POS cảm ứng</h4>
                         </a>
-                        <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/van-hanh/thiet-bi-phan-cung" target="_blank" class="block p-6 border border-gray-200 rounded-lg hover:shadow-lg hover:border-blue-500 transition-all text-center group card-hover">
-                            <img src="https://cdn-images.kiotviet.vn/kiotvietphancung/c7cabfa7cc5a45d3b1d2cc8a7985c1f9.png" alt="Máy in mã vạch 365B" class="h-32 w-auto mx-auto mb-4 object-contain border-2 border-blue-100 rounded-lg p-2">
-                            <h4 class="font-semibold text-gray-800 group-hover:text-blue-600">Máy in mã vạch 365B</h4>
+                        <a href="https://kiotviet.vn/thiet-bi-ban-hang/may-in-hoa-don/" target="_blank" class="block p-3 border border-gray-200 rounded-lg text-center hover:shadow-md transition-shadow">
+                            <img src="https://cdn-kvweb.kiotviet.vn/kiotviet-website/wp-content/uploads/2023/07/may-in-804.png" alt="Máy in hóa đơn" class="h-28 w-auto mx-auto mb-2 object-contain">
+                            <h4 class="font-semibold text-gray-700 text-xs">Máy in hóa đơn</h4>
                         </a>
-                        <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/van-hanh/thiet-bi-phan-cung" target="_blank" class="block p-6 border border-gray-200 rounded-lg hover:shadow-lg hover:border-blue-500 transition-all text-center group card-hover">
-                            <img src="https://cdn-images.kiotviet.vn/kiotvietphancung/9f2de79dc9e84696a452a7fbb73fffec.png" alt="Máy quét mã vạch XL- 6500A" class="h-32 w-auto mx-auto mb-4 object-contain border-2 border-blue-100 rounded-lg p-2">
-                            <h4 class="font-semibold text-gray-800 group-hover:text-blue-600">Máy quét mã vạch XL-6500A</h4>
+                        <a href="https://kiotviet.vn/thiet-bi-ban-hang/may-in-ma-vach/" target="_blank" class="block p-3 border border-gray-200 rounded-lg text-center hover:shadow-md transition-shadow">
+                            <img src="https://cdn-kvweb.kiotviet.vn/kiotviet-website/wp-content/uploads/2023/07/may-in-365b.png" alt="Máy in mã vạch" class="h-28 w-auto mx-auto mb-2 object-contain">
+                            <h4 class="font-semibold text-gray-700 text-xs">Máy in mã vạch</h4>
                         </a>
-                        <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/van-hanh/thiet-bi-phan-cung" target="_blank" class="block p-6 border border-gray-200 rounded-lg hover:shadow-lg hover:border-blue-500 transition-all text-center group card-hover">
-                            <img src="https://cdn2-retail-images.kiotviet.vn/demodvkhphancung/a7ca0db665294b45937048f57761305a.png" alt="Máy quét mã vạch XL-2302" class="h-32 w-auto mx-auto mb-4 object-contain border-2 border-blue-100 rounded-lg p-2">
-                            <h4 class="font-semibold text-gray-800 group-hover:text-blue-600">Máy quét mã vạch XL-2302</h4>
+                        <a href="https://kiotviet.vn/thiet-bi-ban-hang/may-quet-ma-vach/" target="_blank" class="block p-3 border border-gray-200 rounded-lg text-center hover:shadow-md transition-shadow">
+                            <img src="https://cdn-kvweb.kiotviet.vn/kiotviet-website/wp-content/uploads/2022/06/may-quet-ma-vach-Kpos-Xl-6500png.png" alt="Máy quét mã vạch" class="h-28 w-auto mx-auto mb-2 object-contain">
+                            <h4 class="font-semibold text-gray-700 text-xs">Máy quét mã vạch</h4>
+                        </a>
+                        <a href="https://kiotviet.vn/thiet-bi-ban-hang/" target="_blank" class="block p-3 border border-gray-200 rounded-lg text-center hover:shadow-md transition-shadow">
+                            <img src="https://cdn-kvweb.kiotviet.vn/kiotviet-website/wp-content/uploads/2025/05/24071418/frguegv.jpg" alt="Màn hiển thị QR" class="h-28 w-auto mx-auto mb-2 object-contain">
+                            <h4 class="font-semibold text-gray-700 text-xs">Màn hiển thị QR</h4>
+                        </a>
+                        <a href="https://kiotviet.vn/thiet-bi-ban-hang/ngan-keo-dung-tien/" target="_blank" class="block p-3 border border-gray-200 rounded-lg text-center hover:shadow-md transition-shadow">
+                            <img src="https://cdn-kvweb.kiotviet.vn/kiotviet-website/wp-content/uploads/2024/08/22110832/unnamed-31.png" alt="Két tiền" class="h-28 w-auto mx-auto mb-2 object-contain">
+                            <h4 class="font-semibold text-gray-700 text-xs">Két tiền</h4>
                         </a>
                     </div>
                 </div>
@@ -357,10 +408,9 @@
                     </a>
                 </div>
             </section>
-            <!-- [END] SECTION MOVED -->
 
             <!-- FAQ Accordion by Industry -->
-            <section id="faq-by-industry">
+            <section id="faq-by-industry" class="mb-20">
                 <div class="text-center max-w-3xl mx-auto mb-12">
                     <h2 class="text-3xl font-bold text-gray-800 mb-4">Các câu hỏi thường gặp</h2>
                     <p class="text-gray-600">KiotViet có phù hợp với cửa hàng của bạn không? Cùng tìm hiểu những tính năng chuyên biệt được thiết kế riêng cho từng lĩnh vực kinh doanh.</p>
@@ -474,6 +524,7 @@
                     </div>
                 </div>
             </section>
+            <!-- [END] NỘI DUNG ĐƯỢC KHÔI PHỤC -->
         </div>
 
         <!-- Bottom Section -->
@@ -485,7 +536,6 @@
                     <a href="https://www.kiotviet.vn/dang-ky/" target="_blank" class="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors inline-block">Dùng thử miễn phí</a>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-left">
-                    <!-- Hotline -->
                     <div class="bg-white p-6 rounded-lg shadow-md">
                         <div class="flex items-center mb-3">
                            <i class="fa-solid fa-phone w-6 h-6 text-blue-600 mr-3"></i>
@@ -493,35 +543,27 @@
                         </div>
                         <p class="text-gray-600 text-sm">Tư vấn bán hàng: <span class="font-bold text-blue-600">1800 6162</span></p>
                         <p class="text-gray-600 text-sm">Chăm sóc khách hàng: <span class="font-bold text-blue-600">1900 6522</span></p>
-                        <p class="text-xs text-gray-500 mt-2">Hoạt động 365 ngày/năm từ 7:00 đến 22:00 kể cả ngày nghỉ, lễ tết.</p>
                     </div>
-                    <!-- Fanpage -->
-                    <a href="https://www.facebook.com/PhanmembanhangKiotViet/" target="_blank" rel="noopener noreferrer" class="block">
-                        <div class="bg-white p-6 rounded-lg shadow-md h-full">
-                            <div class="flex items-center mb-3">
-                               <i class="fa-brands fa-facebook-f w-6 h-6 text-blue-600 mr-3"></i>
-                                <h3 class="font-semibold text-base">KiotViet Fanpage</h3>
-                            </div>
-                            <p class="text-gray-600 text-sm">Luôn trả lời các thông tin nhanh nhất thông qua các phản hồi trên Facebook.</p>
+                    <a href="https://www.facebook.com/PhanmembanhangKiotViet/" target="_blank" class="block bg-white p-6 rounded-lg shadow-md">
+                        <div class="flex items-center mb-3">
+                           <i class="fa-brands fa-facebook-f w-6 h-6 text-blue-600 mr-3"></i>
+                            <h3 class="font-semibold text-base">KiotViet Fanpage</h3>
                         </div>
+                        <p class="text-gray-600 text-sm">Luôn trả lời các thông tin nhanh nhất.</p>
                     </a>
-                    <!-- Youtube -->
-                    <a href="https://www.youtube.com/channel/UC7rnmP-i3aWPSLEgcT338vA" target="_blank" rel="noopener noreferrer" class="block">
-                        <div class="bg-white p-6 rounded-lg shadow-md h-full">
-                            <div class="flex items-center mb-3">
-                                <i class="fa-brands fa-youtube w-6 h-6 text-blue-600 mr-3"></i>
-                                <h3 class="font-semibold text-base">Kênh hỗ trợ Youtube</h3>
-                            </div>
-                            <p class="text-gray-600 text-sm">Luôn cập nhật các kiến thức sử dụng phần mềm tức thời, trực quan giúp người dùng sử dụng được KiotViet dễ dàng và hiệu quả nhất.</p>
+                    <a href="https://www.youtube.com/channel/UC7rnmP-i3aWPSLEgcT338vA" target="_blank" class="block bg-white p-6 rounded-lg shadow-md">
+                        <div class="flex items-center mb-3">
+                            <i class="fa-brands fa-youtube w-6 h-6 text-blue-600 mr-3"></i>
+                            <h3 class="font-semibold text-base">Kênh hỗ trợ Youtube</h3>
                         </div>
+                        <p class="text-gray-600 text-sm">Cập nhật kiến thức sử dụng phần mềm trực quan.</p>
                     </a>
-                    <!-- Live Chat -->
                     <div class="bg-white p-6 rounded-lg shadow-md">
                          <div class="flex items-center mb-3">
                            <i class="fa-solid fa-comments w-6 h-6 text-blue-600 mr-3"></i>
                             <h3 class="font-semibold text-base">Chat trên web & mobile</h3>
                         </div>
-                        <p class="text-gray-600 text-sm">Luôn có người trực chat để trả lời câu hỏi của các bạn nhanh và hiệu quả nhất suốt 365 ngày/năm.</p>
+                        <p class="text-gray-600 text-sm">Luôn có người trực chat để trả lời câu hỏi của bạn.</p>
                     </div>
                 </div>
             </div>
@@ -578,6 +620,28 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            // --- Script for Swiper Slider ---
+            const swiper = new Swiper('.kiotviet-retail-slider', {
+                loop: false,
+                slidesPerGroup: 3, 
+                slidesPerView: 1.2,
+                spaceBetween: 16,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                breakpoints: {
+                    768: {
+                        slidesPerView: 2,
+                        spaceBetween: 24,
+                    },
+                    1024: {
+                        slidesPerView: 3,
+                        spaceBetween: 32,
+                    }
+                }
+            });
+
             // --- Script for FAQ Accordion ---
             const faqQuestions = document.querySelectorAll('.faq-question');
             faqQuestions.forEach(button => {
@@ -585,17 +649,18 @@
                     const answer = button.nextElementSibling;
                     const icon = button.querySelector('i');
                     const isOpening = answer.classList.contains('hidden');
+                    
+                    // Đóng tất cả các câu trả lời khác trước khi mở câu mới
+                    // Bạn có thể bỏ đoạn này nếu muốn cho phép mở nhiều câu cùng lúc
+                    document.querySelectorAll('.faq-answer').forEach(ans => ans.classList.add('hidden'));
+                    document.querySelectorAll('.faq-question i').forEach(ic => ic.classList.remove('rotate-180'));
 
-                    // Close all other open FAQs
-                    faqQuestions.forEach(otherButton => {
-                        otherButton.nextElementSibling.classList.add('hidden');
-                        otherButton.querySelector('i').classList.remove('rotate-180');
-                    });
-
-                    // Toggle current FAQ if it was closed
                     if (isOpening) {
                         answer.classList.remove('hidden');
                         icon.classList.add('rotate-180');
+                    } else {
+                        answer.classList.add('hidden');
+                        icon.classList.remove('rotate-180');
                     }
                 });
             });
@@ -609,16 +674,11 @@
                     scrollTopBtn.classList.add('hidden');
                 }
             };
-
             scrollTopBtn.addEventListener('click', function(e) {
                 e.preventDefault();
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         });
     </script>
 </body>
 </html>
-
