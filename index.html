@@ -14,6 +14,7 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth; /* Cuộn mượt khi click neo */
         }
         .hero-bg {
             background-color: #007BFF;
@@ -35,7 +36,7 @@
         /* For 16:9 Aspect Ratio */
         .aspect-16-9 {
             position: relative;
-            padding-bottom: 56.25%; /* 9 / 16 = 0.5625 */
+            padding-bottom: 56.25%;
         }
         .aspect-16-9 > * {
             position: absolute;
@@ -45,21 +46,20 @@
             height: 100%;
         }
         
-        /* [START] CSS CHO ĐIỀU HƯỚNG DẠNG DẤU CHẤM */
+        /* Swiper Pagination */
         .swiper-pagination {
-            position: static; /* Ghi đè position absolute mặc định để nó nằm dưới slider */
+            position: static;
         }
         .swiper-pagination-bullet {
             width: 12px;
             height: 12px;
-            background-color: #D1D5DB; /* Màu xám nhạt cho dấu chấm không hoạt động */
-            opacity: 1; /* Đảm bảo nó luôn hiện rõ */
+            background-color: #D1D5DB;
+            opacity: 1;
             transition: background-color 0.3s ease;
         }
         .swiper-pagination-bullet-active {
-            background-color: #2563EB; /* Màu xanh dương của KiotViet cho dấu chấm đang hoạt động */
+            background-color: #2563EB;
         }
-        /* [END] CSS CHO ĐIỀU HƯỚNG DẠNG DẤU CHẤM */
     </style>
 </head>
 <body class="bg-gray-50">
@@ -112,7 +112,7 @@
         </section>
 
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-            <!-- [START] SECTION VIDEO SLIDER (VERSION MỚI) -->
+            <!-- SECTION VIDEO SLIDER -->
             <section id="getting-started" class="mb-20">
                 <div class="text-center max-w-3xl mx-auto">
                     <h2 class="text-3xl font-bold text-gray-800 mb-4">
@@ -253,13 +253,12 @@
                         </div>
                     </div>
                     
-                    <!-- Điều hướng bằng dấu chấm (Pagination) -->
+                    <!-- Pagination -->
                     <div class="swiper-pagination mt-8 text-center"></div>
                 </div>
             </section>
             <!-- [END] SECTION VIDEO SLIDER -->
 
-            <!-- [START] NỘI DUNG ĐƯỢC KHÔI PHỤC -->
             <!-- Giải pháp toàn diện -->
             <section id="comprehensive-solutions" class="mb-20 bg-slate-50 p-8 rounded-xl">
                 <div class="text-center max-w-3xl mx-auto mb-12">
@@ -319,7 +318,19 @@
                         </ul>
                     </div>
                 </div>
+
+                <!-- [START] NEW BUTTON CTA STRIP -->
+                <div class="mt-12 max-w-2xl mx-auto">
+                    <div class="bg-blue-50 rounded-full p-2 pl-6 sm:pl-8 flex items-center justify-between transition-all hover:shadow-md">
+                        <span class="text-gray-800 font-semibold text-sm sm:text-base mr-2 truncate">Khám phá các ngành khác của chúng tôi</span>
+                        <a href="#industry-solutions" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-bold text-sm sm:text-base transition-colors whitespace-nowrap shadow-sm">
+                            Khám phá ngay
+                        </a>
+                    </div>
+                </div>
+                <!-- [END] NEW BUTTON CTA STRIP -->
             </section>
+
             <!-- [START] SECTION GIẢI PHÁP CHUYÊN BIỆT NGÀNH HÀNG -->
             <section id="industry-solutions" class="mb-20">
                 <div class="text-center max-w-3xl mx-auto mb-12">
@@ -336,12 +347,12 @@
                         <span class="font-semibold text-gray-700 text-sm text-center group-hover:text-blue-700">Thời trang</span>
                     </a>
 
-                    <!-- 2. Tạp hóa -->
+                    <!-- 2. Tạp hóa & Siêu thị -->
                     <a href="#" class="group bg-white p-5 rounded-xl border border-gray-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col items-center">
                         <div class="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center mb-3 group-hover:bg-blue-600 transition-colors duration-300">
                             <i class="fa-solid fa-basket-shopping text-xl text-blue-600 group-hover:text-white transition-colors duration-300"></i>
                         </div>
-                        <span class="font-semibold text-gray-700 text-sm text-center group-hover:text-blue-700">Tạp hóa</span>
+                        <span class="font-semibold text-gray-700 text-sm text-center group-hover:text-blue-700">Tạp hóa & Siêu thị</span>
                     </a>
 
                     <!-- 3. Điện thoại & Điện máy -->
@@ -349,7 +360,7 @@
                         <div class="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center mb-3 group-hover:bg-blue-600 transition-colors duration-300">
                             <i class="fa-solid fa-mobile-screen-button text-xl text-blue-600 group-hover:text-white transition-colors duration-300"></i>
                         </div>
-                        <span class="font-semibold text-gray-700 text-sm text-center group-hover:text-blue-700">Điện máy</span>
+                        <span class="font-semibold text-gray-700 text-sm text-center group-hover:text-blue-700">Điện thoại & Điện máy</span>
                     </a>
 
                     <!-- 4. Mỹ phẩm -->
@@ -373,7 +384,7 @@
                         <div class="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center mb-3 group-hover:bg-blue-600 transition-colors duration-300">
                             <i class="fa-solid fa-carrot text-xl text-blue-600 group-hover:text-white transition-colors duration-300"></i>
                         </div>
-                        <span class="font-semibold text-gray-700 text-sm text-center group-hover:text-blue-700">Nông sản</span>
+                        <span class="font-semibold text-gray-700 text-sm text-center group-hover:text-blue-700">Nông sản & Thực phẩm</span>
                     </a>
 
                     <!-- 7. Nhà thuốc -->
@@ -405,7 +416,7 @@
                         <div class="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center mb-3 group-hover:bg-blue-600 transition-colors duration-300">
                             <i class="fa-solid fa-couch text-xl text-blue-600 group-hover:text-white transition-colors duration-300"></i>
                         </div>
-                        <span class="font-semibold text-gray-700 text-sm text-center group-hover:text-blue-700">Nội thất</span>
+                        <span class="font-semibold text-gray-700 text-sm text-center group-hover:text-blue-700">Nội thất & Gia dụng</span>
                     </a>
 
                     <!-- 11. Sách & VPP -->
@@ -426,6 +437,7 @@
                 </div>
             </section>
             <!-- [END] SECTION GIẢI PHÁP CHUYÊN BIỆT NGÀNH HÀNG -->
+            
             <!-- Phần cứng -->
             <section id="hardware" class="mb-20">
                 <div class="bg-white p-8 rounded-xl shadow-lg">
@@ -514,122 +526,123 @@
                 </div>
             </section>
 
-            <!-- FAQ Accordion by Industry -->
+            <!-- FAQ Section (Nội dung mới) -->
             <section id="faq-by-industry" class="mb-20">
                 <div class="text-center max-w-3xl mx-auto mb-12">
                     <h2 class="text-3xl font-bold text-gray-800 mb-4">Các câu hỏi thường gặp</h2>
-                    <p class="text-gray-600">KiotViet có phù hợp với cửa hàng của bạn không? Cùng tìm hiểu những tính năng chuyên biệt được thiết kế riêng cho từng lĩnh vực kinh doanh.</p>
+                    <p class="text-gray-600">Giải đáp những thắc mắc phổ biến nhất về tính năng và ứng dụng của KiotViet trong quản lý kinh doanh.</p>
                 </div>
                 <div class="max-w-4xl mx-auto space-y-4">
-                    <!-- FAQ Item 1: Thời trang -->
+                    
+                    <!-- FAQ 1: Thu ngân vs Quản lý -->
                     <div class="bg-white border border-gray-200 rounded-lg overflow-hidden">
                         <button class="faq-question w-full text-left p-5 flex justify-between items-center hover:bg-gray-50 focus:outline-none">
-                            <span class="font-semibold text-lg text-gray-800">Shop Thời trang của tôi dùng KiotViet có hiệu quả không?</span>
+                            <span class="font-semibold text-lg text-gray-800">KiotViet là phần mềm dành riêng cho nhân viên thu ngân cửa hàng đúng không?</span>
                             <i class="fa-solid fa-chevron-down w-6 h-6 text-blue-600 flex-shrink-0 transition-transform duration-300"></i>
                         </button>
                         <div class="faq-answer hidden">
-                            <div class="p-5 border-t border-gray-200 text-gray-600 space-y-4">
-                                <p class="font-semibold">Chắc chắn rồi! KiotViet là "trợ thủ đắc lực" cho shop thời trang của bạn, giúp:</p>
-                                <ul class="list-disc list-inside space-y-2">
-                                    <li><b>Tăng doanh thu:</b> Quản lý mọi khuyến mãi (voucher, tích điểm, giảm giá) để thu hút khách.</li>
-                                    <li><b>Bán hàng đa kênh:</b> Dễ dàng bán trên Website, Facebook, Instagram, và các sàn TMĐT (Shopee, TikTok Shop...).</li>
-                                    <li><b>Thấu hiểu khách hàng:</b> Phân loại khách hàng tự động để có chiến lược chăm sóc và marketing hiệu quả.</li>
+                            <div class="p-5 border-t border-gray-200 text-gray-600 space-y-3">
+                                <p>KiotViet là một giải pháp quản lý bán hàng toàn diện, phục vụ cho mọi vị trí trong cửa hàng:</p>
+                                <ul class="list-disc list-inside space-y-2 ml-2">
+                                    <li><strong class="text-gray-800">Đối với thu ngân:</strong> Giúp tối ưu vận hành bán hàng và thanh toán nhanh chóng nhờ giao diện thân thiện, kết nối mượt mà với máy in hóa đơn, máy quét mã vạch, màn hiển thị QR…</li>
+                                    <li><strong class="text-gray-800">Đối với quản lý cửa hàng:</strong> Là công cụ đắc lực để quản lý toàn diện từ hàng hóa, nhân viên, khách hàng, nhà cung cấp đến báo cáo tài chính. Đồng thời cung cấp giải pháp tăng doanh thu như tạo khuyến mại, tích điểm và mở rộng kinh doanh online.</li>
                                 </ul>
-                                <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/van-hanh/ban-hang" target="_blank" class="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-4 py-2 rounded-lg font-semibold hover:bg-blue-200 transition-colors text-sm">
-                                    <i class="fa-solid fa-circle-info"></i>
-                                    Tìm hiểu thêm
-                                </a>
                             </div>
                         </div>
                     </div>
-                    <!-- FAQ Item 2: Tạp hóa -->
+
+                    <!-- FAQ 2: Tối ưu ngành hàng -->
                     <div class="bg-white border border-gray-200 rounded-lg overflow-hidden">
                         <button class="faq-question w-full text-left p-5 flex justify-between items-center hover:bg-gray-50 focus:outline-none">
-                            <span class="font-semibold text-lg text-gray-800">Quản lý cửa hàng Tạp hóa bằng KiotViet có dễ không?</span>
+                            <span class="font-semibold text-lg text-gray-800">KiotViet có tối ưu chức năng riêng cho từng ngành hàng không?</span>
                             <i class="fa-solid fa-chevron-down w-6 h-6 text-blue-600 flex-shrink-0 transition-transform duration-300"></i>
                         </button>
                         <div class="faq-answer hidden">
-                            <div class="p-5 border-t border-gray-200 text-gray-600 space-y-4">
-                                <p class="font-semibold">Rất đơn giản! KiotViet giúp việc quản lý cửa hàng tạp hóa của bạn trở nên nhẹ nhàng hơn bao giờ hết:</p>
-                                <ul class="list-disc list-inside space-y-2">
-                                    <li><b>Bán hàng siêu tốc:</b> Chỉ cần quét mã vạch, tự động tính tiền, hỗ trợ nhiều hình thức thanh toán.</li>
-                                    <li><b>Kiểm kho chính xác:</b> Quản lý hàng nghìn sản phẩm, cảnh báo hàng sắp hết, kiểm soát tồn kho chi tiết.</li>
-                                    <li><b>Nắm bắt doanh thu:</b> Xem báo cáo lãi lỗ, hàng bán chạy ngay trên điện thoại mọi lúc mọi nơi.</li>
+                            <div class="p-5 border-t border-gray-200 text-gray-600 space-y-3">
+                                <p>Có. KiotViet đi sâu vào việc tối ưu hóa chức năng cho từng ngành hàng cụ thể để giải quyết các bài toán riêng biệt:</p>
+                                <ul class="list-disc list-inside space-y-2 ml-2">
+                                    <li><strong class="text-gray-800">Tạp hóa - Siêu thị mini:</strong> Gợi ý thông tin mô tả hàng hóa, quản lý danh mục khoa học, báo cáo đa chiều.</li>
+                                    <li><strong class="text-gray-800">Thời trang:</strong> Quản lý theo màu sắc, kích cỡ (size), tồn kho chi tiết, khuyến mại và tích điểm.</li>
+                                    <li><strong class="text-gray-800">Mỹ phẩm:</strong> Quản lý theo lô, hạn sử dụng, tích điểm thành viên.</li>
+                                    <li><strong class="text-gray-800">Nhà thuốc:</strong> Quản lý theo lô, hạn sử dụng, đơn vị tính (vỉ, viên, hộp), liên thông CSDL Dược quốc gia và Đơn thuốc điện tử.</li>
+                                    <li><strong class="text-gray-800">Điện thoại - Điện máy:</strong> Quản lý theo số IMEI/Serial, bảo hành, bảo trì.</li>
+                                    <li><strong class="text-gray-800">Vật liệu xây dựng:</strong> Gợi ý bán hàng theo quy cách, quản lý công nợ khách hàng, nhà cung cấp.</li>
                                 </ul>
-                                <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/van-hanh/chuyen-nganh/lo-hsd" target="_blank" class="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-4 py-2 rounded-lg font-semibold hover:bg-blue-200 transition-colors text-sm">
-                                    <i class="fa-solid fa-circle-info"></i>
-                                    Tìm hiểu thêm
-                                </a>
                             </div>
                         </div>
                     </div>
-                    <!-- FAQ Item 3: Nhà thuốc -->
+
+                    <!-- FAQ 3: Kinh doanh Online -->
                     <div class="bg-white border border-gray-200 rounded-lg overflow-hidden">
                         <button class="faq-question w-full text-left p-5 flex justify-between items-center hover:bg-gray-50 focus:outline-none">
-                            <span class="font-semibold text-lg text-gray-800">Nhà thuốc của tôi có cần đáp ứng quy định gì đặc biệt không?</span>
+                            <span class="font-semibold text-lg text-gray-800">KiotViet có phù hợp với các cửa hàng kinh doanh online hay không?</span>
                             <i class="fa-solid fa-chevron-down w-6 h-6 text-blue-600 flex-shrink-0 transition-transform duration-300"></i>
                         </button>
                         <div class="faq-answer hidden">
-                             <div class="p-5 border-t border-gray-200 text-gray-600 space-y-4">
-                                <p class="font-semibold">Có chứ! KiotViet đảm bảo nhà thuốc của bạn vận hành đúng chuẩn GPP và các quy định mới nhất:</p>
-                                <ul class="list-disc list-inside space-y-2">
-                                    <li><b>Liên thông Dược Quốc Gia:</b> Tự động kết nối, gửi báo cáo và tra cứu thông tin thuốc chuẩn xác.</li>
-                                    <li><b>Kết nối Đơn thuốc Quốc Gia:</b> Nhận đơn và bán thuốc theo toa điện tử nhanh chóng, chính xác.</li>
-                                    <li><b>Quản lý Lô-HSD:</b> Cảnh báo thuốc sắp hết hạn, ưu tiên xuất bán lô date gần nhất, tránh thất thoát.</li>
+                            <div class="p-5 border-t border-gray-200 text-gray-600 space-y-3">
+                                <p>KiotViet là giải pháp lý tưởng cho bán hàng đa kênh, đồng bộ liền mạch giữa online và offline:</p>
+                                <ul class="list-disc list-inside space-y-2 ml-2">
+                                    <li><strong class="text-gray-800">Tích hợp sàn TMĐT:</strong> Đồng bộ sản phẩm, tồn kho, đơn hàng với Shopee, TikTok Shop, Lazada, Tiki.</li>
+                                    <li><strong class="text-gray-800">Mạng xã hội:</strong> Kết nối Facebook, Instagram để quản lý bình luận, tin nhắn, tự động tạo đơn.</li>
+                                    <li><strong class="text-gray-800">Website bán hàng:</strong> Nền tảng KiotViet Web giúp tự tạo website chuyên nghiệp, đồng bộ dữ liệu.</li>
+                                    <li><strong class="text-gray-800">Kết nối vận chuyển:</strong> Tích hợp SPX Express, Grab, Xanh SM, GHTK, Viettel Post... giúp giao hàng nhanh chóng.</li>
+                                    <li><strong class="text-gray-800">Quản lý tập trung:</strong> Kiểm soát tất cả đơn hàng tại một nơi duy nhất, tránh sai sót.</li>
                                 </ul>
-                                <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/van-hanh/chuyen-nganh/nha-thuoc" target="_blank" class="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-4 py-2 rounded-lg font-semibold hover:bg-blue-200 transition-colors text-sm">
-                                    <i class="fa-solid fa-circle-info"></i>
-                                    Tìm hiểu thêm
-                                </a>
                             </div>
                         </div>
                     </div>
-                    <!-- FAQ Item 4: VLXD -->
-                     <div class="bg-white border border-gray-200 rounded-lg overflow-hidden">
+
+                    <!-- FAQ 4: Mobile & POS Android -->
+                    <div class="bg-white border border-gray-200 rounded-lg overflow-hidden">
                         <button class="faq-question w-full text-left p-5 flex justify-between items-center hover:bg-gray-50 focus:outline-none">
-                            <span class="font-semibold text-lg text-gray-800">Ngành Vật liệu xây dựng có tính năng gì đặc thù không?</span>
+                            <span class="font-semibold text-lg text-gray-800">KiotViet có phiên bản dành cho Điện thoại và Máy POS Android không?</span>
                             <i class="fa-solid fa-chevron-down w-6 h-6 text-blue-600 flex-shrink-0 transition-transform duration-300"></i>
                         </button>
                         <div class="faq-answer hidden">
-                             <div class="p-5 border-t border-gray-200 text-gray-600 space-y-4">
-                                <p class="font-semibold">KiotViet có các tính năng độc đáo giúp cửa hàng vật liệu xây dựng của bạn chuyên nghiệp và chính xác hơn:</p>
-                                <ul class="list-disc list-inside space-y-2">
-                                    <li><b>Bán hàng theo diện tích (m²):</b> Tự động tính số lượng gạch, vật tư cần thiết từ diện tích khách yêu cầu.</li>
-                                    <li><b>Quy đổi đơn vị linh hoạt:</b> Dễ dàng bán theo tấm, hộp, kiện nhưng tính tiền theo m², m dài...</li>
-                                    <li><b>Giảm sai sót tối đa:</b> Các công cụ tính toán tự động giúp tư vấn và báo giá nhanh, chuẩn xác.</li>
+                            <div class="p-5 border-t border-gray-200 text-gray-600 space-y-3">
+                                <p>KiotViet hoạt động mượt mà trên nhiều loại thiết bị khác nhau:</p>
+                                <ul class="list-disc list-inside space-y-2 ml-2">
+                                    <li><strong class="text-gray-800">Trên Điện thoại:</strong> Ứng dụng KiotViet (iOS & Android) hỗ trợ cả quản lý (báo cáo, theo dõi) và bán hàng (tư vấn, lên đơn di động).</li>
+                                    <li><strong class="text-gray-800">Trên Máy POS Android:</strong> Ứng dụng "KiotViet Máy Bán hàng" chuyên dụng giúp tra cứu, bán hàng, thanh toán nhanh và kết nối thiết bị ngoại vi.</li>
                                 </ul>
-                                 <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/van-hanh/chuyen-nganh/vat-lieu-xay-dung" target="_blank" class="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-4 py-2 rounded-lg font-semibold hover:bg-blue-200 transition-colors text-sm">
-                                    <i class="fa-solid fa-circle-info"></i>
-                                    Tìm hiểu thêm
-                                </a>
                             </div>
                         </div>
                     </div>
-                    <!-- FAQ Item 5: Bán online -->
-                     <div class="bg-white border border-gray-200 rounded-lg overflow-hidden">
+
+                    <!-- FAQ 5: Hóa đơn điện tử & Chữ ký số -->
+                    <div class="bg-white border border-gray-200 rounded-lg overflow-hidden">
                         <button class="faq-question w-full text-left p-5 flex justify-between items-center hover:bg-gray-50 focus:outline-none">
-                            <span class="font-semibold text-lg text-gray-800">Tôi chỉ bán online, KiotViet có phù hợp không?</span>
+                            <span class="font-semibold text-lg text-gray-800">KiotViet có cung cấp miễn phí Hóa đơn điện tử và Chữ ký số không?</span>
                             <i class="fa-solid fa-chevron-down w-6 h-6 text-blue-600 flex-shrink-0 transition-transform duration-300"></i>
                         </button>
                         <div class="faq-answer hidden">
-                             <div class="p-5 border-t border-gray-200 text-gray-600 space-y-4">
-                                <p class="font-semibold">Hoàn toàn phù hợp! KiotViet chính là giải pháp quản lý toàn diện dành cho người bán hàng online:</p>
-                                <ul class="list-disc list-inside space-y-2">
-                                    <li><b>Quản lý tập trung:</b> Xử lý đơn hàng từ Website, Facebook, Sàn TMĐT (Shopee, TikTok) tại một nơi duy nhất.</li>
-                                    <li><b>Tự động hóa bán hàng:</b> Tự động ẩn bình luận chứa SĐT, tạo đơn từ chat, đồng bộ tồn kho đa kênh.</li>
-                                    <li><b>Chốt đơn Livestream hiệu quả:</b> Công cụ hỗ trợ chốt đơn tự động trên Facebook Live, TikTok Live.</li>
-                                    <li><b>Đối soát tiền hàng & phí sàn:</b> Kiểm tra dòng tiền, các loại phí của sàn TMĐT một cách dễ dàng, minh bạch.</li>
-                                </ul>
-                                 <a href="https://kiotvietlnd.github.io/hotro-kiotviet-retail/doanh-thu/san-thuong-mai-dien-tu" target="_blank" class="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-4 py-2 rounded-lg font-semibold hover:bg-blue-200 transition-colors text-sm">
-                                    <i class="fa-solid fa-circle-info"></i>
-                                    Tìm hiểu thêm
-                                </a>
+                            <div class="p-5 border-t border-gray-200 text-gray-600 space-y-3">
+                                <p>Có. KiotViet cung cấp <strong>miễn phí</strong> cả Hóa đơn điện tử và Chữ ký số cho tất cả khách hàng (cũ và mới), giúp chủ kinh doanh tiết kiệm chi phí và tuân thủ pháp luật.</p>
+                                <p>Đặc biệt, chữ ký số từ KiotViet được tích hợp sẵn trong phần mềm (HSM), không cần thiết bị cắm USB hay cài đặt phức tạp, đảm bảo an toàn và thuận tiện.</p>
                             </div>
                         </div>
                     </div>
+
+                    <!-- FAQ 6: Thuế & Kế toán -->
+                    <div class="bg-white border border-gray-200 rounded-lg overflow-hidden">
+                        <button class="faq-question w-full text-left p-5 flex justify-between items-center hover:bg-gray-50 focus:outline-none">
+                            <span class="font-semibold text-lg text-gray-800">KiotViet có đáp ứng các quy định của Nhà nước về Thuế và Kế toán cho Hộ kinh doanh không?</span>
+                            <i class="fa-solid fa-chevron-down w-6 h-6 text-blue-600 flex-shrink-0 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-answer hidden">
+                            <div class="p-5 border-t border-gray-200 text-gray-600 space-y-3">
+                                <p>Hoàn toàn đáp ứng. KiotViet phát triển phân hệ Phần mềm Kế toán chuyên biệt bám sát Thông tư 88/2021/TT-BTC:</p>
+                                <ul class="list-disc list-inside space-y-2 ml-2">
+                                    <li><strong class="text-gray-800">Sổ sách kế toán:</strong> Cung cấp 7 loại sổ sách kế toán theo đúng mẫu quy định.</li>
+                                    <li><strong class="text-gray-800">Kê khai Thuế:</strong> Tự động tổng hợp số liệu thành Tờ khai thuế để nộp cho cơ quan Thuế.</li>
+                                    <li><strong class="text-gray-800">Đồng bộ tự động:</strong> Dữ liệu từ bán hàng, hóa đơn điện tử được tự động đẩy sang kế toán, giảm thiểu sai sót nhập liệu.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </section>
-            <!-- [END] NỘI DUNG ĐƯỢC KHÔI PHỤC -->
         </div>
 
         <!-- Bottom Section -->
@@ -787,4 +800,3 @@
     </script>
 </body>
 </html>
-
